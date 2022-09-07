@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 const App = () => {
-  return <h1>Hello world</h1>;
+  return <h1>Hello Amanda world</h1>;
 };
 
 window.onload = () => {
