@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "esbuild": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
+    "prestart": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
     "start": "node app.js",
     "dev": "PORT=3000 nf start -j Procfile.dev"
   },
