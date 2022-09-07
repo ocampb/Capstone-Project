@@ -1,0 +1,27 @@
+{
+  "name": "capstone_project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "esbuild": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
+    "start": "node app.js",
+    "dev": "PORT=3000 nf start -j Procfile.dev"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "esbuild": "^0.14.38",
+    "express": "~4.16.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "foreman": "^3.0.1",
+    "nodemon": "^2.0.4",
+    "prettier": "2.6.2"
+  }
+}

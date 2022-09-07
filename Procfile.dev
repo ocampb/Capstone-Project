@@ -1,0 +1,2 @@
+api: nodemon ./bin/www
+frontend: npm run esbuild -- --watch
