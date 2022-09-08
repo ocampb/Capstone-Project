@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
-// import "../public/stylesheets/App.scss";
-import "../public/stylesheets/style.css";
+import "./styles/App.scss";
+import Button from "@mui/material/Button";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const App = () => {
       {/* <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
         Increment
       </button> */}
+      <Button variant="outlined">MUI Works</Button>
     </div>
   );
 };
