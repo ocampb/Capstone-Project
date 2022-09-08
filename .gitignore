@@ -1,3 +1,4 @@
 .env
 node_modules
-public/javascripts/bundle.js
+public/App.js
+public/App.css

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "esbuild": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
+    "esbuild": "node ./buildscript.js",
     "prestart": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
     "start": "node app.js",
     "dev": "PORT=3000 nf start -j Procfile.dev"
@@ -16,6 +16,7 @@
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "esbuild": "^0.14.38",
+    "esbuild-sass-plugin": "^2.3.2",
     "express": "~4.16.1",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
