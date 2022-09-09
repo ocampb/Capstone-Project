@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cookieSession = require("cookie-session");
+const OAuth2Strategy = require("passport-oauth2").Strategy;
+const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || "3000";
 
@@ -20,6 +22,50 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// oauth
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(
+  new OAuth2Strategy(
+    {
+      authorizationURL: process.env.CALENDLY_AUTH_BASE_URL + "/oauth/authorize",
+      tokenURL: process.env.CALENDLY_AUTH_BASE_URL + "/oauth/token",
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: process.env.REDIRECT_URI,
+    },
+    async (accessToken, refreshToken, _profile, cb) => {
+      // create user
+      // store id in cookie
+      // write function to create user and return id
+
+      // const userId = createUser(accessToken, refreshToken)
+
+      try {
+        // after save to database provide user id
+        // cb(null, { id: userId });
+      } catch (e) {
+        console.error(e);
+        cb();
+      }
+    }
+  )
+);
+passport.serializeUser((user, next) => {
+  next(null, user);
+});
+passport.deserializeUser((user, next) => {
+  next(null, user);
+});
+
+app.use("/oauth", passport.authenticate("oauth2")).get(
+  "/callback",
+  passport.authenticate("oauth2", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
 
 // routes
 app.use("/", (req, res) => {

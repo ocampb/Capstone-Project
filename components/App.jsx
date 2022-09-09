@@ -9,6 +9,7 @@ const App = () => {
       <h1>Stacy</h1>
       <h1>Hello Amanda world</h1>
       <h1> OLIVIA </h1>
+      <a href="/oauth">Login with Calendly</a>
     </div>
   );
 };
