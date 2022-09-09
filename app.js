@@ -9,6 +9,7 @@ const passport = require("passport");
 const fs = require("fs");
 const hbs = require("hbs");
 const cookieParser = require("cookie-parser");
+const axios = require("axios").default;
 const port = process.env.PORT || "3000";
 const ApprovedLists = require("./server/routes/ApprovedList/app");
 const { UsersTable } = require("./models");
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
-    keys: ["randomstringhere"],
+    keys: [process.env.COOKIE_SECRET || "randomstringhere"],
   })
 );
 
@@ -33,6 +34,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // oauth
+const isUserAuthenticated = async (req, res, next) => {
+  if (req.user) {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      req.session = null;
+    } else {
+      req.user = {
+        id: user.id,
+      };
+      return next();
+    }
+  }
+};
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(
@@ -45,22 +61,30 @@ passport.use(
       callbackURL: process.env.REDIRECT_URI,
     },
     async (accessToken, refreshToken, _profile, cb) => {
-      UsersTable.create({
-        //Calendly_ID: ,
-        Refresh_Token: refreshToken,
-        Access_Token: accessToken,
-      });
-      console.log("here");
-      // create user
-      // store id in cookie
-      // write function to create user and return id
-
-      // const userId = createUser(accessToken, refreshToken)
-
       try {
-        // after save to database provide user id
-        // cb(null, { id: userId });
-        cb(null, { id: 1 });
+        const { data } = await axios.get(
+          process.env.CALENDLY_API_BASE_URL + "/users/me",
+          {
+            headers: {
+              Authorization: "Bearer " + accessToken,
+            },
+          }
+        );
+
+        let user = await UsersTable.findOne({
+          where: { Calendly_ID: data.resource.uri },
+        });
+
+        if (!user) {
+          // TODO: create webhook after creating user
+          user = await UsersTable.create({
+            Calendly_ID: data.resource.uri,
+            Refresh_Token: refreshToken,
+            Access_Token: accessToken,
+          });
+        }
+
+        cb(null, { id: user.id });
       } catch (e) {
         console.error(e);
         cb();
@@ -87,6 +111,12 @@ app.get(
 
 // routes
 app.use("/api/dashboard", ApprovedLists);
+app.use("/logout", (req, res) => {
+  if (req.user) {
+    req.session = null;
+  }
+  res.redirect("/");
+});
 app.use("/*", (req, res) => {
   fs.readFile(__dirname + "/public/index.html", "utf8", function (err, text) {
     res.send(text);
