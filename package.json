@@ -22,11 +22,14 @@
     "esbuild": "^0.14.38",
     "esbuild-sass-plugin": "^2.3.2",
     "express": "~4.16.1",
+    "pg": "^8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "sequelize": "^6.21.4",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "foreman": "^3.0.1",
