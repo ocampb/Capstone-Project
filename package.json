@@ -21,13 +21,10 @@
     "pg": "^8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
     "passport": "^0.4.1",
-    "passport-oauth2": "^1.5.0"
-=======
+    "passport-oauth2": "^1.5.0",
     "sequelize": "^6.21.4",
     "sequelize-cli": "^6.4.1"
->>>>>>> ee4bfe97993f8c419d24c705547d659a64889e34
   },
   "devDependencies": {
     "foreman": "^3.0.1",
