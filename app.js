@@ -24,7 +24,6 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-<<<<<<< HEAD
 
 // oauth
 app.use(passport.initialize());
@@ -71,8 +70,6 @@ app.use("/oauth", passport.authenticate("oauth2")).get(
   })
 );
 
-=======
->>>>>>> 586097d9f2daffefe8b131c084046b924c6ba756
 // routes
 app.use("/dashboard", ApprovedLists);
 app.use("/home", (req, res) => {
