@@ -10,6 +10,15 @@ const LoginCheck = async (req, res, next) => {
     next();
   } else {
     res.render("home"); //or whatever route we have for being logged out
-    //can also send an error code that will trigger the pop up on home page to show theyve been logged out
+    //can also send an error code that will trigger the pop up on home page to show they've been logged out
   }
 };
+
+//render user's approved emails (will add login check when complete)
+router.get("/dashboard", async (req, res) => {
+  try {
+    let array = [];
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
