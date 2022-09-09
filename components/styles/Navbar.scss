@@ -10,3 +10,13 @@
 #hamburger {
   color: black;
 }
+
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 30px;
+}

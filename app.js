@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 require("dotenv").config();
 const createError = require("http-errors");
 const express = require("express");
@@ -27,10 +29,12 @@ app.engine("html", es6Renderer);
 app.set("views", "./components");
 app.set("view engine", "html");
 // routes
-app.use("/emails", ApprovedLists);
+app.use("/api/dashboard", ApprovedLists);
 
-app.use("/home", (req, res) => {
-  res.redirect("/index.html");
+app.use("/*", (req, res) => {
+  fs.readFile(__dirname + "/public/index.html", "utf8", function (err, text) {
+    res.send(text);
+  });
 });
 
 // catch 404 and forward to error handler
