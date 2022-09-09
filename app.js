@@ -27,7 +27,8 @@ app.engine("html", es6Renderer);
 app.set("views", "./components");
 app.set("view engine", "html");
 // routes
-app.use("/dashboard", ApprovedLists);
+app.use("/emails", ApprovedLists);
+
 app.use("/home", (req, res) => {
   res.redirect("/index.html");
 });
