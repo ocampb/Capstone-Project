@@ -7,21 +7,18 @@ import rootReducer from "../reducers/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.scss";
 import Button from "@mui/material/Button";
+import Navbar from "./Navbar";
 
 const App = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
   return (
     <div>
-      <h1>Hello world</h1>
-      <h1>Stacy</h1>
-      <h1>Hello Amanda world</h1>
-      <h1> OLIVIA </h1>
       {/* <h1>Counter: {counter}</h1> */}
       {/* <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
         Increment
       </button> */}
-      <Button variant="outlined">MUI Works</Button>
+      {/* <Button variant="outlined">MUI Works</Button> */}
     </div>
   );
 };
@@ -34,6 +31,7 @@ window.onload = () => {
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<App />} />
             {/* Other nav tabs to be added */}
