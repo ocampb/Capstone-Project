@@ -16,7 +16,7 @@ import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const pages = ["Login", "Sign Up"];
+  const pages = ["Login", "Sign Up", "Dashboard"];
   // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -88,11 +88,43 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography>
+                  <Link to="/login">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "black", display: "block" }}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/signup">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "black", display: "block" }}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/dashboard">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "black", display: "block" }}
+                    >
+                      Dashboard
+                    </Button>
+                  </Link>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -129,6 +161,14 @@ const Navbar = () => {
                 sx={{ my: 2, color: "black", display: "block" }}
               >
                 Sign Up
+              </Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "black", display: "block" }}
+              >
+                Dashboard
               </Button>
             </Link>
             {/* ))} */}
