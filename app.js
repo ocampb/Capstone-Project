@@ -8,6 +8,8 @@ const OAuth2Strategy = require("passport-oauth2").Strategy;
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || "3000";
+const ApprovedLists = require("./server/routes/ApprovedList/app");
+const router = express.Router();
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -22,6 +24,7 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+<<<<<<< HEAD
 
 // oauth
 app.use(passport.initialize());
@@ -68,8 +71,11 @@ app.use("/oauth", passport.authenticate("oauth2")).get(
   })
 );
 
+=======
+>>>>>>> 586097d9f2daffefe8b131c084046b924c6ba756
 // routes
-app.use("/", (req, res) => {
+app.use("/dashboard", ApprovedLists);
+app.use("/home", (req, res) => {
   res.redirect("/index.html");
 });
 
