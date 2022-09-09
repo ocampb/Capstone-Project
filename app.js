@@ -9,6 +9,7 @@ const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || "3000";
 const ApprovedLists = require("./server/routes/ApprovedList/app");
+const es6Renderer = require("express-es6-template-engine");
 const router = express.Router();
 
 app.use(express.static(path.join(__dirname, "public")));

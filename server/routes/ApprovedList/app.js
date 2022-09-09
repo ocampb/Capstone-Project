@@ -15,7 +15,7 @@ const LoginCheck = async (req, res, next) => {
 };
 
 //render user's approved emails (will add login check when complete)
-router.get("/aaa", async (req, res) => {
+router.get("/list", async (req, res) => {
   try {
     let array = [];
     const { id } = req.body; //this will be whatever we need to get from OAuth to search for ID pKey in Users table
@@ -46,4 +46,31 @@ router.get("/aaa", async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+//add new emails
+router.post("/add", async (req, res) => {
+  try {
+    const { id } = req.body; //this will be whatever we need to get from OAuth to search for ID pKey in Users table
+    //it is req.params ^^^for now so i can test in postman
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id, //this will be switched to Calendly_ID once we have a login route
+      },
+    });
+    console.log("findUser");
+    if (findUser) {
+      const newEmail = {
+        Email: Email,
+        User_ID: id,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      const CreateEmail = await ApprovedList.create(newEmail);
+      res.status(200).send(newEmail);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 module.exports = router;

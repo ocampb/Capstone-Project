@@ -22,6 +22,7 @@
     "esbuild": "^0.14.38",
     "esbuild-sass-plugin": "^2.3.2",
     "express": "~4.16.1",
+    "express-es6-template-engine": "^2.2.3",
     "pg": "^8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
