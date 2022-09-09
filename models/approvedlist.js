@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      ApprovedList.belongsTo(models.UsersTables, {
+      ApprovedList.belongsTo(models.UsersTable, {
         foreignKey: "id",
-        as: "userstables",
+        as: "UsersTable",
       });
     }
   }

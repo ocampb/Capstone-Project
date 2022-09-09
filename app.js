@@ -6,6 +6,8 @@ const path = require("path");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || "3000";
+const ApprovedLists = require("./server/routes/ApprovedList/app");
+const router = express.Router();
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -20,9 +22,9 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 // routes
-app.use("/", (req, res) => {
+app.use("/dashboard", ApprovedLists);
+app.use("/home", (req, res) => {
   res.redirect("/index.html");
 });
 
