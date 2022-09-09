@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "esbuild": "node ./buildscript.js",
-    "prestart": "esbuild components/App.jsx --bundle --outfile=public/javascripts/bundle.js",
+    "esbuild": "ESBUILD_WATCH_ENABLED=1 node ./buildscript.js",
+    "prestart": "node ./buildscript.js",
     "start": "node app.js",
     "dev": "PORT=3000 nf start -j Procfile.dev"
   },

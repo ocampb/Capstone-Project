@@ -45,6 +45,7 @@ passport.use(
       try {
         // after save to database provide user id
         // cb(null, { id: userId });
+        cb();
       } catch (e) {
         console.error(e);
         cb();
