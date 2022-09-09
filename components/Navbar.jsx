@@ -13,31 +13,32 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import "./styles/Navbar.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const pages = ["Login", "Sign Up"];
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
+  // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   return (
-    <AppBar position="static" sx={{ bgColor: "red" }}>
+    <AppBar position="static" id="nav-background">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -50,7 +51,6 @@ const Navbar = () => {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontWeight: 700,
-              // letterSpacing: ".3rem",
               color: "#000",
               textDecoration: "none",
             }}
@@ -66,6 +66,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              id="hamburger"
             >
               <MenuIcon />
             </IconButton>
@@ -105,9 +106,7 @@ const Navbar = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              // fontFamily: "monospace",
               fontWeight: 700,
-              // letterSpacing: ".3rem",
               color: "#000",
               textDecoration: "none",
             }}
@@ -116,15 +115,23 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* Tab Links */}
-            {pages.map((page) => (
+            <Link to="/login">
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}
               >
-                {page}
+                Login
               </Button>
-            ))}
+            </Link>
+            <Link to="/signup">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "black", display: "block" }}
+              >
+                Sign Up
+              </Button>
+            </Link>
+            {/* ))} */}
           </Box>
 
           {/* <Box sx={{ flexGrow: 0 }}>

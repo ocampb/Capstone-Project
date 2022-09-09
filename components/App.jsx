@@ -6,14 +6,19 @@ import { createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.scss";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Navbar from "./Navbar";
+import Login from "./Login";
+import Signup from "./Signup";
+import Dashboard from "./Dashboard";
+import Settings from "./Settings";
 
 const App = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
   return (
     <div>
+      <h1>App</h1>
       {/* <h1>Counter: {counter}</h1> */}
       {/* <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
         Increment
@@ -34,7 +39,10 @@ window.onload = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<App />} />
-            {/* Other nav tabs to be added */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </BrowserRouter>
       </Provider>
