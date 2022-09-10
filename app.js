@@ -12,6 +12,7 @@ const cookieParser = require("cookie-parser");
 const axios = require("axios").default;
 const port = process.env.PORT || "3000";
 const ApprovedLists = require("./server/routes/ApprovedList/app");
+const Webhook = require("./server/routes/Webhooks");
 const { UsersTable } = require("./models");
 
 // view engine setup
@@ -76,12 +77,30 @@ passport.use(
         });
 
         if (!user) {
-          // TODO: create webhook after creating user
           user = await UsersTable.create({
             Calendly_ID: data.resource.uri,
             Refresh_Token: refreshToken,
             Access_Token: accessToken,
           });
+
+          // create webhook subscription
+          if (process.env.NODE_ENV === "production") {
+            await axios.post(
+              process.env.CALENDLY_API_BASE_URL + "/webhook_subscriptions",
+              {
+                url: process.env.WEBHOOK_URL,
+                events: ["invitee.created"],
+                organization: data.resource.current_organization,
+                user: data.resource.uri,
+                scope: "organization",
+              },
+              {
+                headers: {
+                  Authorization: "Bearer " + accessToken,
+                },
+              }
+            );
+          }
         }
 
         cb(null, { id: user.id });
@@ -110,6 +129,7 @@ app.get(
 );
 
 // routes
+app.use("/api/webhook", Webhook);
 app.use("/api/dashboard", ApprovedLists);
 app.use("/logout", (req, res) => {
   if (req.user) {
