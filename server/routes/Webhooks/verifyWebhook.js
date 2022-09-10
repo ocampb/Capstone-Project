@@ -3,7 +3,6 @@
 const crypto = require("crypto");
 
 module.exports = (req, res, next) => {
-  console.log("here");
   // Your application's webhook signing key
   const webhookSigningKey = process.env.WEBHOOK_SIGNING_KEY;
 
