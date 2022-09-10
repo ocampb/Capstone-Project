@@ -6,8 +6,7 @@ const path = require("path");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 const port = process.env.PORT || "3000";
-const ApprovedLists = require("./server/routes/ApprovedList/app");
-const es6Renderer = require("express-es6-template-engine");
+const ApprovedList = require("./server/routes/ApprovedList/app");
 const router = express.Router();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -23,12 +22,9 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.engine("html", es6Renderer);
-app.set("views", "./components");
-app.set("view engine", "html");
 // routes
-app.use("/dashboard", ApprovedLists);
-app.use("/home", (req, res) => {
+app.use("/api/dashboard", ApprovedList);
+app.use("/*", (req, res) => {
   res.redirect("/index.html");
 });
 
