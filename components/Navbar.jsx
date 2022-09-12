@@ -7,11 +7,9 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import SettingsIcon from "@mui/icons-material/Settings";
 import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 
@@ -70,6 +68,7 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* Hamburger Tab Links */}
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography>
                   <Link to="/dashboard">
@@ -119,10 +118,25 @@ const Navbar = () => {
                     </Button>
                   </Link>
                 </Typography>
+                <Typography>
+                  <Link to="/settings">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        fontFamily: "Poppins",
+                      }}
+                    >
+                      Settings
+                    </Button>
+                  </Link>
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
 
           {/* Name when browser at tablet */}
           <Link
@@ -142,7 +156,7 @@ const Navbar = () => {
             Protectly
           </Link>
 
-          {/* Tab Links */}
+          {/* Nav tabs on page */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Link to="/dashboard">
               <Button
@@ -185,6 +199,9 @@ const Navbar = () => {
               >
                 Sign Up
               </Button>
+            </Link>
+            <Link to="/settings">
+              <SettingsIcon />
             </Link>
           </Box>
         </Toolbar>
