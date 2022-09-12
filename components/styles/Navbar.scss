@@ -1,18 +1,20 @@
+@use "./Variables.scss" as *;
+
 .css-1t6c9ts {
   justify-content: right;
 }
 
 #nav-background {
-  background-color: white;
+  background-color: $white;
   box-shadow: none;
 }
 
 #hamburger {
-  color: black;
+  color: $black;
 }
 
 a:-webkit-any-link {
-  color: black;
+  color: $black;
   cursor: pointer;
   text-decoration: none;
 }

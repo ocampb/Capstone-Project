@@ -1,1 +1,84 @@
+@use "./Variables.scss" as *;
 
+.dash-add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem;
+
+  input {
+    padding: 0.5rem 2rem;
+  }
+}
+
+.input-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+
+  input {
+    margin: 1rem;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  //   gap: 5px;
+  margin: 0 5rem;
+  border: 1px solid $black;
+  border-radius: 3px;
+  //   padding-left: 2rem;
+
+  p {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .icon-flex {
+    display: flex;
+    justify-content: center;
+  }
+
+  .close-icon {
+    margin-left: 5rem;
+  }
+}
+
+.header-flex {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 5rem;
+
+  h3 {
+    margin-left: 5rem;
+  }
+}
+
+.table-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  flex-direction: column;
+  margin: 1rem;
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 3px;
+
+  tbody {
+    width: 100%;
+  }
+
+  td {
+    border: 1px solid $black;
+    padding: 1rem;
+  }
+}

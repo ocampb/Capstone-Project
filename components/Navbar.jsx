@@ -16,8 +16,6 @@ import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const pages = ["Login", "Sign Up", "Dashboard"];
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -31,9 +29,18 @@ const Navbar = () => {
   return (
     <AppBar position="static" id="nav-background">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{}}>
           {/* ====== HAMBURGER NAV ====== */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "flex",
+                md: "none",
+                // flexDirection: "row-reverse",
+              },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -65,6 +72,21 @@ const Navbar = () => {
             >
               <MenuItem onClick={handleCloseNavMenu}>
                 <Typography>
+                  <Link to="/dashboard">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                      }}
+                    >
+                      Dashboard
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
                   <Link to="/login">
                     <Button
                       onClick={handleCloseNavMenu}
@@ -72,7 +94,7 @@ const Navbar = () => {
                         my: 2,
                         color: "black",
                         display: "block",
-                        textTransform: "lowercase",
+                        textTransform: "none",
                       }}
                     >
                       Login
@@ -83,26 +105,21 @@ const Navbar = () => {
                   <Link to="/signup">
                     <Button
                       onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "black", display: "block" }}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                      }}
                     >
                       Sign Up
-                    </Button>
-                  </Link>
-                </Typography>
-                <Typography>
-                  <Link to="/dashboard">
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "black", display: "block" }}
-                    >
-                      Dashboard
                     </Button>
                   </Link>
                 </Typography>
               </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
 
           {/* Name when browser at tablet */}
           <Link
@@ -124,10 +141,28 @@ const Navbar = () => {
 
           {/* Tab Links */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Link to="/dashboard">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                }}
+              >
+                Dashboard
+              </Button>
+            </Link>
             <Link to="/login">
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                }}
               >
                 Login
               </Button>
@@ -135,17 +170,14 @@ const Navbar = () => {
             <Link to="/signup">
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                }}
               >
                 Sign Up
-              </Button>
-            </Link>
-            <Link to="/dashboard">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                Dashboard
               </Button>
             </Link>
           </Box>
