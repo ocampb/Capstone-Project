@@ -1,0 +1,118 @@
+@use "./Variables.scss" as *;
+
+.dash-add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem;
+
+  input {
+    padding: 0.5rem 2rem;
+  }
+}
+
+.input-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+
+  input {
+    margin: 1rem;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  //   gap: 5px;
+  margin: 0 5rem;
+  border: 1px solid $black;
+  border-radius: 3px;
+  //   padding-left: 2rem;
+
+  p {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .icon-flex {
+    display: flex;
+    justify-content: center;
+  }
+
+  .close-icon {
+    margin-left: 5rem;
+  }
+}
+
+.header-flex {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 5rem;
+
+  h3 {
+    margin-left: 5rem;
+  }
+}
+
+.add-button {
+  background-color: $black;
+  color: $white;
+  border-radius: 30px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-button:hover {
+  background-color: #3b3b3b;
+  //   color: $black;
+  //   border: 1px solid $slategray;
+  cursor: pointer;
+}
+
+.table-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  flex-direction: column;
+  margin: 1rem;
+  border-spacing: 0;
+  border-collapse: separate;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  width: 60rem;
+
+  th {
+    font-weight: 400;
+    font-size: 17px;
+    color: $slategray;
+    border-bottom: 1px solid $gray;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  thead tr:nth-last-child(-n + 1) {
+    color: $black;
+  }
+
+  td {
+    border-bottom: 1px solid $gray;
+    padding: 1rem;
+    font-size: 15px;
+    max-width: 15rem;
+  }
+
+  tr:nth-last-child(-n + 1) {
+    td {
+      border-bottom: none;
+    }
+  }
+}
