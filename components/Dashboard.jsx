@@ -15,20 +15,20 @@ const Dashboard = () => {
       </button> */}
       <div className="dash-add">
         <h1>My Dashboard</h1>
-        <input type="button" value="Add" />
+        <input type="button" value="Add" className="add-button" />
       </div>
 
-      <div className="input-flex">
+      {/* <div className="input-flex">
         <input type="text" placeholder="name" />
         <input type="email" placeholder="email" />
         <input type="text" placeholder="company" />
-      </div>
+      </div> */}
 
-      <div className="header-flex">
+      {/* <div className="header-flex">
         <h3>Name</h3>
         <h3>Email</h3>
         <h3>Notes</h3>
-      </div>
+      </div> */}
 
       {/* GRID VERSION */}
       {/* <div className="dashboard-grid">
@@ -51,27 +51,40 @@ const Dashboard = () => {
       {/* TABLE VERSION */}
       <div className="table-flex">
         <table>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Notes</th>
-          </tr>
-          <tr>
-            <td>SallyCEO</td>
-            <td>sallyceo@gmail.com</td>
-            <td>SallyEnterprises</td>
-            <td>
-              <GrFormClose />
-            </td>
-          </tr>
-          <tr>
-            <td>Bob Salesman</td>
-            <td>bobsales@gmail.com</td>
-            <td>BobEnterprises</td>
-            <td>
-              <GrFormClose />
-            </td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Notes</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sally CEO</td>
+              <td>sallyceo@gmail.com</td>
+              <td>SallyEnterprises</td>
+              <td>
+                <GrFormClose />
+              </td>
+            </tr>
+            <tr>
+              <td>Bob Salesman</td>
+              <td>bobsales@gmail.com</td>
+              <td>BobEnterprises</td>
+              <td>
+                <GrFormClose />
+              </td>
+            </tr>
+            <tr>
+              <td>Karen DesignComplainer</td>
+              <td>karensales@gmail.com</td>
+              <td>KarenEnterprises</td>
+              <td>
+                <GrFormClose />
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

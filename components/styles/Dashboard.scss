@@ -60,6 +60,21 @@
   }
 }
 
+.add-button {
+  background-color: $black;
+  color: $white;
+  border-radius: 30px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-button:hover {
+  background-color: $white;
+  color: $black;
+  border: 1px solid $black;
+  cursor: pointer;
+}
+
 .table-flex {
   display: flex;
   justify-content: center;
@@ -71,14 +86,31 @@ table {
   margin: 1rem;
   border-spacing: 0;
   border-collapse: separate;
-  border-radius: 3px;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  width: 60rem;
 
-  tbody {
-    width: 100%;
+  th {
+    font-weight: 400;
+    font-size: 17px;
+    border-bottom: 1px solid $gray;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  thead tr:nth-last-child(-n + 1) {
+    color: $black;
   }
 
   td {
-    border: 1px solid $black;
+    border-bottom: 1px solid $gray;
     padding: 1rem;
+    font-size: 15px;
+  }
+
+  tr:nth-last-child(-n + 1) {
+    td {
+      border-bottom: none;
+    }
   }
 }

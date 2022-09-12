@@ -80,6 +80,7 @@ const Navbar = () => {
                         color: "black",
                         display: "block",
                         textTransform: "none",
+                        fontFamily: "Poppins",
                       }}
                     >
                       Dashboard
@@ -95,6 +96,7 @@ const Navbar = () => {
                         color: "black",
                         display: "block",
                         textTransform: "none",
+                        fontFamily: "Poppins",
                       }}
                     >
                       Login
@@ -110,6 +112,7 @@ const Navbar = () => {
                         color: "black",
                         display: "block",
                         textTransform: "none",
+                        fontFamily: "Poppins",
                       }}
                     >
                       Sign Up
@@ -149,6 +152,7 @@ const Navbar = () => {
                   color: "black",
                   display: "block",
                   textTransform: "none",
+                  fontFamily: "Poppins",
                 }}
               >
                 Dashboard
@@ -162,6 +166,7 @@ const Navbar = () => {
                   color: "black",
                   display: "block",
                   textTransform: "none",
+                  fontFamily: "Poppins",
                 }}
               >
                 Login
@@ -175,6 +180,7 @@ const Navbar = () => {
                   color: "black",
                   display: "block",
                   textTransform: "none",
+                  fontFamily: "Poppins",
                 }}
               >
                 Sign Up
