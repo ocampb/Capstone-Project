@@ -7,58 +7,38 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import SettingsIcon from "@mui/icons-material/Settings";
 import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const pages = ["Login", "Sign Up"];
-  // const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
   return (
     <AppBar position="static" id="nav-background">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+        <Toolbar disableGutters sx={{}}>
+          {/* ====== HAMBURGER NAV ====== */}
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              color: "#000",
-              textDecoration: "none",
+              flexGrow: 1,
+              display: {
+                xs: "flex",
+                md: "none",
+                // flexDirection: "row-reverse",
+              },
             }}
           >
-            Protectly
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -88,20 +68,81 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {/* Hamburger Tab Links */}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography>
+                  <Link to="/dashboard">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        fontFamily: "Poppins",
+                      }}
+                    >
+                      Dashboard
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/login">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        fontFamily: "Poppins",
+                      }}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/signup">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        fontFamily: "Poppins",
+                      }}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/settings">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "black",
+                        display: "block",
+                        textTransform: "none",
+                        fontFamily: "Poppins",
+                      }}
+                    >
+                      Settings
+                    </Button>
+                  </Link>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           {/* Name when browser at tablet */}
-          <Typography
+          <Link
             variant="h5"
-            noWrap
             component="a"
-            href=""
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -110,15 +151,37 @@ const Navbar = () => {
               color: "#000",
               textDecoration: "none",
             }}
+            className="logo"
           >
             Protectly
-          </Typography>
+          </Link>
+
+          {/* Nav tabs on page */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* Tab Links */}
+            <Link to="/dashboard">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                  fontFamily: "Poppins",
+                }}
+              >
+                Dashboard
+              </Button>
+            </Link>
             <Link to="/login">
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                  fontFamily: "Poppins",
+                }}
               >
                 Login
               </Button>
@@ -126,43 +189,21 @@ const Navbar = () => {
             <Link to="/signup">
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  textTransform: "none",
+                  fontFamily: "Poppins",
+                }}
               >
                 Sign Up
               </Button>
             </Link>
-            {/* ))} */}
+            <Link to="/settings">
+              <SettingsIcon />
+            </Link>
           </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
