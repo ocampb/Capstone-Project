@@ -2,7 +2,6 @@ const express = require("express");
 const verifyWebhook = require("./verifyWebhook");
 var axios = require("axios").default;
 const { UsersTable } = require("../../../models");
-const {} = require("../../../models");
 
 const requestNewAccessToken = (refreshToken) => {
   return axios.post(`${process.env.CALENDLY_AUTH_BASE_URL}/oauth/token`, {
