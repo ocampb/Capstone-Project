@@ -27,11 +27,11 @@ const Dashboard = () => {
       <div className="header-flex">
         <h3>Name</h3>
         <h3>Email</h3>
-        <h3>Company</h3>
+        <h3>Notes</h3>
       </div>
 
       {/* GRID VERSION */}
-      <div className="dashboard-grid">
+      {/* <div className="dashboard-grid">
         <p>SallyCEO</p>
         <p>sallyceo@gmail.com</p>
         <p>SallyEnterprises</p>
@@ -46,7 +46,7 @@ const Dashboard = () => {
         <div className="icon-flex">
           <GrFormClose className="close-icon" />
         </div>
-      </div>
+      </div> */}
 
       {/* TABLE VERSION */}
       <div className="table-flex">
@@ -54,7 +54,7 @@ const Dashboard = () => {
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Company</th>
+            <th>Notes</th>
           </tr>
           <tr>
             <td>SallyCEO</td>
