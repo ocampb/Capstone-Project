@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   ApprovedList.init(
     {
       Email: DataTypes.STRING,
+      Name: DataTypes.STRING,
+      Notes: DataTypes.STRING,
       User_ID: DataTypes.INTEGER,
     },
     {
