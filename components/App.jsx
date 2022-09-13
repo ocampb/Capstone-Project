@@ -6,7 +6,6 @@ import { createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.scss";
-// import Button from "@mui/material/Button";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -18,16 +17,12 @@ const App = () => {
   const counter = useSelector((state) => state.counter);
   return (
     <div>
-      <h1>Hello world</h1>
-      <h1>Stacy</h1>
-      <h1>Hello Amanda world</h1>
-      <h1> OLIVIA </h1>
+      <h1>App</h1>
       <a href="/oauth">Login with Calendly</a>
       {/* <h1>Counter: {counter}</h1> */}
       {/* <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
         Increment
       </button> */}
-      {/* <Button variant="outlined">MUI Works</Button> */}
     </div>
   );
 };
