@@ -7,42 +7,6 @@
   margin: 2rem;
 }
 
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 5rem;
-  border: 1px solid $black;
-  border-radius: 3px;
-
-  p {
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .icon-flex {
-    display: flex;
-    justify-content: center;
-  }
-
-  .close-icon {
-    margin-left: 5rem;
-  }
-}
-
-.header-flex {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 5rem;
-
-  h3 {
-    margin-left: 5rem;
-  }
-}
-
 #add-button-modal {
   color: $white;
   background-color: $black;
@@ -65,33 +29,23 @@
 
 .add-input-flex {
   display: flex;
-  justify-content: left;
-  // align-items: center;
   flex-direction: column;
 
   & input {
     margin: 10px;
     padding: 5px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid $slategray;
+    @include input-borders;
   }
 }
 
 textarea {
   margin: 10px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid $slategray;
+  @include input-borders;
   padding: 5px;
 }
 
 .submit-email {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   margin-top: 10px;
 }
 
@@ -111,9 +65,7 @@ textarea {
 }
 
 .table-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
 }
 
 table {

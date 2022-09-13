@@ -8,3 +8,17 @@ $hovercolor: #3b3b3b;
 
 //====== FONTS ======
 $poppins: "Poppins", sans-serif;
+
+//====== MIXINS ======
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input-borders {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid $slategray;
+}
