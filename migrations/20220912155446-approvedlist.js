@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("ApprovedLists", {
@@ -9,6 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       Email: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      Name: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      Notes: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -30,7 +39,13 @@ module.exports = {
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("ApprovedLists");
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
   },
 };
