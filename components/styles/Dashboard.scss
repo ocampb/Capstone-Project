@@ -5,10 +5,6 @@
   justify-content: space-around;
   align-items: center;
   margin: 2rem;
-
-  input {
-    padding: 0.5rem 2rem;
-  }
 }
 
 .input-flex {
@@ -27,11 +23,9 @@
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-around;
   align-items: center;
-  //   gap: 5px;
   margin: 0 5rem;
   border: 1px solid $black;
   border-radius: 3px;
-  //   padding-left: 2rem;
 
   p {
     text-align: center;
@@ -73,6 +67,19 @@
   //   color: $black;
   //   border: 1px solid $slategray;
   cursor: pointer;
+}
+
+#add-button-modal {
+  color: $white;
+  background-color: $black;
+  border-radius: 30px;
+  text-transform: none;
+  padding: 0.4rem 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#add-button-modal:hover {
+  background-color: #3b3b3b;
 }
 
 .table-flex {

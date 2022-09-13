@@ -201,7 +201,7 @@ const Navbar = () => {
               </Button>
             </Link>
             <Link to="/settings">
-              <SettingsIcon />
+              <SettingsIcon className="settings-icon" />
             </Link>
           </Box>
         </Toolbar>
