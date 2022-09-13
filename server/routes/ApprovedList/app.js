@@ -1,29 +1,33 @@
 const { PanoramaSharp } = require("@mui/icons-material");
 const express = require("express");
 const { ApprovedList, UsersTable } = require("../../../models");
-//const session = require("express-session"); //i am not sure yet if we will need this if we are able to store oauth presence in cookies
+
 const router = express.Router();
 
-//this is the function we will edit to check OAuth
-// const LoginCheck = async (req, res, next) => {
-//   if (req.session.user) {
-//     //i believe this will switch to whatever we need for oauth
-//     next();
-//   } else {
-//     res.render("home"); //or whatever route we have for being logged out
-//     //can also send an error code that will trigger the pop up on home page to show they've been logged out
-//   }
-// };
+const isUserAuthenticated = async (req, res, next) => {
+  if (req.user) {
+    const user = await UsersTable.findById(req.user.id);
+
+    if (user) {
+      req.user = {
+        id: user.id,
+      };
+      return next();
+    } else {
+      req.session = null;
+      res.redirect("/");
+    }
+  }
+};
 
 //render user's approved emails (will add login check when complete)
-router.get("/list", async (req, res) => {
+router.get("/list", isUserAuthenticated, async (req, res) => {
   try {
     let array = [];
-    const { id } = req.body; //this will be whatever we need to get from OAuth to search for ID pKey in Users table
-    //it is req.params ^^^for now so i can test in postman
+    const { id } = req.user.id;
     const findUser = await UsersTable.findOne({
       where: {
-        id: id, //this will be switched to Calendly_ID once we have a login route
+        id: id,
       },
     });
     console.log(findUser);
@@ -50,18 +54,20 @@ router.get("/list", async (req, res) => {
 });
 
 //add new emails
-router.post("/add", async (req, res) => {
+router.post("/add", isUserAuthenticated, async (req, res) => {
   try {
-    const { id, Email } = req.body; //this will be whatever we need to get from OAuth to search for ID pKey in Users table
-    //it is req.params ^^^for now so i can test in postman
+    const { id } = req.user.id;
+    const { Email, Name, Notes } = req.body;
     const findUser = await UsersTable.findOne({
       where: {
-        id: id, //this will be switched to Calendly_ID once we have a login route
+        id: id,
       },
     });
     if (findUser) {
       const newEmail = {
         Email: Email,
+        Name: Name,
+        Notes: Notes,
         User_ID: id,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -74,16 +80,34 @@ router.post("/add", async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
+  const { id } = req.user.id;
   try {
     const findEmail = await ApprovedList.findOne({
       where: {
-        id: req.params.id, //this will be switched to Calendly_ID once we have a login route
+        id: id,
       },
     });
     if (findEmail) {
       findEmail.destroy();
       res.status(200).send("Email has been deleted");
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+router.delete("/userdelete/:id", isUserAuthenticated, async (req, res) => {
+  const { id } = req.user.id;
+  try {
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      findUser.destroy();
+      res.status(200).send("User has been deleted");
     }
   } catch (error) {
     res.status(400).send(error);
