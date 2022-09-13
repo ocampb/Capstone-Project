@@ -43,7 +43,7 @@ router.post("/", verifyWebhook, async (req, res) => {
     },
   };
 
-  if (authorizedEmail) {
+  if (!authorizedEmail) {
     try {
       await axios.request(options);
       return res.sendStatus(200);
