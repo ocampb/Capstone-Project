@@ -47,6 +47,8 @@
   color: $white;
   background-color: $black;
   border-radius: 30px;
+  border: none;
+  cursor: pointer;
   text-transform: none;
   padding: 0.4rem 2rem;
   transition: all 0.3s ease-in-out;
@@ -54,6 +56,11 @@
 
 #add-button-modal:hover {
   background-color: $hovercolor;
+}
+
+.modal-close-icon {
+  display: flex;
+  justify-content: right;
 }
 
 .add-input-flex {
@@ -68,7 +75,17 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    border-bottom: 2px solid $slategray;
   }
+}
+
+textarea {
+  margin: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid $slategray;
+  padding: 5px;
 }
 
 .submit-email {
@@ -89,7 +106,7 @@
   cursor: pointer;
 }
 
-.submit-buttons-button:hover {
+.submit-inputs-button:hover {
   background-color: $hovercolor;
 }
 
@@ -133,4 +150,12 @@ table {
       border-bottom: none;
     }
   }
+}
+
+#basic-button {
+  color: $black;
+}
+
+#basic-button:hover {
+  background-color: $whitesmoke;
 }
