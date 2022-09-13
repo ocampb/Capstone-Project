@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 
+// Styling for MUI modal window
 const style = {
   position: "absolute",
   top: "50%",
@@ -17,14 +18,13 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
+  // const dispatch = useDispatch();
+  // const counter = useSelector((state) => state.counter);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -38,7 +38,6 @@ const Dashboard = () => {
       <div className="dash-add">
         <h1>My Dashboard</h1>
 
-        {/* <input type="button" value="Add" className="add-button" /> */}
         <Button onClick={handleOpen} id="add-button-modal">
           Add
         </Button>
@@ -59,22 +58,28 @@ const Dashboard = () => {
                 id="transition-modal-title"
                 variant="h6"
                 component="h2"
+                ml="12px"
               >
-                Text in a modal
+                Add an Approved Email
               </Typography>
-              <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </Typography>
+
+              <div className="add-input-flex">
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="text" placeholder="Notes" />
+              </div>
+              <div className="submit-email">
+                <input
+                  type="submit"
+                  value="Add Email"
+                  className="submit-inputs-button"
+                  onClick={handleClose}
+                />
+              </div>
             </Box>
           </Fade>
         </Modal>
       </div>
-
-      {/* <div className="input-flex">
-        <input type="text" placeholder="name" />
-        <input type="email" placeholder="email" />
-        <input type="text" placeholder="company" />
-      </div> */}
 
       <div className="table-flex">
         <table>

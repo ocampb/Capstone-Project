@@ -7,17 +7,6 @@
   margin: 2rem;
 }
 
-.input-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-
-  input {
-    margin: 1rem;
-  }
-}
-
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -54,21 +43,6 @@
   }
 }
 
-.add-button {
-  background-color: $black;
-  color: $white;
-  border-radius: 30px;
-  border: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.add-button:hover {
-  background-color: #3b3b3b;
-  //   color: $black;
-  //   border: 1px solid $slategray;
-  cursor: pointer;
-}
-
 #add-button-modal {
   color: $white;
   background-color: $black;
@@ -79,7 +53,44 @@
 }
 
 #add-button-modal:hover {
-  background-color: #3b3b3b;
+  background-color: $hovercolor;
+}
+
+.add-input-flex {
+  display: flex;
+  justify-content: left;
+  // align-items: center;
+  flex-direction: column;
+
+  & input {
+    margin: 10px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.submit-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.submit-inputs-button {
+  color: $white;
+  background-color: $black;
+  border: none;
+  border-radius: 30px;
+  text-transform: none;
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.submit-buttons-button:hover {
+  background-color: $hovercolor;
 }
 
 .table-flex {
