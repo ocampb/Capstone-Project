@@ -80,17 +80,34 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", isUserAuthenticated, async (req, res) => {
+router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
   const { id } = req.user.id;
   try {
     const findEmail = await ApprovedList.findOne({
       where: {
-        id: id, //this will be switched to Calendly_ID once we have a login route
+        id: id,
       },
     });
     if (findEmail) {
       findEmail.destroy();
       res.status(200).send("Email has been deleted");
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+router.delete("/userdelete/:id", isUserAuthenticated, async (req, res) => {
+  const { id } = req.user.id;
+  try {
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      findUser.destroy();
+      res.status(200).send("User has been deleted");
     }
   } catch (error) {
     res.status(400).send(error);
