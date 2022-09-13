@@ -36,7 +36,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-<<<<<<< HEAD
 // oauth
 const isUserAuthenticated = async (req, res, next) => {
   if (req.user) {
@@ -54,8 +53,6 @@ const isUserAuthenticated = async (req, res, next) => {
   }
 };
 
-=======
->>>>>>> 6ba22442478ea346568d77eeae1b5446c05e4038
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(
