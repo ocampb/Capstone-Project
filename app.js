@@ -36,22 +36,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// oauth
-const isUserAuthenticated = async (req, res, next) => {
-  if (req.user) {
-    const user = await User.findById(req.user.id);
-
-    if (!user) {
-      req.session = null;
-    } else {
-      req.user = {
-        id: user.id,
-      };
-      return next();
-    }
-  }
-};
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(
