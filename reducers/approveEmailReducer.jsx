@@ -1,18 +1,23 @@
 import React from "react";
 
 const initialState = {
-  Email: "",
-  Name: "",
-  Notes: "",
+  approved: {
+    Email: "",
+    Name: "",
+    Notes: "",
+  },
+  listOfApproved: [],
 };
 
 const approveEmailReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "DUMMY_CASE":
-      return { ...state, counter: state.counter + 1 };
-    case "ADD_EMAIL":
-      const newItems = state.items;
-      console.log(newItems);
+    case "SET_APPROVED_EMAIL":
+      return { ...state, approved: { ...approved, Email: action?.payload } };
+    case "SET_APPROVED_NAME":
+      return { ...state, items: [...newItems, action?.payload] };
+    case "SET_APPROVED_NOTES":
+      return { ...state, items: [...newItems, action?.payload] };
+    case "EMAIL_LIST":
       return { ...state, items: [...newItems, action?.payload] };
     case "REMOVE_EMAIL":
       return {
