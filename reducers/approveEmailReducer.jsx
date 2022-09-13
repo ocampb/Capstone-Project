@@ -14,16 +14,13 @@ const approveEmailReducer = (state = initialState, action) => {
     case "SET_APPROVED_EMAIL":
       return { ...state, approved: { ...approved, Email: action?.payload } };
     case "SET_APPROVED_NAME":
-      return { ...state, items: [...newItems, action?.payload] };
+      return { ...state, approved: { ...approved, Name: action?.payload } };
     case "SET_APPROVED_NOTES":
-      return { ...state, items: [...newItems, action?.payload] };
+      return { ...state, approved: { ...approved, Notes: action?.payload } };
     case "EMAIL_LIST":
-      return { ...state, items: [...newItems, action?.payload] };
+      return { ...state };
     case "REMOVE_EMAIL":
-      return {
-        ...state,
-        items: [...state.items].filter((item) => item !== action.payload),
-      };
+      return { ...state };
     default:
       return state;
   }
