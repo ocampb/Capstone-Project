@@ -141,8 +141,6 @@ app.use("/logout", (req, res) => {
   res.redirect("/");
 });
 app.use("/*", (req, res) => {
-  console.log("here");
-  console.log(req.user);
   fs.readFile(__dirname + "/public/index.html", "utf8", function (err, text) {
     res.send(text);
   });
