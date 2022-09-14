@@ -6,8 +6,7 @@ const router = express.Router();
 
 const isUserAuthenticated = async (req, res, next) => {
   if (req.user) {
-    const user = await UsersTable.findById(req.user.id);
-
+    const user = await UsersTable.findByPk(req.user.id);
     if (user) {
       req.user = {
         id: user.id,
@@ -24,7 +23,7 @@ const isUserAuthenticated = async (req, res, next) => {
 router.get("/list", isUserAuthenticated, async (req, res) => {
   try {
     let array = [];
-    const { id } = req.user.id;
+    const id = req.user.id;
     const findUser = await UsersTable.findOne({
       where: {
         id: id,
@@ -56,7 +55,7 @@ router.get("/list", isUserAuthenticated, async (req, res) => {
 //add new emails
 router.post("/add", isUserAuthenticated, async (req, res) => {
   try {
-    const { id } = req.user.id;
+    const id = req.user.id;
     const { Email, Name, Notes } = req.body;
     const findUser = await UsersTable.findOne({
       where: {
@@ -73,7 +72,7 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
         updatedAt: new Date(),
       };
       const CreateEmail = await ApprovedList.create(newEmail);
-      res.status(200).send(newEmail);
+      res.status(200).send(CreateEmail);
     }
   } catch (error) {
     res.status(400).send(error);
@@ -81,7 +80,7 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
 });
 
 router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
-  const { id } = req.user.id;
+  const id = req.user.id;
   try {
     const findEmail = await ApprovedList.findOne({
       where: {
@@ -98,7 +97,7 @@ router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
 });
 
 router.delete("/userdelete/:id", isUserAuthenticated, async (req, res) => {
-  const { id } = req.user.id;
+  const id = req.user.id;
   try {
     const findUser = await UsersTable.findOne({
       where: {

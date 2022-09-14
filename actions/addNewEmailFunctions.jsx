@@ -12,7 +12,6 @@ export const NewApprovedState = async (dispatch, approved) => {
   const dataWeAreSending = await fetch("/api/dashboard/add", {
     method: "POST",
     headers: {
-      //i think authorization from cookies goes here, might need to ask tyler
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
