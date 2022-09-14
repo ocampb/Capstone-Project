@@ -1,7 +1,8 @@
 import React from "react";
 import "./styles/Signup.scss";
+// import "../assets/zoom.jpg";
 
-const Signup = () => {
+const Signup = (props) => {
   return (
     <div>
       <div className="layout-container">
@@ -19,6 +20,7 @@ const Signup = () => {
           <div className="login-text-container">
             <h3>Already have an account?</h3>
             <a href="#">Login</a>
+            {/* <img src="zoom.jpg" alt="Man on online meeting" /> */}
           </div>
         </div>
       </div>

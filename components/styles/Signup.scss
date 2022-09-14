@@ -8,7 +8,7 @@
 }
 
 .signup-container {
-  width: 50vw;
+  width: 40vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -16,14 +16,8 @@
   flex-direction: column;
 }
 
-// .form-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
 .login-link-container {
-  width: 50vw;
+  width: 60vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -41,4 +35,8 @@ form {
   display: flex;
   justify-content: left;
   flex-direction: column;
+
+  & input {
+    @include input-borders;
+  }
 }
