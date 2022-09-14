@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.css-1lvtzne {
+  justify-content: right;
+}
+
 #nav-background {
   background-color: $white;
   box-shadow: none;
@@ -14,7 +18,7 @@
   color: $black;
 }
 
-a:-webkit-any-link {
+a {
   color: $black;
   cursor: pointer;
   text-decoration: none;

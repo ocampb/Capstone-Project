@@ -6,4 +6,7 @@ require("esbuild").build({
   watch: !!process.env.ESBUILD_WATCH_ENABLED,
   outdir: "public",
   plugins: [sassPlugin()],
+  loader: {
+    ".jpg": "dataurl",
+  },
 });
