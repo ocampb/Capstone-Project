@@ -36,6 +36,23 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// oauth
+const isUserAuthenticated = async (req, res, next) => {
+  if (req.user) {
+    const user = await User.findById(req.user.id);
+
+    if (user) {
+      req.user = {
+        id: user.id,
+      };
+      return next();
+    } else {
+      req.session = null;
+      res.redirect("/");
+    }
+  }
+};
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(
@@ -124,6 +141,8 @@ app.use("/logout", (req, res) => {
   res.redirect("/");
 });
 app.use("/*", (req, res) => {
+  console.log("here");
+  console.log(req.user);
   fs.readFile(__dirname + "/public/index.html", "utf8", function (err, text) {
     res.send(text);
   });
