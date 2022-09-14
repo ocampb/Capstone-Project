@@ -16,6 +16,11 @@
   flex-direction: column;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-link-container {
   width: 60vw;
   height: 100vh;
@@ -24,11 +29,14 @@
   align-items: center;
 }
 
-.login-text-container {
+.dummy-image {
+  background-color: $slategray;
+  width: 95%;
+  height: 95%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 form {
@@ -38,5 +46,8 @@ form {
 
   & input {
     @include input-borders;
+    margin: 10px;
+    margin-left: 0;
+    padding: 5px;
   }
 }
