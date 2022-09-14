@@ -5,80 +5,67 @@
   justify-content: space-around;
   align-items: center;
   margin: 2rem;
-
-  input {
-    padding: 0.5rem 2rem;
-  }
 }
 
-.input-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-
-  input {
-    margin: 1rem;
-  }
-}
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
-  align-items: center;
-  //   gap: 5px;
-  margin: 0 5rem;
-  border: 1px solid $black;
-  border-radius: 3px;
-  //   padding-left: 2rem;
-
-  p {
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .icon-flex {
-    display: flex;
-    justify-content: center;
-  }
-
-  .close-icon {
-    margin-left: 5rem;
-  }
-}
-
-.header-flex {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 5rem;
-
-  h3 {
-    margin-left: 5rem;
-  }
-}
-
-.add-button {
-  background-color: $black;
+#add-button-modal {
   color: $white;
+  background-color: $black;
   border-radius: 30px;
   border: none;
+  cursor: pointer;
+  text-transform: none;
+  padding: 0.4rem 2rem;
   transition: all 0.3s ease-in-out;
 }
 
-.add-button:hover {
-  background-color: #3b3b3b;
-  //   color: $black;
-  //   border: 1px solid $slategray;
+#add-button-modal:hover {
+  background-color: $hovercolor;
+}
+
+.modal-close-icon {
+  display: flex;
+  justify-content: right;
+}
+
+.add-input-flex {
+  display: flex;
+  flex-direction: column;
+
+  & input {
+    margin: 10px;
+    padding: 5px;
+    @include input-borders;
+  }
+}
+
+textarea {
+  margin: 10px;
+  @include input-borders;
+  padding: 5px;
+}
+
+.submit-email {
+  @include flex;
+  margin-top: 10px;
+}
+
+.submit-inputs-button {
+  color: $white;
+  background-color: $black;
+  border: none;
+  border-radius: 30px;
+  text-transform: none;
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
+.submit-inputs-button:hover {
+  background-color: $hovercolor;
+}
+
 .table-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
 }
 
 table {
@@ -115,4 +102,12 @@ table {
       border-bottom: none;
     }
   }
+}
+
+#basic-button {
+  color: $black;
+}
+
+#basic-button:hover {
+  background-color: $whitesmoke;
 }

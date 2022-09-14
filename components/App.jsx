@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
-import { useSelector, useDispatch } from "react-redux";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
 import Login from "./Login";
@@ -13,16 +12,10 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
   return (
     <div>
       <h1>App</h1>
       <a href="/oauth">Login with Calendly</a>
-      {/* <h1>Counter: {counter}</h1> */}
-      {/* <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
-        Increment
-      </button> */}
     </div>
   );
 };
