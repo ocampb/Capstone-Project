@@ -12,6 +12,12 @@ import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import {
+  NewApprovedState,
+  setApprovedEmail,
+  setApprovedName,
+  setApprovedNotes,
+} from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
 const style = {
@@ -26,8 +32,12 @@ const style = {
 };
 
 const Dashboard = () => {
-  // const dispatch = useDispatch();
-  // const counter = useSelector((state) => state.counter);
+  const approved = useSelector((state) => state.approveEmailReducer.approved);
+  const dispatch = useDispatch();
+  const handleSubmit = (dispatch, approved) => {
+    NewApprovedState(dispatch, approved);
+    handleClose();
+  };
 
   //Open and close modal window
   const [open, setOpen] = React.useState(false);
@@ -87,9 +97,22 @@ const Dashboard = () => {
               </Typography>
 
               <div className="add-input-flex">
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <textarea rows="4" cols="50" placeholder="Notes"></textarea>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  onChange={(e) => setApprovedName(dispatch, e.target.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
+                />
+                <textarea
+                  rows="4"
+                  cols="50"
+                  placeholder="Notes"
+                  onChange={(e) => setApprovedNotes(dispatch, e.target.value)}
+                ></textarea>
               </div>
 
               <div className="submit-email">
@@ -97,7 +120,9 @@ const Dashboard = () => {
                   type="submit"
                   value="Add Email"
                   className="submit-inputs-button"
-                  onClick={handleClose}
+                  onClick={() => {
+                    handleSubmit(dispatch, approved);
+                  }}
                 />
               </div>
             </Box>

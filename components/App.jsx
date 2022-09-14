@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
@@ -10,6 +10,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
+import logger from "redux-logger";
 
 const App = () => {
   return (
@@ -21,9 +22,8 @@ const App = () => {
 };
 
 window.onload = () => {
-  const store = createStore(rootReducer);
+  const store = createStore(rootReducer, applyMiddleware(logger));
   const root = createRoot(document.getElementById("root"));
-
   root.render(
     <React.StrictMode>
       <Provider store={store}>
