@@ -35,6 +35,7 @@ const Dashboard = () => {
   const approved = useSelector((state) => state.approveEmailReducer.approved);
   const dispatch = useDispatch();
   const handleSubmit = (dispatch, approved) => {
+    //this is where i need to add regex email validation before sending to database
     NewApprovedState(dispatch, approved);
     handleClose();
   };
