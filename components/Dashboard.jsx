@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/Dashboard.scss";
 import { createStore } from "redux";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
@@ -12,6 +13,14 @@ import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import {
+  NewApprovedState,
+  setApprovedEmail,
+  setApprovedName,
+  setApprovedNotes,
+  setApprovedList,
+  deleteEmail,
+} from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
 const style = {
@@ -26,8 +35,35 @@ const style = {
 };
 
 const Dashboard = () => {
-  // const dispatch = useDispatch();
-  // const counter = useSelector((state) => state.counter);
+  const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
+  const approved = useSelector((state) => state.approveEmailReducer.approved);
+  const [clicked, setClicked] = React.useState(false);
+  const dispatch = useDispatch();
+  const toggleClicked = () => {
+    setClicked((current) => !current);
+  };
+  const handleSubmit = (dispatch, approved) => {
+    //this is where i need to add regex email validation before sending to database
+    NewApprovedState(dispatch, approved);
+    toggleClicked();
+    handleClose();
+  };
+  const handleDelete = (text, dispatch) => {
+    deleteEmail(dispatch, text);
+    toggleClicked();
+    //handleCloseDots();
+  };
+
+  const getList = async () => {
+    const result = await fetch("/api/dashboard/list", {
+      method: "GET",
+    });
+    const data = await result.json();
+    setApprovedList(dispatch, data);
+  };
+  useEffect(() => {
+    getList();
+  }, [clicked]);
 
   //Open and close modal window
   const [open, setOpen] = React.useState(false);
@@ -47,10 +83,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <h1>Counter: {counter}</h1>
-      <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
-        Increment
-      </button> */}
       <div className="dash-add">
         <h1>My Dashboard</h1>
 
@@ -87,9 +119,22 @@ const Dashboard = () => {
               </Typography>
 
               <div className="add-input-flex">
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <textarea rows="4" cols="50" placeholder="Notes"></textarea>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  onChange={(e) => setApprovedName(dispatch, e.target.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
+                />
+                <textarea
+                  rows="4"
+                  cols="50"
+                  placeholder="Notes"
+                  onChange={(e) => setApprovedNotes(dispatch, e.target.value)}
+                ></textarea>
               </div>
 
               <div className="submit-email">
@@ -97,7 +142,9 @@ const Dashboard = () => {
                   type="submit"
                   value="Add Email"
                   className="submit-inputs-button"
-                  onClick={handleClose}
+                  onClick={() => {
+                    handleSubmit(dispatch, approved);
+                  }}
                 />
               </div>
             </Box>
@@ -116,6 +163,41 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
+            {list.map((email) => (
+              <tr key={email.Email}>
+                <td>{email.Name}</td>
+                <td>{email.Email}</td>
+                <td>{email.Notes}</td>
+                <td>
+                  <Button
+                    id="basic-button"
+                    aria-controls={openDots ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openDots ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <MoreVertIcon />
+                  </Button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={openDots}
+                    onClose={handleCloseDots}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleDelete(email.id, dispatch);
+                      }}
+                    >
+                      Delete
+                    </MenuItem>
+                  </Menu>
+                </td>
+              </tr>
+            ))}
             <tr>
               <td>Sally CEO</td>
               <td>sallyceo@gmail.com</td>
