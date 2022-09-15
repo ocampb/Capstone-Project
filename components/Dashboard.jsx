@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/Dashboard.scss";
 import { createStore } from "redux";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
@@ -17,6 +18,8 @@ import {
   setApprovedEmail,
   setApprovedName,
   setApprovedNotes,
+  setApprovedList,
+  deleteEmail,
 } from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
@@ -32,13 +35,35 @@ const style = {
 };
 
 const Dashboard = () => {
+  const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
+  const [clicked, setClicked] = React.useState(false);
   const dispatch = useDispatch();
+  const toggleClicked = () => {
+    setClicked((current) => !current);
+  };
   const handleSubmit = (dispatch, approved) => {
     //this is where i need to add regex email validation before sending to database
     NewApprovedState(dispatch, approved);
+    toggleClicked();
     handleClose();
   };
+  const handleDelete = (text, dispatch) => {
+    deleteEmail(dispatch, text);
+    toggleClicked();
+    //handleCloseDots();
+  };
+
+  const getList = async () => {
+    const result = await fetch("/api/dashboard/list", {
+      method: "GET",
+    });
+    const data = await result.json();
+    setApprovedList(dispatch, data);
+  };
+  useEffect(() => {
+    getList();
+  }, [clicked]);
 
   //Open and close modal window
   const [open, setOpen] = React.useState(false);
@@ -58,10 +83,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <h1>Counter: {counter}</h1>
-      <button onClick={() => dispatch({ type: "DUMMY_CASE" })}>
-        Increment
-      </button> */}
       <div className="dash-add">
         <h1>My Dashboard</h1>
 
@@ -142,6 +163,41 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
+            {list.map((email) => (
+              <tr key={email.Email}>
+                <td>{email.Name}</td>
+                <td>{email.Email}</td>
+                <td>{email.Notes}</td>
+                <td>
+                  <Button
+                    id="basic-button"
+                    aria-controls={openDots ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openDots ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <MoreVertIcon />
+                  </Button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={openDots}
+                    onClose={handleCloseDots}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleDelete(email.id, dispatch);
+                      }}
+                    >
+                      Delete
+                    </MenuItem>
+                  </Menu>
+                </td>
+              </tr>
+            ))}
             <tr>
               <td>Sally CEO</td>
               <td>sallyceo@gmail.com</td>

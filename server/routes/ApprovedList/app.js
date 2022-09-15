@@ -41,7 +41,7 @@ router.get("/list", isUserAuthenticated, async (req, res) => {
               id: findAll[i].dataValues.id,
             },
           });
-          array.push(findEach.dataValues);
+          array.unshift(findEach.dataValues);
         }
         console.log(array);
         res.status(200).send(array);
@@ -80,7 +80,8 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
 });
 
 router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
-  const id = req.user.id;
+  const id = req.params.id;
+  console.log(id);
   try {
     const findEmail = await ApprovedList.findOne({
       where: {
