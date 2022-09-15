@@ -38,18 +38,36 @@ const Dashboard = () => {
   const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
   const [clicked, setClicked] = React.useState(0);
+  const [emailError, setEmailError] = React.useState("");
+  const [nameError, setNameError] = React.useState("");
+  const [deleteId, setDeleteId] = React.useState(0);
   const dispatch = useDispatch();
-  const toggleClicked = () => {
-    setClicked((current) => current + 1);
+  const toggleClicked = (current) => {
+    setClicked((current) => (current += 1));
   };
-  const handleSubmit = (dispatch, approved) => {
-    //this is where i need to add regex email validation before sending to database
-    toggleClicked();
+  const handleApproved = (dispatch, approved) => {
     NewApprovedState(dispatch, approved);
-    handleClose();
   };
+
+  const handleSubmit = (dispatch, approved) => {
+    const validEmail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!validEmail.test(approved.Email)) {
+      setEmailError("Please enter a valid email");
+    }
+    if (approved.Name.length < 2) {
+      setNameError("Please enter a name for your approved email");
+    }
+    if (validEmail.test(approved.Email) && approved.Name.length > 1) {
+      handleApproved(dispatch, approved);
+      toggleClicked();
+      handleClose();
+      setEmailError((prev) => "");
+      setNameError((prev) => "");
+    }
+  };
+
   const handleDelete = (text, dispatch) => {
-    console.log(email);
     toggleClicked();
     deleteEmail(dispatch, text);
     handleCloseDelete();
@@ -60,7 +78,9 @@ const Dashboard = () => {
       method: "GET",
     });
     const data = await result.json();
-    setApprovedList(dispatch, data);
+    if (result.status === 200) {
+      setApprovedList(dispatch, data);
+    }
   };
   useEffect(() => {
     getList();
@@ -71,21 +91,16 @@ const Dashboard = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  //Open and close Delete modal windwo
+  const handleSetId = (text) => {
+    setDeleteId((prev) => text);
+  };
+  //Open and close Delete modal window
   const [openDelete, setOpenDelete] = React.useState(false);
-  const handleOpenDelete = () => setOpenDelete(true);
+  const handleOpenDelete = (text) => {
+    handleSetId(text);
+    setOpenDelete(true);
+  };
   const handleCloseDelete = () => setOpenDelete(false);
-
-  //Triple dot menu pop up to remove row
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const openDots = Boolean(anchorEl);
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleCloseDots = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div>
@@ -130,11 +145,13 @@ const Dashboard = () => {
                   placeholder="Name"
                   onChange={(e) => setApprovedName(dispatch, e.target.value)}
                 />
+                <p>{nameError}</p>
                 <input
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
                 />
+                <p>{emailError}</p>
                 <textarea
                   rows="4"
                   cols="50"
@@ -142,7 +159,6 @@ const Dashboard = () => {
                   onChange={(e) => setApprovedNotes(dispatch, e.target.value)}
                 ></textarea>
               </div>
-
               <div className="submit-email">
                 <input
                   type="submit"
@@ -177,309 +193,57 @@ const Dashboard = () => {
                 <td>
                   <input
                     type="button"
-                    onClick={handleOpenDelete}
+                    onClick={() => {
+                      handleOpenDelete(email.id);
+                    }}
                     id="button-modal"
                     value="Delete"
                   />
-                  <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    open={openDelete}
-                    onClose={handleCloseDelete}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                      timeout: 500,
-                    }}
-                  >
-                    <Fade in={openDelete}>
-                      <Box sx={style}>
-                        <div className="modal-close-icon">
-                          <CloseIcon
-                            onClick={handleCloseDelete}
-                            sx={{ cursor: "pointer" }}
-                          />
-                        </div>
-
-                        <Typography
-                          id="transition-modal-title"
-                          variant="h6"
-                          component="h2"
-                          ml="12px"
-                        >
-                          Are you sure that you want to delete this email?
-                        </Typography>
-
-                        <div className="submit-email">
-                          <input
-                            type="submit"
-                            value="Confirm"
-                            className="submit-inputs-button"
-                            onClick={() => {
-                              handleDelete(email.id, dispatch);
-                            }}
-                          />
-                        </div>
-                      </Box>
-                    </Fade>
-                  </Modal>
-                  {/* <Button
-                    id="basic-button"
-                    aria-controls={openDots ? "basic-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={openDots ? "true" : undefined}
-                    onClick={handleClick}
-                  >
-                    <MoreVertIcon />
-                  </Button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={openDots}
-                    onClose={handleCloseDots}
-                    MenuListProps={{
-                      "aria-labelledby": "basic-button",
-                    }}
-                  >
-                    <MenuItem
-                      onClick={() => {
-                        handleDelete(email.id, dispatch);
-                      }}
-                    >
-                      Delete
-                    </MenuItem>
-                  </Menu> */}
                 </td>
               </tr>
             ))}
-            <tr>
-              <td>Sally CEO</td>
-              <td>sallyceo@gmail.com</td>
-              <td>Is the CEO of the business</td>
-              <td>
-                <input
-                  type="button"
-                  onClick={handleOpenDelete}
-                  id="button-modal"
-                  value="Delete"
-                />
-                <Modal
-                  aria-labelledby="transition-modal-title"
-                  aria-describedby="transition-modal-description"
-                  open={openDelete}
-                  onClose={handleCloseDelete}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
-                  <Fade in={openDelete}>
-                    <Box sx={style}>
-                      <div className="modal-close-icon">
-                        <CloseIcon
-                          onClick={handleCloseDelete}
-                          sx={{ cursor: "pointer" }}
-                        />
-                      </div>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={openDelete}
+              onClose={handleCloseDelete}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              <Fade in={openDelete}>
+                <Box sx={style}>
+                  <div className="modal-close-icon">
+                    <CloseIcon
+                      onClick={handleCloseDelete}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  </div>
 
-                      <Typography
-                        id="transition-modal-title"
-                        variant="h6"
-                        component="h2"
-                        ml="12px"
-                      >
-                        Are you sure that you want to delete this email?
-                      </Typography>
+                  <Typography
+                    id="transition-modal-title"
+                    variant="h6"
+                    component="h2"
+                    ml="12px"
+                  >
+                    Are you sure that you want to delete this email?
+                  </Typography>
 
-                      <div className="submit-email">
-                        <input
-                          type="submit"
-                          value="Confirm"
-                          className="submit-inputs-button"
-                          onClick={() => {
-                            handleDelete(email.id, dispatch);
-                          }}
-                        />
-                      </div>
-                    </Box>
-                  </Fade>
-                </Modal>
-                {/* <Button
-                  id="basic-button"
-                  aria-controls={openDots ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openDots ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openDots}
-                  onClose={handleCloseDots}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu> */}
-              </td>
-            </tr>
-            <tr>
-              <td>Bob Salesman</td>
-              <td>bobsales@gmail.com</td>
-              <td>
-                Bob has a pitch he wants to include in our meeting. Remember to
-                take notes and ask any questions that you may have for him.
-              </td>
-              <td>
-                <input
-                  type="button"
-                  onClick={handleOpenDelete}
-                  id="button-modal"
-                  value="Delete"
-                />
-                <Modal
-                  aria-labelledby="transition-modal-title"
-                  aria-describedby="transition-modal-description"
-                  open={openDelete}
-                  onClose={handleCloseDelete}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
-                  <Fade in={openDelete}>
-                    <Box sx={style}>
-                      <div className="modal-close-icon">
-                        <CloseIcon
-                          onClick={handleCloseDelete}
-                          sx={{ cursor: "pointer" }}
-                        />
-                      </div>
-
-                      <Typography
-                        id="transition-modal-title"
-                        variant="h6"
-                        component="h2"
-                        ml="12px"
-                      >
-                        Are you sure that you want to delete this email?
-                      </Typography>
-
-                      <div className="submit-email">
-                        <input
-                          type="submit"
-                          value="Confirm"
-                          className="submit-inputs-button"
-                          onClick={() => {
-                            handleDelete(email.id, dispatch);
-                          }}
-                        />
-                      </div>
-                    </Box>
-                  </Fade>
-                </Modal>
-                {/* <Button
-                  id="basic-button"
-                  aria-controls={openDots ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openDots ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openDots}
-                  onClose={handleCloseDots}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu> */}
-              </td>
-            </tr>
-            <tr>
-              <td>Karen DesignComplainer</td>
-              <td>karensales@gmail.com</td>
-              <td>I mean, I guess she can join?</td>
-              <td>
-                <input
-                  type="button"
-                  onClick={handleOpenDelete}
-                  id="button-modal"
-                  value="Delete"
-                />
-                <Modal
-                  aria-labelledby="transition-modal-title"
-                  aria-describedby="transition-modal-description"
-                  open={openDelete}
-                  onClose={handleCloseDelete}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
-                  <Fade in={openDelete}>
-                    <Box sx={style}>
-                      <div className="modal-close-icon">
-                        <CloseIcon
-                          onClick={handleCloseDelete}
-                          sx={{ cursor: "pointer" }}
-                        />
-                      </div>
-
-                      <Typography
-                        id="transition-modal-title"
-                        variant="h6"
-                        component="h2"
-                        ml="12px"
-                      >
-                        Are you sure that you want to delete this email?
-                      </Typography>
-
-                      <div className="submit-email">
-                        <input
-                          type="submit"
-                          value="Confirm"
-                          className="submit-inputs-button"
-                          onClick={() => {
-                            handleDelete(email.id, dispatch);
-                          }}
-                        />
-                      </div>
-                    </Box>
-                  </Fade>
-                </Modal>
-                {/* <Button
-                  id="basic-button"
-                  aria-controls={openDots ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openDots ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openDots}
-                  onClose={handleCloseDots}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu> */}
-              </td>
-            </tr>
+                  <div className="submit-email">
+                    <input
+                      type="submit"
+                      value="Confirm"
+                      className="submit-inputs-button"
+                      onClick={() => {
+                        handleDelete(deleteId, dispatch);
+                      }}
+                    />
+                  </div>
+                </Box>
+              </Fade>
+            </Modal>
           </tbody>
         </table>
       </div>
