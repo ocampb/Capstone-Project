@@ -42,10 +42,22 @@ const Dashboard = () => {
   const toggleClicked = () => {
     setClicked((current) => current + 1);
   };
+
   const handleSubmit = (dispatch, approved) => {
-    //this is where i need to add regex email validation before sending to database
+    let emailError = "";
+    let nameError = "";
+    const validEmail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!validEmail.test(approved.Email)) {
+      return (emailError = "Please enter a valid email");
+    }
+    if (approved.Name.length < 1) {
+      return (nameError = "Please enter a name for your approved email");
+    }
+    if (validEmail.test(approved.Email) && approved.Name.length > 1) {
+      NewApprovedState(dispatch, approved);
+    }
     toggleClicked();
-    NewApprovedState(dispatch, approved);
     handleClose();
   };
   const handleDelete = (text, dispatch) => {
@@ -124,11 +136,13 @@ const Dashboard = () => {
                   placeholder="Name"
                   onChange={(e) => setApprovedName(dispatch, e.target.value)}
                 />
+                <p>{nameError}</p>
                 <input
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
                 />
+                <p>{emailError}</p>
                 <textarea
                   rows="4"
                   cols="50"
@@ -202,63 +216,6 @@ const Dashboard = () => {
               <td>Sally CEO</td>
               <td>sallyceo@gmail.com</td>
               <td>Is the CEO of the business</td>
-              <td>
-                <Button
-                  id="basic-button"
-                  aria-controls={openDots ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openDots ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openDots}
-                  onClose={handleCloseDots}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu>
-              </td>
-            </tr>
-            <tr>
-              <td>Bob Salesman</td>
-              <td>bobsales@gmail.com</td>
-              <td>
-                Bob has a pitch he wants to include in our meeting. Remember to
-                take notes and ask any questions that you may have for him.
-              </td>
-              <td>
-                <Button
-                  id="basic-button"
-                  aria-controls={openDots ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openDots ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openDots}
-                  onClose={handleCloseDots}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu>
-              </td>
-            </tr>
-            <tr>
-              <td>Karen DesignComplainer</td>
-              <td>karensales@gmail.com</td>
-              <td>I mean, I guess she can join?</td>
               <td>
                 <Button
                   id="basic-button"
