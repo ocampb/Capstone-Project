@@ -28,6 +28,24 @@ const Navbar = () => {
     <AppBar position="static" id="nav-background">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{}}>
+          {/* Name when browser at tablet */}
+          <Link
+            variant="h5"
+            component="a"
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontWeight: 700,
+              color: "#000",
+              textDecoration: "none",
+            }}
+            className="logo"
+          >
+            Protectly
+          </Link>
+
           {/* ====== HAMBURGER NAV ====== */}
           <Box
             sx={{
@@ -35,7 +53,6 @@ const Navbar = () => {
               display: {
                 xs: "flex",
                 md: "none",
-                // flexDirection: "row-reverse",
               },
             }}
           >
@@ -137,24 +154,6 @@ const Navbar = () => {
               </MenuItem>
             </Menu>
           </Box>
-
-          {/* Name when browser at tablet */}
-          <Link
-            variant="h5"
-            component="a"
-            to="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 700,
-              color: "#000",
-              textDecoration: "none",
-            }}
-            className="logo"
-          >
-            Protectly
-          </Link>
 
           {/* Nav tabs on page */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
