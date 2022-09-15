@@ -32,13 +32,11 @@ const Login = (props) => {
       </Typography>
       <Divider />
       <List>
-        {/* {navItems.map((item) => ( */}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Dashboard" />
           </ListItemButton>
         </ListItem>
-        {/* ))} */}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             <ListItemText primary="Logout" />
@@ -50,9 +48,10 @@ const Login = (props) => {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav">
+      <AppBar component="nav" id="auth-nav-background">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -71,11 +70,8 @@ const Login = (props) => {
             Protectly
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
-            ))}
+            <Button sx={{ color: "#fff" }}>Dashboard</Button>
+            <Button sx={{ color: "#fff" }}>Logout</Button>
           </Box>
         </Toolbar>
       </AppBar>
