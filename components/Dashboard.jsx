@@ -37,20 +37,20 @@ const style = {
 const Dashboard = () => {
   const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
-  const [clicked, setClicked] = React.useState(false);
+  const [clicked, setClicked] = React.useState(0);
   const dispatch = useDispatch();
   const toggleClicked = () => {
-    setClicked((current) => !current);
+    setClicked((current) => current + 1);
   };
   const handleSubmit = (dispatch, approved) => {
     //this is where i need to add regex email validation before sending to database
-    NewApprovedState(dispatch, approved);
     toggleClicked();
+    NewApprovedState(dispatch, approved);
     handleClose();
   };
   const handleDelete = (text, dispatch) => {
-    deleteEmail(dispatch, text);
     toggleClicked();
+    deleteEmail(dispatch, text);
     //handleCloseDots();
   };
 
@@ -169,6 +169,13 @@ const Dashboard = () => {
                 <td>{email.Email}</td>
                 <td>{email.Notes}</td>
                 <td>
+                  <Button
+                    onClick={() => {
+                      handleDelete(email.id, dispatch);
+                    }}
+                  >
+                    Delete
+                  </Button>
                   <Button
                     id="basic-button"
                     aria-controls={openDots ? "basic-menu" : undefined}
