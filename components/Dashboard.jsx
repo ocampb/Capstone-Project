@@ -38,27 +38,27 @@ const Dashboard = () => {
   const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
   const [clicked, setClicked] = React.useState(0);
+  const [emailError, setEmailError] = React.useState("");
+  const [nameError, setNameError] = React.useState("");
   const dispatch = useDispatch();
   const toggleClicked = () => {
     setClicked((current) => current + 1);
   };
 
   const handleSubmit = (dispatch, approved) => {
-    let emailError = "";
-    let nameError = "";
     const validEmail =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!validEmail.test(approved.Email)) {
-      return (emailError = "Please enter a valid email");
+      setEmailError("Please enter a valid email");
     }
     if (approved.Name.length < 1) {
-      return (nameError = "Please enter a name for your approved email");
+      setNameError("Please enter a name for your approved email");
     }
     if (validEmail.test(approved.Email) && approved.Name.length > 1) {
       NewApprovedState(dispatch, approved);
+      handleClose();
     }
     toggleClicked();
-    handleClose();
   };
   const handleDelete = (text, dispatch) => {
     console.log(email);
@@ -142,11 +142,13 @@ const Dashboard = () => {
                   placeholder="Name"
                   onChange={(e) => setApprovedName(dispatch, e.target.value)}
                 />
+                <p>{nameError}</p>
                 <input
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
                 />
+                <p>{emailError}</p>
                 <textarea
                   rows="4"
                   cols="50"
