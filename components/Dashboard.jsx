@@ -49,6 +49,7 @@ const Dashboard = () => {
     handleClose();
   };
   const handleDelete = (text, dispatch) => {
+    console.log(email);
     toggleClicked();
     deleteEmail(dispatch, text);
     handleCloseDelete();
