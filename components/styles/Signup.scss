@@ -32,6 +32,8 @@
   justify-content: center;
   margin-top: 10rem;
   margin: 6.25rem;
+  margin-left: 7rem;
+  margin-right: 7rem;
 }
 
 .login-link-container {
@@ -67,6 +69,10 @@ form {
 
   & p {
     text-align: center;
+  }
+
+  & li {
+    margin: 1rem;
   }
 
   & li:nth-child(1) {
