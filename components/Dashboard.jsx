@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Footer from "./Footer";
 import {
   NewApprovedState,
   setApprovedEmail,
@@ -84,7 +85,7 @@ const Dashboard = () => {
   };
   useEffect(() => {
     getList();
-  }, [clicked]);
+  }, []);
 
   //Open and close Add modal window
   const [open, setOpen] = React.useState(false);
@@ -247,6 +248,7 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
