@@ -170,13 +170,6 @@ const Dashboard = () => {
                 <td>{email.Notes}</td>
                 <td>
                   <Button
-                    onClick={() => {
-                      handleDelete(email.id, dispatch);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                  <Button
                     id="basic-button"
                     aria-controls={openDots ? "basic-menu" : undefined}
                     aria-haspopup="true"
