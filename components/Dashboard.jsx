@@ -61,9 +61,10 @@ const Dashboard = () => {
     handleClose();
   };
   const handleDelete = (text, dispatch) => {
+    console.log(email);
     toggleClicked();
     deleteEmail(dispatch, text);
-    //handleCloseDots();
+    handleCloseDelete();
   };
 
   const getList = async () => {
@@ -81,6 +82,11 @@ const Dashboard = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  //Open and close Delete modal windwo
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const handleOpenDelete = () => setOpenDelete(true);
+  const handleCloseDelete = () => setOpenDelete(false);
 
   //Triple dot menu pop up to remove row
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -136,13 +142,11 @@ const Dashboard = () => {
                   placeholder="Name"
                   onChange={(e) => setApprovedName(dispatch, e.target.value)}
                 />
-                <p>{nameError}</p>
                 <input
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setApprovedEmail(dispatch, e.target.value)}
                 />
-                <p>{emailError}</p>
                 <textarea
                   rows="4"
                   cols="50"
@@ -150,7 +154,6 @@ const Dashboard = () => {
                   onChange={(e) => setApprovedNotes(dispatch, e.target.value)}
                 ></textarea>
               </div>
-
               <div className="submit-email">
                 <input
                   type="submit"
@@ -183,7 +186,55 @@ const Dashboard = () => {
                 <td>{email.Email}</td>
                 <td>{email.Notes}</td>
                 <td>
-                  <Button
+                  <input
+                    type="button"
+                    onClick={handleOpenDelete}
+                    id="button-modal"
+                    value="Delete"
+                  />
+                  <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={openDelete}
+                    onClose={handleCloseDelete}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                      timeout: 500,
+                    }}
+                  >
+                    <Fade in={openDelete}>
+                      <Box sx={style}>
+                        <div className="modal-close-icon">
+                          <CloseIcon
+                            onClick={handleCloseDelete}
+                            sx={{ cursor: "pointer" }}
+                          />
+                        </div>
+
+                        <Typography
+                          id="transition-modal-title"
+                          variant="h6"
+                          component="h2"
+                          ml="12px"
+                        >
+                          Are you sure that you want to delete this email?
+                        </Typography>
+
+                        <div className="submit-email">
+                          <input
+                            type="submit"
+                            value="Confirm"
+                            className="submit-inputs-button"
+                            onClick={() => {
+                              handleDelete(email.id, dispatch);
+                            }}
+                          />
+                        </div>
+                      </Box>
+                    </Fade>
+                  </Modal>
+                  {/* <Button
                     id="basic-button"
                     aria-controls={openDots ? "basic-menu" : undefined}
                     aria-haspopup="true"
@@ -208,7 +259,7 @@ const Dashboard = () => {
                     >
                       Delete
                     </MenuItem>
-                  </Menu>
+                  </Menu> */}
                 </td>
               </tr>
             ))}
@@ -217,7 +268,55 @@ const Dashboard = () => {
               <td>sallyceo@gmail.com</td>
               <td>Is the CEO of the business</td>
               <td>
-                <Button
+                <input
+                  type="button"
+                  onClick={handleOpenDelete}
+                  id="button-modal"
+                  value="Delete"
+                />
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  open={openDelete}
+                  onClose={handleCloseDelete}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={openDelete}>
+                    <Box sx={style}>
+                      <div className="modal-close-icon">
+                        <CloseIcon
+                          onClick={handleCloseDelete}
+                          sx={{ cursor: "pointer" }}
+                        />
+                      </div>
+
+                      <Typography
+                        id="transition-modal-title"
+                        variant="h6"
+                        component="h2"
+                        ml="12px"
+                      >
+                        Are you sure that you want to delete this email?
+                      </Typography>
+
+                      <div className="submit-email">
+                        <input
+                          type="submit"
+                          value="Confirm"
+                          className="submit-inputs-button"
+                          onClick={() => {
+                            handleDelete(email.id, dispatch);
+                          }}
+                        />
+                      </div>
+                    </Box>
+                  </Fade>
+                </Modal>
+                {/* <Button
                   id="basic-button"
                   aria-controls={openDots ? "basic-menu" : undefined}
                   aria-haspopup="true"
@@ -236,7 +335,160 @@ const Dashboard = () => {
                   }}
                 >
                   <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu>
+                </Menu> */}
+              </td>
+            </tr>
+            <tr>
+              <td>Bob Salesman</td>
+              <td>bobsales@gmail.com</td>
+              <td>
+                Bob has a pitch he wants to include in our meeting. Remember to
+                take notes and ask any questions that you may have for him.
+              </td>
+              <td>
+                <input
+                  type="button"
+                  onClick={handleOpenDelete}
+                  id="button-modal"
+                  value="Delete"
+                />
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  open={openDelete}
+                  onClose={handleCloseDelete}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={openDelete}>
+                    <Box sx={style}>
+                      <div className="modal-close-icon">
+                        <CloseIcon
+                          onClick={handleCloseDelete}
+                          sx={{ cursor: "pointer" }}
+                        />
+                      </div>
+
+                      <Typography
+                        id="transition-modal-title"
+                        variant="h6"
+                        component="h2"
+                        ml="12px"
+                      >
+                        Are you sure that you want to delete this email?
+                      </Typography>
+
+                      <div className="submit-email">
+                        <input
+                          type="submit"
+                          value="Confirm"
+                          className="submit-inputs-button"
+                          onClick={() => {
+                            handleDelete(email.id, dispatch);
+                          }}
+                        />
+                      </div>
+                    </Box>
+                  </Fade>
+                </Modal>
+                {/* <Button
+                  id="basic-button"
+                  aria-controls={openDots ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={openDots ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={openDots}
+                  onClose={handleCloseDots}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
+                </Menu> */}
+              </td>
+            </tr>
+            <tr>
+              <td>Karen DesignComplainer</td>
+              <td>karensales@gmail.com</td>
+              <td>I mean, I guess she can join?</td>
+              <td>
+                <input
+                  type="button"
+                  onClick={handleOpenDelete}
+                  id="button-modal"
+                  value="Delete"
+                />
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  open={openDelete}
+                  onClose={handleCloseDelete}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={openDelete}>
+                    <Box sx={style}>
+                      <div className="modal-close-icon">
+                        <CloseIcon
+                          onClick={handleCloseDelete}
+                          sx={{ cursor: "pointer" }}
+                        />
+                      </div>
+
+                      <Typography
+                        id="transition-modal-title"
+                        variant="h6"
+                        component="h2"
+                        ml="12px"
+                      >
+                        Are you sure that you want to delete this email?
+                      </Typography>
+
+                      <div className="submit-email">
+                        <input
+                          type="submit"
+                          value="Confirm"
+                          className="submit-inputs-button"
+                          onClick={() => {
+                            handleDelete(email.id, dispatch);
+                          }}
+                        />
+                      </div>
+                    </Box>
+                  </Fade>
+                </Modal>
+                {/* <Button
+                  id="basic-button"
+                  aria-controls={openDots ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={openDots ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={openDots}
+                  onClose={handleCloseDots}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
+                </Menu> */}
               </td>
             </tr>
           </tbody>
