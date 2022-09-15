@@ -65,10 +65,15 @@ const Dashboard = () => {
     getList();
   }, [clicked]);
 
-  //Open and close modal window
+  //Open and close Add modal window
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  //Open and close Delete modal windwo
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const handleOpenDelete = () => setOpenDelete(true);
+  const handleCloseDelete = () => setOpenDelete(false);
 
   //Triple dot menu pop up to remove row
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -89,7 +94,7 @@ const Dashboard = () => {
         <input
           type="button"
           onClick={handleOpen}
-          id="add-button-modal"
+          id="button-modal"
           value="Add"
         />
         <Modal
@@ -169,7 +174,7 @@ const Dashboard = () => {
                 <td>{email.Email}</td>
                 <td>{email.Notes}</td>
                 <td>
-                  <Button
+                  {/* <Button
                     id="basic-button"
                     aria-controls={openDots ? "basic-menu" : undefined}
                     aria-haspopup="true"
@@ -194,7 +199,7 @@ const Dashboard = () => {
                     >
                       Delete
                     </MenuItem>
-                  </Menu>
+                  </Menu> */}
                 </td>
               </tr>
             ))}
@@ -203,7 +208,55 @@ const Dashboard = () => {
               <td>sallyceo@gmail.com</td>
               <td>Is the CEO of the business</td>
               <td>
-                <Button
+                <input
+                  type="button"
+                  onClick={handleOpenDelete}
+                  id="button-modal"
+                  value="Delete"
+                />
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  open={openDelete}
+                  onClose={handleCloseDelete}
+                  closeAfterTransition
+                  BackdropComponent={Backdrop}
+                  BackdropProps={{
+                    timeout: 500,
+                  }}
+                >
+                  <Fade in={openDelete}>
+                    <Box sx={style}>
+                      <div className="modal-close-icon">
+                        <CloseIcon
+                          onClick={handleCloseDelete}
+                          sx={{ cursor: "pointer" }}
+                        />
+                      </div>
+
+                      <Typography
+                        id="transition-modal-title"
+                        variant="h6"
+                        component="h2"
+                        ml="12px"
+                      >
+                        Are you sure that you want to delete this email?
+                      </Typography>
+
+                      <div className="submit-email">
+                        <input
+                          type="submit"
+                          value="Confirm"
+                          className="submit-inputs-button"
+                          onClick={() => {
+                            handleSubmit(dispatch, approved);
+                          }}
+                        />
+                      </div>
+                    </Box>
+                  </Fade>
+                </Modal>
+                {/* <Button
                   id="basic-button"
                   aria-controls={openDots ? "basic-menu" : undefined}
                   aria-haspopup="true"
@@ -222,7 +275,7 @@ const Dashboard = () => {
                   }}
                 >
                   <MenuItem onClick={handleCloseDots}>Delete</MenuItem>
-                </Menu>
+                </Menu> */}
               </td>
             </tr>
             <tr>
