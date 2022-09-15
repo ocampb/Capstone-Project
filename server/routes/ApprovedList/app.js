@@ -88,7 +88,7 @@ router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
       },
     });
     if (findEmail) {
-      findEmail.destroy();
+      await findEmail.destroy();
       res.status(200).send("Email has been deleted");
     }
   } catch (error) {

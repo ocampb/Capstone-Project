@@ -85,7 +85,7 @@ const Dashboard = () => {
   };
   useEffect(() => {
     getList();
-  }, [clicked]);
+  }, []);
 
   //Open and close Add modal window
   const [open, setOpen] = React.useState(false);
