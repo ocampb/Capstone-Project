@@ -42,10 +42,22 @@ const Dashboard = () => {
   const toggleClicked = () => {
     setClicked((current) => current + 1);
   };
+
   const handleSubmit = (dispatch, approved) => {
-    //this is where i need to add regex email validation before sending to database
+    let emailError = "";
+    let nameError = "";
+    const validEmail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!validEmail.test(approved.Email)) {
+      return (emailError = "Please enter a valid email");
+    }
+    if (approved.Name.length < 1) {
+      return (nameError = "Please enter a name for your approved email");
+    }
+    if (validEmail.test(approved.Email) && approved.Name.length > 1) {
+      NewApprovedState(dispatch, approved);
+    }
     toggleClicked();
-    NewApprovedState(dispatch, approved);
     handleClose();
   };
   const handleDelete = (text, dispatch) => {
@@ -142,7 +154,6 @@ const Dashboard = () => {
                   onChange={(e) => setApprovedNotes(dispatch, e.target.value)}
                 ></textarea>
               </div>
-
               <div className="submit-email">
                 <input
                   type="submit"
