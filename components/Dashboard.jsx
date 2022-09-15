@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Footer from "./Footer";
 import {
   NewApprovedState,
   setApprovedEmail,
@@ -285,6 +286,7 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
