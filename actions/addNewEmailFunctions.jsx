@@ -19,6 +19,14 @@ export const NewApprovedState = async (dispatch, approved) => {
   const status = dataWeAreSending.status;
   if (status === 400) {
     alert("Email cannot be added at this time, please try again"); //this is where we would re-render, will add when everything is connected
+  } else {
+    const result = await fetch("/api/dashboard/list", {
+      method: "GET",
+    });
+    const data = await result.json();
+    if (result.status === 200) {
+      setApprovedList(dispatch, data);
+    }
   }
 };
 
@@ -48,5 +56,13 @@ export const deleteEmail = async (dispatch, id) => {
   const status = dataWeAreSending.status;
   if (status === 400) {
     alert("Email cannot be deleted at this time, please try again"); //this is where we would re-render, will add when everything is connected
+  } else {
+    const result = await fetch("/api/dashboard/list", {
+      method: "GET",
+    });
+    const data = await result.json();
+    if (result.status === 200) {
+      setApprovedList(dispatch, data);
+    }
   }
 };
