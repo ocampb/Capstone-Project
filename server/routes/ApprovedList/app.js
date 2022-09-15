@@ -81,7 +81,6 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
 
 router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
     const findEmail = await ApprovedList.findOne({
       where: {
@@ -107,7 +106,7 @@ router.delete("/userdelete/:id", isUserAuthenticated, async (req, res) => {
     });
     if (findUser) {
       findUser.destroy();
-      res.status(200).send("User has been deleted");
+      res.status(200).redirect("/");
     }
   } catch (error) {
     res.status(400).send(error);
