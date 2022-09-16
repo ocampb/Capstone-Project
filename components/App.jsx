@@ -11,12 +11,13 @@ import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import logger from "redux-logger";
+import LandingNavbar from "./LandingNavbar";
 
 const App = () => {
   return (
     <div>
       {/* Change this to landing navbar */}
-      <Navbar />
+      <LandingNavbar />
       <h1 className="content-under-nav">App</h1>
       <a href="/oauth">Login with Calendly</a>
     </div>

@@ -31,9 +31,17 @@
   align-items: center;
   justify-content: center;
   margin: 6.25rem;
-  margin-top: 12rem;
-  margin-left: 7.5rem;
-  margin-right: 7.5rem;
+  margin-top: 10rem;
+  margin-left: 12rem;
+  margin-right: 12rem;
+
+  & p {
+    margin-top: 5px;
+  }
+
+  & a {
+    text-decoration: underline;
+  }
 }
 
 .login-link-container {
@@ -51,33 +59,8 @@
   }
 }
 
-form {
-  display: flex;
-  justify-content: left;
-  flex-direction: column;
-
-  & input {
-    @include input-borders;
-    margin: 10px;
-    // margin-left: 0;
-    padding: 5px;
-  }
-
-  & p a {
-    text-decoration: underline;
-  }
-
-  & p {
-    text-align: center;
-  }
-
-  & li {
-    margin: 1rem;
-  }
-
-  & li:nth-child(1) {
-    font-weight: 600;
-  }
+li:nth-child(1) {
+  font-weight: 600;
 }
 
 .form-button {
@@ -89,14 +72,10 @@ form {
   padding: 12px;
   transition: all 0.3s ease-in-out;
   font-size: 15px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .form-button:hover {
   background-color: $hovercolor;
-}
-
-#calendly-button {
-  background: $white;
-  border: 2px solid $black;
-  color: $black;
 }
