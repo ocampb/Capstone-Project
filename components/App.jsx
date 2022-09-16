@@ -15,7 +15,9 @@ import logger from "redux-logger";
 const App = () => {
   return (
     <div>
-      <h1>App</h1>
+      {/* Change this to landing navbar */}
+      <Navbar />
+      <h1 className="content-under-nav">App</h1>
       <a href="/oauth">Login with Calendly</a>
     </div>
   );
@@ -28,7 +30,6 @@ window.onload = () => {
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar />
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/login" element={<Login />} />

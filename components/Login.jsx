@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -13,89 +12,150 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+// const drawerWidth = 240;
 
-const Login = (props) => {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+const Login = () => {
+  // const { window } = props;
+  // const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  // const handleDrawerToggle = () => {
+  //   setMobileOpen(!mobileOpen);
+  // };
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Protectly
-      </Typography>
-      <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText primary="Dashboard" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText primary="Logout" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  );
+  // const drawer = (
+  //   <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+  //     <Typography variant="h6" sx={{ my: 2 }}>
+  //       Protectly
+  //     </Typography>
+  //     <Divider />
+  //     <List>
+  //       <ListItem disablePadding>
+  //         <ListItemButton sx={{ textAlign: "center" }}>
+  //           <Link to="/dashboard">
+  //             <ListItemText primary="Dashboard" className="drawer-item" />
+  //           </Link>
+  //         </ListItemButton>
+  //       </ListItem>
+  //       <ListItem disablePadding>
+  //         <ListItemButton>
+  //           <Link to="/">
+  //             <ListItemText primary="Logout" className="drawer-item" />
+  //           </Link>
+  //         </ListItemButton>
+  //       </ListItem>
+  //       <ListItem disablePadding>
+  //         <ListItemButton sx={{ textAlign: "left" }}>
+  //           <ListItemText primary="Settings" className="drawer-item" />
+  //         </ListItemButton>
+  //       </ListItem>
+  //     </List>
+  //   </Box>
+  // );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  // const container =
+  //   window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" id="auth-nav-background">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Protectly
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button sx={{ color: "#fff" }}>Dashboard</Button>
-            <Button sx={{ color: "#fff" }}>Logout</Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-    </Box>
+    <div>Login</div>
+    // <Box sx={{ display: "flex" }}>
+    //   <AppBar component="nav" id="auth-nav-background">
+    //     <Toolbar>
+    //       <IconButton
+    //         color="inherit"
+    //         aria-label="open drawer"
+    //         edge="start"
+    //         onClick={handleDrawerToggle}
+    //         sx={{ mr: 2, display: { sm: "none" } }}
+    //       >
+    //         <MenuIcon sx={{ color: "#221f1f" }} />
+    //       </IconButton>
+    //       <Typography
+    //         variant="h6"
+    //         component="div"
+    //         sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+    //       >
+    //         <Link
+    //           variant="h5"
+    //           component="a"
+    //           to="/"
+    //           sx={{
+    //             mr: 2,
+    //             display: { xs: "flex", md: "none" },
+    //             flexGrow: 1,
+    //             color: "#221f1f",
+    //             textDecoration: "none",
+    //           }}
+    //           className="logo"
+    //         >
+    //           Protectly
+    //         </Link>
+    //       </Typography>
+    //       <Box sx={{ display: { xs: "none", sm: "block" } }}>
+    //         <Link to="/dashboard">
+    //           <Button
+    //             sx={{
+    //               color: "#221f1f",
+    //               textTransform: "none",
+    //               marginLeft: "10px",
+    //               marginRight: "10px",
+    //             }}
+    //           >
+    //             Dashboard
+    //           </Button>
+    //         </Link>
+    //         <Button
+    //           sx={{
+    //             color: "#221f1f",
+    //             textTransform: "none",
+    //             marginLeft: "10px",
+    //             marginRight: "10px",
+    //           }}
+    //         >
+    //           Settings
+    //         </Button>
+    //         <Link to="/">
+    //           <Button
+    //             sx={{
+    //               color: "#fff",
+    //               textTransform: "none",
+    //               backgroundColor: "#221f1f",
+    //               borderRadius: "30px",
+    //               marginLeft: "10px",
+    //               marginRight: "10px",
+    //               paddingLeft: "20px",
+    //               paddingRight: "20px",
+    //             }}
+    //             id="logout-button"
+    //           >
+    //             Logout
+    //           </Button>
+    //         </Link>
+    //       </Box>
+    //     </Toolbar>
+    //   </AppBar>
+    //   <Box component="nav">
+    //     <Drawer
+    //       container={container}
+    //       variant="temporary"
+    //       open={mobileOpen}
+    //       onClose={handleDrawerToggle}
+    //       ModalProps={{
+    //         keepMounted: true,
+    //       }}
+    //       sx={{
+    //         display: { xs: "block", sm: "none" },
+    //         "& .MuiDrawer-paper": {
+    //           boxSizing: "border-box",
+    //           width: drawerWidth,
+    //         },
+    //       }}
+    //     >
+    //       {drawer}
+    //     </Drawer>
+    //   </Box>
+    // </Box>
   );
 };
 

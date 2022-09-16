@@ -7,7 +7,25 @@
   font-family: $poppins;
 }
 
+.content-under-nav {
+  margin-top: 64px;
+}
+
 // ====== LOGIN NAV TESTING CLASSES ======
 #auth-nav-background {
-  background-color: $slategray;
+  background-color: $white;
+  box-shadow: none;
+}
+
+#logout-button {
+  transition: all 0.3s ease-in-out;
+}
+
+#logout-button:hover {
+  background-color: $hovercolor;
+}
+
+.drawer-item {
+  text-align: left;
+  margin-left: 65px;
 }
