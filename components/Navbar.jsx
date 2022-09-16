@@ -6,10 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import SettingsIcon from "@mui/icons-material/Settings";
 import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 import Divider from "@mui/material/Divider";
@@ -18,22 +16,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Modal from "@mui/material/Modal";
-import Backdrop from "@mui/material/Backdrop";
-import Fade from "@mui/material/Fade";
-import CloseIcon from "@mui/icons-material/Close";
-
-// Styling for MUI modal window
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  minWidth: 400,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
+import Dialog from "./Dialog";
 
 const drawerWidth = 240;
 
@@ -48,8 +31,8 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
+  // // Delete account modal (Works alongside Dialog.jsx)
   const [openSettings, setOpenSettings] = React.useState(false);
-  const handleOpenSettings = () => setOpenSettings(true);
   const handleCloseSettings = () => setOpenSettings(false);
 
   // Navbar drawer toggle
@@ -159,54 +142,14 @@ const Navbar = (props) => {
               id="basic-menu"
               anchorEl={anchorEl}
               open={open}
-              onClose={handleCloseSettings}
+              onClose={handleClose}
               MenuListProps={{
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleCloseSettings}>Delete Account</MenuItem>
-              <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={open}
-                onClose={handleCloseSettings}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                  timeout: 500,
-                }}
-              >
-                <Fade in={open}>
-                  <Box sx={style}>
-                    <div className="modal-close-icon">
-                      <CloseIcon
-                        onClick={handleCloseSettings}
-                        sx={{ cursor: "pointer" }}
-                      />
-                    </div>
-
-                    <Typography
-                      id="transition-modal-title"
-                      variant="h6"
-                      component="h2"
-                      ml="12px"
-                    >
-                      Are you sure that you want to delete this account?
-                    </Typography>
-
-                    <div className="submit-email">
-                      <input
-                        type="submit"
-                        value="Confirm"
-                        className="submit-inputs-button"
-                        onClick={() => {
-                          handleCloseSettings();
-                        }}
-                      />
-                    </div>
-                  </Box>
-                </Fade>
-              </Modal>
+              <MenuItem onClick={handleCloseSettings}>
+                <Dialog />
+              </MenuItem>
             </Menu>
             <Link to="/">
               <Button
