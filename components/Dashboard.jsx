@@ -1,18 +1,13 @@
 import React from "react";
 import "./styles/Dashboard.scss";
-import { createStore } from "redux";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Footer from "./Footer";
 import {
   NewApprovedState,
@@ -38,14 +33,10 @@ const style = {
 const Dashboard = () => {
   const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
-  const [clicked, setClicked] = React.useState(0);
-  const [emailError, setEmailError] = React.useState("");
-  const [nameError, setNameError] = React.useState("");
-  const [deleteId, setDeleteId] = React.useState(0);
+  const [emailError, setEmailError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [deleteId, setDeleteId] = useState(0);
   const dispatch = useDispatch();
-  const toggleClicked = (current) => {
-    setClicked((current) => (current += 1));
-  };
   const handleApproved = (dispatch, approved) => {
     NewApprovedState(dispatch, approved);
   };
@@ -61,7 +52,6 @@ const Dashboard = () => {
     }
     if (validEmail.test(approved.Email) && approved.Name.length > 1) {
       handleApproved(dispatch, approved);
-      toggleClicked();
       handleClose();
       setEmailError((prev) => "");
       setNameError((prev) => "");
@@ -69,7 +59,6 @@ const Dashboard = () => {
   };
 
   const handleDelete = (text, dispatch) => {
-    toggleClicked();
     deleteEmail(dispatch, text);
     handleCloseDelete();
   };
@@ -88,7 +77,7 @@ const Dashboard = () => {
   }, []);
 
   //Open and close Add modal window
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -96,7 +85,7 @@ const Dashboard = () => {
     setDeleteId((prev) => text);
   };
   //Open and close Delete modal window
-  const [openDelete, setOpenDelete] = React.useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const handleOpenDelete = (text) => {
     handleSetId(text);
     setOpenDelete(true);
