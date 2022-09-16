@@ -6,3 +6,9 @@
   box-sizing: border-box;
   font-family: $poppins;
 }
+
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
+}
