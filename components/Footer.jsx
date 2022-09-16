@@ -5,14 +5,14 @@ const Footer = () => {
   return (
     <div>
       <footer>
-        <div class="brand">
+        <div className="brand">
           <div id="nav-branding">
             <a href="#"></a>
           </div>
         </div>
-        <div class="copyright">
+        <div className="copyright">
           <div id="copy">©2022 Protectly, Inc. All Rights Reserved.</div>
-          <div class="glyphs">
+          <div className="glyphs">
             <a href="#">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-          <div class="flex-terms">
+          <div className="flex-terms">
             <div>
               <a href="#">Privacy Policy</a>
             </div>

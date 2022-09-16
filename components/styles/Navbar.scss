@@ -1,23 +1,5 @@
 @use "./Variables.scss" as *;
 
-.css-1t6c9ts {
-  justify-content: right;
-  align-items: center;
-}
-
-.css-1lvtzne {
-  justify-content: right;
-}
-
-#nav-background {
-  background-color: $white;
-  box-shadow: none;
-}
-
-#hamburger {
-  color: $black;
-}
-
 a {
   color: $black;
   cursor: pointer;
@@ -26,9 +8,28 @@ a {
 
 .logo {
   font-size: 30px;
+  font-weight: 400;
 }
 
 .settings-icon {
   padding: 2px;
   margin-left: 5px;
+}
+
+#auth-nav-background {
+  background-color: $white;
+  box-shadow: none;
+}
+
+#logout-button {
+  transition: all 0.3s ease-in-out;
+}
+
+#logout-button:hover {
+  background-color: $hovercolor;
+}
+
+.drawer-item {
+  text-align: left;
+  margin-left: 65px;
 }

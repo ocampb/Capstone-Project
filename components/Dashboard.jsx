@@ -14,6 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 import {
   NewApprovedState,
   setApprovedEmail,
@@ -105,6 +106,7 @@ const Dashboard = () => {
 
   return (
     <div>
+      <Navbar />;
       <div className="dash-add">
         <h1>My Dashboard</h1>
 
@@ -174,7 +176,6 @@ const Dashboard = () => {
           </Fade>
         </Modal>
       </div>
-
       <div className="table-flex">
         <table>
           <thead>
@@ -248,7 +249,7 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
