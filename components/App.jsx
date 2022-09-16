@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
+import { useState, useEffect } from "react";
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import "./styles/App.scss";
@@ -14,10 +15,24 @@ import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
 
 const App = () => {
+  const [login, setLogin] = useState(false);
+  const isUserLoggedIn = async () => {
+    console.log(login);
+    const result = await fetch("/api/dashboard/login", {
+      method: "GET",
+    });
+    if (result.status === 200) {
+      setLogin((prev) => true);
+    }
+  };
+  useEffect(() => {
+    isUserLoggedIn();
+  }, []);
+
   return (
     <div>
-      {/* Change this to landing navbar */}
-      <LandingNavbar />
+      {login ? <Navbar /> : <LandingNavbar />}
+      {/* <LandingNavbar /> */}
       <h1 className="content-under-nav">App</h1>
       <a href="/oauth">Login with Calendly</a>
     </div>

@@ -19,6 +19,17 @@ const isUserAuthenticated = async (req, res, next) => {
   }
 };
 
+router.get("/login", async (req, res) => {
+  if (req.user) {
+    const user = await UsersTable.findByPk(req.user.id);
+    if (user) {
+      res.status(200).send();
+    } else {
+      res.status(400).send();
+    }
+  }
+});
+
 //render user's approved emails (will add login check when complete)
 router.get("/list", isUserAuthenticated, async (req, res) => {
   try {
@@ -43,7 +54,6 @@ router.get("/list", isUserAuthenticated, async (req, res) => {
           });
           array.unshift(findEach.dataValues);
         }
-        console.log(array);
         res.status(200).send(array);
       }
     }
