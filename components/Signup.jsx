@@ -2,8 +2,10 @@ import React from "react";
 import "./styles/Signup.scss";
 import zoom from "../assets/zoom.jpg";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="layout-container">
@@ -33,10 +35,11 @@ const Signup = () => {
             <input
               type="submit"
               className="form-button"
+              onClick={() => navigate("/oauth")}
               value="Connect with Calendly"
             />
             <p>
-              Already have an account? <a href="#">Login</a>
+              Already have an account? <a href="/oauth">Login</a>
             </p>
           </div>
         </div>
