@@ -71,9 +71,7 @@ const Navbar = (props) => {
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
-            <Link to="/">
-              <ListItemText primary="Logout" className="drawer-item" />
-            </Link>
+            <ListItemText primary="Logout" className="drawer-item" />
           </ListItemButton>
         </ListItem>
         <ListItemButton
@@ -172,7 +170,7 @@ const Navbar = (props) => {
                 <Dialog />
               </MenuItem>
             </Menu>
-            <Link to="/">
+            <a href="/logout">
               <Button
                 sx={{
                   color: "#fff",
@@ -188,7 +186,7 @@ const Navbar = (props) => {
               >
                 Logout
               </Button>
-            </Link>
+            </a>
           </Box>
         </Toolbar>
       </AppBar>
