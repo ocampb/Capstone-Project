@@ -1,0 +1,342 @@
+/* components/styles/App.scss */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
+}
+.content-under-nav {
+  margin-top: 64px;
+}
+
+/* components/styles/Navbar.scss */
+a {
+  color: #221f1f;
+  cursor: pointer;
+  text-decoration: none;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 400;
+}
+.settings-icon {
+  padding: 2px;
+  margin-left: 5px;
+}
+#auth-nav-background {
+  background-color: #fff;
+  box-shadow: none;
+}
+#logout-button {
+  transition: all 0.3s ease-in-out;
+}
+#logout-button:hover {
+  background-color: #3b3b3b;
+}
+.drawer-item {
+  text-align: left;
+  margin-left: 65px;
+}
+
+/* components/styles/Signup.scss */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+.signup-container {
+  width: 40vw;
+  height: 100vh;
+}
+.protectly-container h1 {
+  font-weight: 400;
+  margin: 10px 0 30px 20px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10rem 12rem 6.25rem 12rem;
+}
+.form-container p {
+  margin-top: 5px;
+}
+.form-container a {
+  text-decoration: underline;
+}
+.login-link-container {
+  width: 60vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-link-container img {
+  width: 95%;
+  height: 86%;
+  border-radius: 30px;
+  object-fit: cover;
+  margin-bottom: 70px;
+}
+li:nth-child(1) {
+  font-weight: 600;
+}
+.form-button {
+  border: 2px solid #221f1f;
+  border-radius: 30px;
+  background-color: #221f1f;
+  color: #fff;
+  cursor: pointer;
+  padding: 12px;
+  transition: all 0.3s ease-in-out;
+  font-size: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+.form-button:hover {
+  background-color: #3b3b3b;
+}
+@media screen and (max-width: 1700px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+}
+@media screen and (max-width: 1436px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 5rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .form-container {
+    margin-left: 4rem;
+    margin-right: 3rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .signup-container {
+    width: 100vw;
+  }
+  .login-link-container {
+    width: 100vw;
+    flex-direction: column;
+  }
+  .form-container {
+    margin-left: 12rem;
+    margin-right: 12rem;
+  }
+  .layout-container {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 768px) {
+  .form-container {
+    margin-left: 9rem;
+    margin-right: 9rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .form-container {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
+/* components/styles/Footer.scss */
+footer {
+  width: 100vw;
+  background-color: #fff;
+  color: #262322;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+#nav-branding a {
+  background-color: #fff;
+  color: #262322;
+}
+.brand {
+  width: 100vw;
+  height: 40px;
+  background-color: #fff;
+  color: #262322;
+  display: flex;
+  justify-content: center;
+}
+.copyright {
+  background-color: #fff;
+  color: #262322;
+  display: flex;
+  justify-content: space-between;
+}
+#copy {
+  margin-left: 10px;
+}
+.flex-terms {
+  display: flex;
+  gap: 20px;
+  margin-right: 20px;
+}
+.flex-terms a {
+  text-decoration: none;
+  background-color: #fff;
+  color: #262322;
+}
+.flex-terms a:hover {
+  text-decoration: underline;
+}
+.brand a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.brand a:hover {
+  color: #fff;
+}
+#forms-footer-brand {
+  margin: 0;
+}
+svg {
+  width: 50px;
+  height: 30px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+svg:hover {
+  transform: scale(1.1);
+}
+.brand svg {
+  width: 25px;
+  height: 30px;
+  margin-right: 10px;
+}
+.copyright a {
+  text-decoration: none;
+}
+.glyphs {
+  margin-right: 60px;
+}
+@media screen and (max-width: 1000px) {
+  footer {
+    position: static;
+  }
+}
+
+/* components/styles/Dashboard.scss */
+.dash-add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem;
+  margin-top: 64px;
+}
+#button-modal {
+  color: #fff;
+  background-color: #221f1f;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  text-transform: none;
+  padding: 0.4rem 2rem;
+  transition: all 0.3s ease-in-out;
+}
+#button-modal:hover {
+  background-color: #3b3b3b;
+}
+.modal-close-icon {
+  display: flex;
+  justify-content: right;
+}
+.add-input-flex {
+  display: flex;
+  flex-direction: column;
+}
+.add-input-flex input {
+  margin: 10px;
+  padding: 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #857e90;
+}
+textarea {
+  margin: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #857e90;
+  padding: 5px;
+}
+.submit-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.submit-inputs-button {
+  color: #fff;
+  background-color: #221f1f;
+  border: none;
+  border-radius: 30px;
+  text-transform: none;
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.submit-inputs-button:hover {
+  background-color: #3b3b3b;
+}
+.table-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  flex-direction: column;
+  margin: 1rem;
+  border-spacing: 0;
+  border-collapse: separate;
+  border: 1px solid #e2e0e0;
+  border-radius: 10px;
+  width: 60rem;
+}
+table th {
+  font-weight: 400;
+  font-size: 17px;
+  color: #857e90;
+  border-bottom: 1px solid #e2e0e0;
+  text-align: left;
+  padding: 1rem;
+}
+table thead tr:nth-last-child(-n+1) {
+  color: #221f1f;
+}
+table td {
+  border-bottom: 1px solid #e2e0e0;
+  padding: 1rem;
+  font-size: 15px;
+  max-width: 15rem;
+}
+table tr:nth-last-child(-n+1) td {
+  border-bottom: none;
+}
+#basic-button {
+  color: #221f1f;
+}
+#basic-button:hover {
+  background-color: #f3f5f7;
+}
