@@ -48,7 +48,7 @@ const isUserAuthenticated = async (req, res, next) => {
       return next();
     } else {
       req.session = null;
-      res.redirect("/");
+      res.redirect("/dashboard");
     }
   }
 };
@@ -127,7 +127,7 @@ app.get(
   "/oauth/callback",
   passport.authenticate("oauth2", { failureRedirect: "/" }),
   function (req, res) {
-    res.redirect("/");
+    res.redirect("/dashboard");
   }
 );
 

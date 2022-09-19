@@ -91,7 +91,7 @@ const LandingNavbar = (props) => {
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Link to="/login">
+            <a href="/oauth">
               <Button
                 sx={{
                   color: "#221f1f",
@@ -102,7 +102,7 @@ const LandingNavbar = (props) => {
               >
                 Login
               </Button>
-            </Link>
+            </a>
             <Link to="/signup">
               <Button
                 sx={{
