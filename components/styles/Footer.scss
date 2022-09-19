@@ -4,9 +4,9 @@ footer {
   width: 100vw;
   background-color: $white;
   color: #262322;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
 
 #nav-branding a {

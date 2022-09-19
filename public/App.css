@@ -161,9 +161,9 @@ footer {
   width: 100vw;
   background-color: #fff;
   color: #262322;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
 #nav-branding a {
   background-color: #fff;
@@ -361,6 +361,7 @@ table tr:nth-last-child(-n+1) td {
   }
   table {
     border: none;
+    margin-bottom: 150px;
   }
   table td {
     max-width: 100%;
