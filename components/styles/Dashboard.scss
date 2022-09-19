@@ -137,10 +137,10 @@ table {
     text-align: left;
   }
 
-  table td {
-    padding: 0;
-    // max-width: 0;
-  }
+  // table td {
+  //   padding: 0;
+  //   // max-width: 0;
+  // }
 
   td:before {
     content: attr(data-label);

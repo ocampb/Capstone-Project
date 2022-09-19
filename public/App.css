@@ -360,9 +360,6 @@ table tr:nth-last-child(-n+1) td {
     padding-left: 50%;
     text-align: left;
   }
-  table td {
-    padding: 0;
-  }
   td:before {
     content: attr(data-label);
     display: inline-block;
