@@ -1,4 +1,4 @@
 .env
 node_modules
-public/app.css
-public/app.js
+public/App.css
+public/App.js
