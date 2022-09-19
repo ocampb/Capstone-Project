@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/Signup.scss";
 import zoom from "../assets/zoom.jpg";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -45,6 +46,7 @@ const Signup = () => {
         </div>
         <div className="login-link-container">
           <img src={zoom} alt="Man on online meeting" />
+          <Footer />
         </div>
       </div>
     </div>

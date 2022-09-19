@@ -10,15 +10,9 @@
 .signup-container {
   width: 40vw;
   height: 100vh;
-  display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  flex-direction: column;
 }
 
 .protectly-container {
-  //   display: flex;
-  //   justify-content: left;
   & h1 {
     font-weight: 400;
     margin: 10px 0 30px 20px;
@@ -30,10 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 6.25rem;
-  margin-top: 10rem;
-  margin-left: 12rem;
-  margin-right: 12rem;
+  margin: 10rem 12rem 6.25rem 12rem;
 
   & p {
     margin-top: 5px;
@@ -53,9 +44,10 @@
 
   & img {
     width: 95%;
-    height: 95%;
+    height: 86%;
     border-radius: 30px;
     object-fit: cover;
+    margin-bottom: 70px;
   }
 }
 
@@ -78,4 +70,70 @@ li:nth-child(1) {
 
 .form-button:hover {
   background-color: $hovercolor;
+}
+
+// Media Queries
+@media screen and (max-width: 1700px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 1436px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .form-container {
+    margin-left: 4rem;
+    margin-right: 3rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .signup-container {
+    width: 100vw;
+  }
+
+  .login-link-container {
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .form-container {
+    margin-left: 12rem;
+    margin-right: 12rem;
+  }
+
+  .layout-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    margin-left: 9rem;
+    margin-right: 9rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .form-container {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
 }

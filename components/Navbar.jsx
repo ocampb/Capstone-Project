@@ -6,10 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import SettingsIcon from "@mui/icons-material/Settings";
 import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 import Divider from "@mui/material/Divider";
@@ -18,10 +16,38 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import { ListItemIcon } from "@mui/material";
+import Dialog from "./Dialog";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import { StarBorder } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
 const Navbar = (props) => {
+  //Settings dropdown
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // Hamburger settings nested list
+  const [openHam, setOpenHam] = React.useState(true);
+
+  const handleClickSettings = () => {
+    setOpenHam(!openHam);
+  };
+
+  // Delete account modal (Works alongside Dialog.jsx)
+  const [openSettings, setOpenSettings] = React.useState(false);
+  const handleCloseSettings = () => setOpenSettings(false);
+
+  // Navbar drawer toggle
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -30,7 +56,7 @@ const Navbar = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         Protectly
       </Typography>
@@ -50,11 +76,20 @@ const Navbar = (props) => {
             </Link>
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "left" }}>
-            <ListItemText primary="Settings" className="drawer-item" />
-          </ListItemButton>
-        </ListItem>
+        <ListItemButton
+          sx={{ textAlign: "left" }}
+          onClick={handleClickSettings}
+        >
+          <ListItemText primary="Settings" className="drawer-item" />
+          {openHam ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openHam} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 10 }}>
+              <Dialog />
+            </ListItemButton>
+          </List>
+        </Collapse>
       </List>
     </Box>
   );
@@ -116,9 +151,27 @@ const Navbar = (props) => {
                 marginLeft: "10px",
                 marginRight: "10px",
               }}
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
             >
               Settings
             </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleCloseSettings}>
+                <Dialog />
+              </MenuItem>
+            </Menu>
             <Link to="/">
               <Button
                 sx={{
