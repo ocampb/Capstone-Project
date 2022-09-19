@@ -37,8 +37,7 @@ router.post("/", verifyWebhook, async (req, res) => {
     },
     data: {
       canceled_by: "Protectly on behalf of Calendly User.",
-      reason:
-        "This meeting has been automatically cancelled by Protectly (protectly.cloud) because the invitee was not on a list of approved users. Please reach out to the meeting host to get your email address added to their list of approved users. ",
+      reason: user.cancel_message,
       canceler_type: "host",
     },
   };
