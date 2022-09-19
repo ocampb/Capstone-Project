@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "esbuild": "ESBUILD_WATCH_ENABLED=1 node ./buildscript.js",
-    "prestart": "node ./buildscript.js",
+    "build": "node ./buildscript.js",
     "start": "node app.js",
     "dev": "PORT=3000 nf start -j Procfile.dev"
   },
