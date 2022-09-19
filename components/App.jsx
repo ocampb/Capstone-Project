@@ -18,7 +18,6 @@ import CancelMessage from "./CancelMessage";
 const App = () => {
   const [login, setLogin] = useState(false);
   const isUserLoggedIn = async () => {
-    console.log(login);
     const result = await fetch("/api/dashboard/login", {
       method: "GET",
     });

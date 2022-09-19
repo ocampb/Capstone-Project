@@ -1,11 +1,9 @@
 export const NewCancelMessageState = async (dispatch, message) => {
   const cancel_message = message;
-  console.log("cancelmessage", cancel_message);
   const data = {
     cancel_message: cancel_message,
     updatedAt: new Date(),
   };
-  console.log("data", data);
   const dataWeAreSending = await fetch("/api/dashboard/updatecancel", {
     method: "PUT",
     headers: {

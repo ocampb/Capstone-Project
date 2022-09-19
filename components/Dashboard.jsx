@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
+import EmailTable from "./EmailTable";
+import CancelMessage from "./CancelMessage";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import {
@@ -16,7 +18,6 @@ import {
   setApprovedName,
   setApprovedNotes,
   setApprovedList,
-  deleteEmail,
 } from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
@@ -32,11 +33,9 @@ const style = {
 };
 
 const Dashboard = () => {
-  const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
   const approved = useSelector((state) => state.approveEmailReducer.approved);
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
-  const [deleteId, setDeleteId] = useState(0);
   const dispatch = useDispatch();
   const handleApproved = (dispatch, approved) => {
     NewApprovedState(dispatch, approved);
@@ -59,11 +58,6 @@ const Dashboard = () => {
     }
   };
 
-  const handleDelete = (text, dispatch) => {
-    deleteEmail(dispatch, text);
-    handleCloseDelete();
-  };
-
   const getList = async () => {
     const result = await fetch("/api/dashboard/list", {
       method: "GET",
@@ -81,17 +75,6 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const handleSetId = (text) => {
-    setDeleteId((prev) => text);
-  };
-  //Open and close Delete modal window
-  const [openDelete, setOpenDelete] = useState(false);
-  const handleOpenDelete = (text) => {
-    handleSetId(text);
-    setOpenDelete(true);
-  };
-  const handleCloseDelete = () => setOpenDelete(false);
 
   return (
     <div>
@@ -165,79 +148,7 @@ const Dashboard = () => {
           </Fade>
         </Modal>
       </div>
-      <div className="table-flex">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Notes</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((email) => (
-              <tr key={email.Email}>
-                <td data-label="Name">{email.Name}</td>
-                <td data-label="Email">{email.Email}</td>
-                <td data-label="Notes">{email.Notes}</td>
-                <td data-label="Delete Email">
-                  <input
-                    type="button"
-                    onClick={() => {
-                      handleOpenDelete(email.id);
-                    }}
-                    id="button-modal"
-                    value="Delete"
-                  />
-                </td>
-              </tr>
-            ))}
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={openDelete}
-              onClose={handleCloseDelete}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={openDelete}>
-                <Box sx={style}>
-                  <div className="modal-close-icon">
-                    <CloseIcon
-                      onClick={handleCloseDelete}
-                      sx={{ cursor: "pointer" }}
-                    />
-                  </div>
-
-                  <Typography
-                    id="transition-modal-title"
-                    variant="h6"
-                    component="h2"
-                    ml="12px"
-                  >
-                    Are you sure that you want to delete this email?
-                  </Typography>
-
-                  <div className="submit-email">
-                    <input
-                      type="submit"
-                      value="Confirm"
-                      className="submit-inputs-button"
-                      onClick={() => {
-                        handleDelete(deleteId, dispatch);
-                      }}
-                    />
-                  </div>
-                </Box>
-              </Fade>
-            </Modal>
-          </tbody>
-        </table>
-      </div>
+      <EmailTable />
       <Footer />
     </div>
   );
