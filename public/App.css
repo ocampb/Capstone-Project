@@ -340,3 +340,35 @@ table tr:nth-last-child(-n+1) td {
 #basic-button:hover {
   background-color: #f3f5f7;
 }
+@media screen and (max-width: 768px) {
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr + tr {
+    margin-top: 1.5em;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+  table td {
+    padding: 0;
+  }
+  td:before {
+    content: attr(data-label);
+    display: inline-block;
+    line-height: 1.5;
+    margin-left: -100%;
+    width: 100%;
+    white-space: nowrap;
+  }
+}
