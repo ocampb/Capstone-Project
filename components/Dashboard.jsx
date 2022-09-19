@@ -178,18 +178,26 @@ const Dashboard = () => {
           <tbody>
             {list.map((email) => (
               <tr key={email.Email}>
-                <td data-label="Name">{email.Name}</td>
-                <td data-label="Email">{email.Email}</td>
-                <td data-label="Notes">{email.Notes}</td>
+                <td data-label="Name">
+                  <div>{email.Name}</div>
+                </td>
+                <td data-label="Email">
+                  <div>{email.Email}</div>
+                </td>
+                <td data-label="Notes">
+                  <div>{email.Notes}</div>
+                </td>
                 <td data-label="Delete Email">
-                  <input
-                    type="button"
-                    onClick={() => {
-                      handleOpenDelete(email.id);
-                    }}
-                    id="button-modal"
-                    value="Delete"
-                  />
+                  <div>
+                    <input
+                      type="button"
+                      onClick={() => {
+                        handleOpenDelete(email.id);
+                      }}
+                      id="button-modal"
+                      value="Delete"
+                    />
+                  </div>
                 </td>
               </tr>
             ))}
@@ -238,7 +246,7 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <Footer />
+      <Footer id="dash-footer" />
     </div>
   );
 };
