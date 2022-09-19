@@ -42,7 +42,6 @@ router.get("/list", isUserAuthenticated, async (req, res) => {
         id: id,
       },
     });
-    console.log(findUser);
     if (findUser) {
       const findAll = await ApprovedList.findAll({
         where: { User_ID: findUser.id },
@@ -85,6 +84,45 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
       };
       const CreateEmail = await ApprovedList.create(newEmail);
       res.status(200).send(CreateEmail);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+//update cancel message
+router.put("/updatecancel", isUserAuthenticated, async (req, res) => {
+  try {
+    const id = req.user.id;
+    const { cancel_message } = req.body;
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      const updateMessage = await findUser.update({
+        cancel_message:
+          cancel_message + " powered by Protectly (protectly.cloud)",
+        updatedAt: new Date(),
+      });
+      res.status(200).send(updateMessage);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+//get cancel message
+router.get("/getcancel", isUserAuthenticated, async (req, res) => {
+  try {
+    const id = req.user.id;
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      res.status(200).send(findUser);
     }
   } catch (error) {
     res.status(400).send(error);

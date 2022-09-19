@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Calendly_ID: DataTypes.STRING,
       Refresh_Token: DataTypes.TEXT,
       Access_Token: DataTypes.TEXT,
+      cancel_message: DataTypes.STRING,
     },
     {
       sequelize,
