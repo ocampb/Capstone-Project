@@ -178,10 +178,10 @@ const Dashboard = () => {
           <tbody>
             {list.map((email) => (
               <tr key={email.Email}>
-                <td>{email.Name}</td>
-                <td>{email.Email}</td>
-                <td>{email.Notes}</td>
-                <td>
+                <td data-label="Name">{email.Name}</td>
+                <td data-label="Email">{email.Email}</td>
+                <td data-label="Notes">{email.Notes}</td>
+                <td data-label="Delete Email">
                   <input
                     type="button"
                     onClick={() => {
