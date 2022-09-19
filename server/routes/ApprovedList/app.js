@@ -4,6 +4,7 @@ const { ApprovedList, UsersTable } = require("../../../models");
 
 const router = express.Router();
 
+//checking to see if user is logged in and authenticated
 const isUserAuthenticated = async (req, res, next) => {
   if (req.user) {
     const user = await UsersTable.findByPk(req.user.id);
@@ -19,6 +20,7 @@ const isUserAuthenticated = async (req, res, next) => {
   }
 };
 
+//logs user in
 router.get("/login", async (req, res) => {
   if (req.user) {
     const user = await UsersTable.findByPk(req.user.id);
@@ -40,7 +42,6 @@ router.get("/list", isUserAuthenticated, async (req, res) => {
         id: id,
       },
     });
-    console.log(findUser);
     if (findUser) {
       const findAll = await ApprovedList.findAll({
         where: { User_ID: findUser.id },
@@ -89,6 +90,46 @@ router.post("/add", isUserAuthenticated, async (req, res) => {
   }
 });
 
+//update cancel message
+router.put("/updatecancel", isUserAuthenticated, async (req, res) => {
+  try {
+    const id = req.user.id;
+    const { cancel_message } = req.body;
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      const updateMessage = await findUser.update({
+        cancel_message:
+          cancel_message + " powered by Protectly (protectly.cloud)",
+        updatedAt: new Date(),
+      });
+      res.status(200).send(updateMessage);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+//get cancel message
+router.get("/getcancel", isUserAuthenticated, async (req, res) => {
+  try {
+    const id = req.user.id;
+    const findUser = await UsersTable.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (findUser) {
+      res.status(200).send(findUser);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+//deletes emails from database
 router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
   const id = req.params.id;
   try {
@@ -106,6 +147,7 @@ router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
   }
 });
 
+//deletes users account
 router.delete("/userdelete", isUserAuthenticated, async (req, res) => {
   const id = req.user.id;
   try {
@@ -115,6 +157,12 @@ router.delete("/userdelete", isUserAuthenticated, async (req, res) => {
       },
     });
     if (findUser) {
+      const findEmails = await ApprovedList.findAll({
+        where: {
+          User_ID: id,
+        },
+      });
+      findEmails.destroy();
       findUser.destroy();
       res.status(200).redirect("/");
     }
