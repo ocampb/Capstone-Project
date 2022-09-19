@@ -181,7 +181,7 @@ const Dashboard = () => {
                 <td data-label="Name">{email.Name}</td>
                 <td data-label="Email">{email.Email}</td>
                 <td data-label="Notes">{email.Notes}</td>
-                <td data-label="Delete">
+                <td data-label="Delete Email">
                   <input
                     type="button"
                     onClick={() => {
