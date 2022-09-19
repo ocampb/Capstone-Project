@@ -70,11 +70,11 @@ const Navbar = (props) => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
-            <Link to="/">
+          <a href="/logout">
+            <ListItemButton>
               <ListItemText primary="Logout" className="drawer-item" />
-            </Link>
-          </ListItemButton>
+            </ListItemButton>
+          </a>
         </ListItem>
         <ListItemButton
           sx={{ textAlign: "left" }}

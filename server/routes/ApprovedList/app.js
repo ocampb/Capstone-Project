@@ -106,7 +106,7 @@ router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
   }
 });
 
-router.delete("/userdelete/:id", isUserAuthenticated, async (req, res) => {
+router.delete("/userdelete", isUserAuthenticated, async (req, res) => {
   const id = req.user.id;
   try {
     const findUser = await UsersTable.findOne({

@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
+import { useNavigate } from "react-router-dom";
 
 // Styling for MUI modal window
 const style = {
@@ -20,10 +21,19 @@ const style = {
 };
 
 const Dialog = () => {
+  const navigate = useNavigate();
   // Delete account modal
   const [openSettings, setOpenSettings] = React.useState(false);
   const handleOpenSettings = () => setOpenSettings(true);
-  const handleCloseSettings = () => setOpenSettings(false);
+  const handleCloseSettings = async () => {
+    const result = await fetch("/api/dashboard/userdelete", {
+      method: "DELETE",
+    });
+    if (result.status === 200) {
+      navigate("/");
+    }
+    setOpenSettings(false);
+  };
 
   return (
     <div>
