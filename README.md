@@ -2,7 +2,7 @@
 
 _Published September 2022_
 
-**_Protectly_** is a full stack web application that allows users to limit their Calendly meetings to only emails on our databse. Combining an easy to use modern flow with a robust and reliable back end databse, we secure users Calendly links.
+**_Protectly_** is a full stack web application that allows users to limit their Calendly meetings to only emails on our database. Combining an easy to use modern flow with a robust and reliable back end database, we secure users Calendly links.
 
 **Important Note:** While _Protectly_ is free to use, a paid _Calendly_ Account is required on the Professional Tier to use this service. Please visit Calendly's Pricing Page for more information.
 
@@ -84,15 +84,21 @@ Hovercolor: #3b3b3b
 
 ## **_Protectly_** In Development
 
-This website is the final capstone project of our DigitalCrafts Full Stack Bootcamp. **_Protectly_** is intended to demonstrate a clear understanding of using React.js and Redux as a front-end library, as well as a Node.js backend. This site is ready to use in real world applications and we as a group plan to bring this to users who can benefit from this software
+This website is the final capstone project of our DigitalCrafts Full Stack Boot Camp. **_Protectly_** is intended to demonstrate a clear understanding of using React.js and Redux as front-end libraries, as well as a Node.js backend. This site is ready to use in real world applications and we as a group plan to bring this to users who can benefit from this software.
 
 Our future plans for **_Protectly_**:
 
 - Dark Mode
 - Ability to sort the approved list
 - Ability to search the approved list
-- Set timers on the approved list so they are automatically removed after a set timeframe
+- Set timers on the approved list so they are automatically removed after a set time frame
 - Having different lists for different links associated with the user rather than for all links under the account
 - Being able to set up team environments similar to _Calendly's_ systems
 
 ## Photos of **_Protectly_**
+
+<img src="./assets/AddEmailScreenshot.png" alt="Add Email Modal on Dashboard" width="300">
+
+<img src="./assets/EmailTableScreenshot.png" alt="Add Email Modal on Dashboard" width="300">
+
+<img src="./assets/CustomCancelMessageScreenshot.png" alt="Add Email Modal on Dashboard" width="300">
