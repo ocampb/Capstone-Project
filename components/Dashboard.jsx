@@ -76,6 +76,10 @@ const Dashboard = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  //toggle between components
+  const [componentChoice, setComponentChoice] = useState(false);
+  const handleEmailToggle = () => setComponentChoice((prev) => false);
+  const handleCancelToggle = () => setComponentChoice((prev) => true);
   return (
     <div>
       <Navbar />;
@@ -148,9 +152,27 @@ const Dashboard = () => {
           </Fade>
         </Modal>
       </div>
-      <EmailTable />
+      <div className="sub-nav">
+        <input
+          className={componentChoice === false ? "activeButton" : undefined}
+          type="button"
+          id="button-menu"
+          value="Approved Email List"
+          onClick={handleEmailToggle}
+        />
+        <p> | </p>
+        <input
+          className={componentChoice === true ? "activeButton" : undefined}
+          type="button"
+          id="button-menu"
+          value="Customize Cancellation Message"
+          onClick={handleCancelToggle}
+        />
+      </div>
+      <div className="component-toggle">
+        {componentChoice ? <CancelMessage /> : <EmailTable />}
+      </div>
       <Footer />
-
     </div>
   );
 };

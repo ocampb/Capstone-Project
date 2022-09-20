@@ -30,7 +30,6 @@ const App = () => {
   return (
     <div>
       {login ? <Navbar /> : <LandingNavbar />}
-      {/* <LandingNavbar /> */}
       <h1 className="content-under-nav">App</h1>
       <a href="/oauth">Login with Calendly</a>
     </div>

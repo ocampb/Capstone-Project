@@ -39,7 +39,7 @@ const CancelMessage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="cancel-message">
       <p>
         <strong>Current Message: </strong>
         {displayMessage}
@@ -48,11 +48,13 @@ const CancelMessage = () => {
         onChange={(e) => setCancelMessage(dispatch, e.target.value)}
         name="cancel-message-textarea"
         id=""
-        cols="30"
-        rows="10"
+        placeholder="Update your custom message here!"
+        cols="50"
+        rows="7"
       ></textarea>
       <input
         type="submit"
+        id="button-modal"
         value="Submit"
         onClick={() => {
           NewCancelMessageState(dispatch, controlledMessage);
