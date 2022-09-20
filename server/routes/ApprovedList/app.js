@@ -112,7 +112,7 @@ router.put("/updatecancel", isUserAuthenticated, async (req, res) => {
     res.status(400).send(error);
   }
 });
-//get cancel message
+//get cancel message & get user (same database call)
 router.get("/getcancel", isUserAuthenticated, async (req, res) => {
   try {
     const id = req.user.id;
