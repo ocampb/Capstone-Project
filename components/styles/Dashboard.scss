@@ -114,6 +114,12 @@ table {
 }
 
 // Media Queries
+@media screen and (max-width: 1000px) {
+  footer #dash-footer {
+    position: absolute;
+  }
+}
+
 @media screen and (max-width: 768px) {
   td,
   tr {
@@ -131,7 +137,6 @@ table {
   }
 
   td {
-    // border: none;
     border-bottom: 1px solid #eee;
     position: relative;
     padding-left: 50%;
@@ -140,6 +145,7 @@ table {
 
   table {
     border: none;
+    margin-bottom: 150px;
   }
 
   table td {
@@ -161,14 +167,8 @@ table {
   }
 
   table td:nth-child(4n) {
-    // border-bottom: 1px solid #c7c2d0;
-    // box-shadow: 0 2px 2px #c7c2d0;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-  }
-
-  table td:nth-child(4n):before {
-    margin-right: 31%;
   }
 
   table td:nth-child(1) {
@@ -176,32 +176,29 @@ table {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-}
 
-@media screen and (max-width: 690px) {
-  table td:nth-child(4n):before {
-    margin-right: 30%;
+  table td {
+    display: flex;
+  }
+
+  table td:before {
+    display: block;
+    margin-right: 0;
+    width: 50%;
+  }
+
+  table td div {
+    display: block;
+    width: 50%;
   }
 }
 
-@media screen and (max-width: 600px) {
-  table td:nth-child(4n):before {
-    margin-right: 29%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  table td:nth-child(4n):before {
-    margin-right: 28%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  table td:nth-child(2n):before {
-    margin-right: 26%;
+@media screen and (max-width: 450px) {
+  table td:before {
+    width: 40%;
   }
 
-  table td:nth-child(4n):before {
-    margin-right: 21%;
+  table td div {
+    width: 60%;
   }
 }

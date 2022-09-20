@@ -150,6 +150,7 @@ const Dashboard = () => {
       </div>
       <EmailTable />
       <Footer />
+
     </div>
   );
 };

@@ -161,9 +161,9 @@ footer {
   width: 100vw;
   background-color: #fff;
   color: #262322;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
 #nav-branding a {
   background-color: #fff;
@@ -229,11 +229,6 @@ svg:hover {
 }
 .glyphs {
   margin-right: 60px;
-}
-@media screen and (max-width: 1000px) {
-  footer {
-    position: static;
-  }
 }
 
 /* components/styles/Dashboard.scss */
@@ -340,6 +335,11 @@ table tr:nth-last-child(-n+1) td {
 #basic-button:hover {
   background-color: #f3f5f7;
 }
+@media screen and (max-width: 1000px) {
+  footer #dash-footer {
+    position: absolute;
+  }
+}
 @media screen and (max-width: 768px) {
   td,
   tr {
@@ -361,6 +361,7 @@ table tr:nth-last-child(-n+1) td {
   }
   table {
     border: none;
+    margin-bottom: 150px;
   }
   table td {
     max-width: 100%;
@@ -381,35 +382,29 @@ table tr:nth-last-child(-n+1) td {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
-  table td:nth-child(4n):before {
-    margin-right: 31%;
-  }
   table td:nth-child(1) {
     border-top: 1px solid #e2e0e0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-}
-@media screen and (max-width: 690px) {
-  table td:nth-child(4n):before {
-    margin-right: 30%;
+  table td {
+    display: flex;
+  }
+  table td:before {
+    display: block;
+    margin-right: 0;
+    width: 50%;
+  }
+  table td div {
+    display: block;
+    width: 50%;
   }
 }
-@media screen and (max-width: 600px) {
-  table td:nth-child(4n):before {
-    margin-right: 29%;
+@media screen and (max-width: 450px) {
+  table td:before {
+    width: 40%;
   }
-}
-@media screen and (max-width: 550px) {
-  table td:nth-child(4n):before {
-    margin-right: 28%;
-  }
-}
-@media screen and (max-width: 400px) {
-  table td:nth-child(2n):before {
-    margin-right: 26%;
-  }
-  table td:nth-child(4n):before {
-    margin-right: 21%;
+  table td div {
+    width: 60%;
   }
 }
