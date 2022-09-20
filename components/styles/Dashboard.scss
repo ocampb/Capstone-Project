@@ -158,11 +158,11 @@ table {
 }
 
 // Media Queries
-@media screen and (max-width: 1000px) {
-  footer #dash-footer {
-    position: absolute;
-  }
-}
+// @media screen and (max-width: 1000px) {
+//   footer #dash-footer {
+//     position: absolute;
+//   }
+// }
 
 @media screen and (max-width: 768px) {
   td,
@@ -204,6 +204,7 @@ table {
     line-height: 1.5;
     white-space: nowrap;
     margin-right: 40%;
+    color: $slategray;
   }
 
   table tr:nth-last-child(-n + 1) td {

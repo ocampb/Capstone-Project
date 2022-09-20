@@ -8,5 +8,6 @@ require("esbuild").build({
   plugins: [sassPlugin()],
   loader: {
     ".jpg": "dataurl",
+    ".png": "dataurl",
   },
 });
