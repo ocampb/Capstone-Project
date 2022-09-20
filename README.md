@@ -2,9 +2,9 @@
 
 _Published September 2022_
 
-_Protectly_ is a full stack web application that allows users to limit their Calendly meetings to only emails on our databse. Combining an easy to use modern flow with a robust and reliable back end databse, we secure users Calendly links.
+**_Protectly_** is a full stack web application that allows users to limit their Calendly meetings to only emails on our databse. Combining an easy to use modern flow with a robust and reliable back end databse, we secure users Calendly links.
 
-**Important Note:** _Protectly_ only connects with
+**Important Note:** While _Protectly_ is free to use, a paid _Calendly_ Account is required on the Professional Tier to use this service. Please visit Calendly's Pricing Page for more information.
 
 ## **Created By**
 
@@ -26,23 +26,28 @@ _Protectly_ is a full stack web application that allows users to limit their Cal
 
 ## **Requirements To Use**
 
-_Protectly_ is deployed and ready to work for you, so all you need is this [link](protectly.cloud).
+**_Protectly_** is deployed and ready to work for you, so all you need is this [link](protectly.cloud).
 
 If you would like to run the code locally you can use the following steps below.
 
-1. `cp .env.example .env`
-2. Update your `.env` file to include your Calendly oauth credentials
-3. `npm install`
-4. `npm run dev`
-5. Visit http://localhost:3000
+1. Clone the repository
+2. `cp .env.example .env`
+3. Update your `.env` file to include your Calendly oauth credentials
+4. `npm install`
+5. `npm run dev`
+6. Visit http://localhost:3000
 
-## How Pocket Barista Works
+## How **_Protectly_** Works
 
 ---
 
 ### Website Overview
 
-"Pocket Barista" utilizes a front-end library consisting of React and Redux. Users can track every cup they brew, every bag of coffee they buy, and every brewer and grinder they own. They can also learn new methods of brewing through brew guides and each month new roasters are featured on the homepage. Users can also access their data using redux persist(as long as you are on the same browser session) to view every past brew and bag so they can make that 5 star cup over and over again. The "Pocket Barista" is all about creating an app that can be used by people who are passionate about coffee and on that forever quest for the perfect cup of coffee.
+**_Protectly_** utilizes a front-end library consisting of React and Redux, styled with CSS, SCSS, and MUI and a backend Node.js/Express/Sequelize server and database.
+
+Users connect their _Calendly_ account to create a webhook that will fire every time a meeting is scheduled using their link. Users will then add as many emails to their _Protectly_ account that are approved to schedule meetings.
+
+Each time a meeting is scheduled _Calendly_ will check our database, if the invitee is not in the Users list, _Calendly_ will automatically cancel the meeting. Users can also customize their cancel message that is tied to the _Calendly_ cancellation email sent to the invitee and them.
 
 ---
 
@@ -51,41 +56,43 @@ If you would like to run the code locally you can use the following steps below.
 Here are some of the website's features in greater detail:
 
 - A modern and simple design that utilizes MUI framework.
-- Users can record many different aspects about their cup of coffee and rate each cup.
-- Users can browse the history of every cup of coffee and coffee bag and equipment piece they own!
+- Users can add emails along with the name associated with the email as well as notes to remind them of that user.
+- Users can delete emails from their list if that email should no longer be allowed
+- Users can also customize their message that is sent on their behalf by _Calendly's_ webhook to _Protectly_
 
 ---
 
 ## Color Palette
 
-The color palette was designed to have a warm feeling to it. A rich red and orange were used to represent the coffee berry that this cherished bean comes from in the high mountains all over the world.
+The color palette was designed to have a modern black and white feel to it. Being in a corporate setting, we wanted this site to fit into any environment without issue.
 
-Dark Jungle Green - #001514
+Black: #221f1f
 
-White - #fbfffe
+Slategray: #857e90
 
-Blood Red - #6b0504
+Gray: #e2e0e0
 
-Chinese Red - #a3320b
+Whitesmoke: #f3f5f7
 
-Goldenrod - #e6af2e
+White: #fff
 
-<img src="src/assets/colorpalette.png" 
-alt="Color Palette"
-width="380" height="120">
+Hovercolor: #3b3b3b
+
+<img src="./assets/ColorPalette.png" alt="Color Palette with Black, greys and white" width="380" height="120">
 
 ---
 
-## Pocket Barista In Development
+## **_Protectly_** In Development
 
-This website is the conclusion of the final module in my DigitalCrafts bootcamp. "Pocket Barista" is intended to demonstrate a clear understanding of using React.js as a front-end framework. For demo purposes, all information is stored in redux-persist storage; however, the application can easily be converted into pulling and placing information into a database.
+This website is the final capstone project of our DigitalCrafts Full Stack Bootcamp. **_Protectly_** is intended to demonstrate a clear understanding of using React.js and Redux as a front-end library, as well as a Node.js backend. This site is ready to use in real world applications and we as a group plan to bring this to users who can benefit from this software
 
-Here are some ways I would continue to develop "Pocket Barista":
+Our future plans for **_Protectly_**:
 
-- Hooking the website to a backend library for a more relevant storage solution.
-- Allowing for deleting items off of the users data sets of cups, coffee, and equipment
-- Adding timers for the different types of brews
-- The ability to edit entries
-- Adding dark mode for those early morning and late night coffee drinkers
+- Dark Mode
+- Ability to sort the approved list
+- Ability to search the approved list
+- Set timers on the approved list so they are automatically removed after a set timeframe
+- Having different lists for different links associated with the user rather than for all links under the account
+- Being able to set up team environments similar to _Calendly's_ systems
 
-## Photos of Pocket Barista
+## Photos of **_Protectly_**
