@@ -7,7 +7,6 @@ import { applyMiddleware, createStore } from "redux";
 import rootReducer from "../reducers/rootReducer";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
-import Login from "./Login";
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
