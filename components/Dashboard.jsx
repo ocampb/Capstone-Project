@@ -58,19 +58,6 @@ const Dashboard = () => {
     }
   };
 
-  const getList = async () => {
-    const result = await fetch("/api/dashboard/list", {
-      method: "GET",
-    });
-    const data = await result.json();
-    if (result.status === 200) {
-      setApprovedList(dispatch, data);
-    }
-  };
-  useEffect(() => {
-    getList();
-  }, []);
-
   //Open and close Add modal window
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
