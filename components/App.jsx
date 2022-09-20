@@ -97,7 +97,6 @@ window.onload = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/cancel" element={<CancelMessage />} />
           </Routes>
         </BrowserRouter>
       </Provider>
