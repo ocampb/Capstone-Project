@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Dashboard.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
@@ -9,7 +9,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import EmailTable from "./EmailTable";
-import CancelMessage from "./CancelMessage";
+import LoadCancel from "./LoadCancel";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import {
@@ -17,7 +17,6 @@ import {
   setApprovedEmail,
   setApprovedName,
   setApprovedNotes,
-  setApprovedList,
 } from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
@@ -58,24 +57,15 @@ const Dashboard = () => {
     }
   };
 
-  const getList = async () => {
-    const result = await fetch("/api/dashboard/list", {
-      method: "GET",
-    });
-    const data = await result.json();
-    if (result.status === 200) {
-      setApprovedList(dispatch, data);
-    }
-  };
-  useEffect(() => {
-    getList();
-  }, []);
-
   //Open and close Add modal window
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  //toggle between components
+  const [componentChoice, setComponentChoice] = useState(false);
+  const handleEmailToggle = () => setComponentChoice((prev) => false);
+  const handleCancelToggle = () => setComponentChoice((prev) => true);
   return (
     <div>
       <Navbar />;
@@ -148,9 +138,27 @@ const Dashboard = () => {
           </Fade>
         </Modal>
       </div>
-      <EmailTable />
+      <div className="sub-nav">
+        <input
+          className={componentChoice === false ? "activeButton" : undefined}
+          type="button"
+          id="button-menu"
+          value="Approved Email List"
+          onClick={handleEmailToggle}
+        />
+        <p> | </p>
+        <input
+          className={componentChoice === true ? "activeButton" : undefined}
+          type="button"
+          id="button-menu"
+          value="Customize Cancellation Message"
+          onClick={handleCancelToggle}
+        />
+      </div>
+      <div className="component-toggle">
+        {componentChoice ? <LoadCancel /> : <EmailTable />}
+      </div>
       <Footer />
-
     </div>
   );
 };

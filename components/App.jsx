@@ -12,7 +12,6 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
-import CancelMessage from "./CancelMessage";
 import calendar from "../assets/calendar.png";
 import zoomgroup from "../assets/zoomgroup.png";
 import ipadwoman from "../assets/ipadwoman.png";
@@ -134,7 +133,6 @@ window.onload = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/cancel" element={<CancelMessage />} />
           </Routes>
         </BrowserRouter>
       </Provider>

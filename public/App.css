@@ -450,6 +450,14 @@ svg:hover {
   margin: 2rem;
   margin-top: 64px;
 }
+.sub-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 64px;
+}
 #button-modal {
   color: #fff;
   background-color: #221f1f;
@@ -462,6 +470,24 @@ svg:hover {
 }
 #button-modal:hover {
   background-color: #3b3b3b;
+}
+.loadingLine {
+  color: #221f1f;
+}
+#button-menu {
+  color: #221f1f;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: none;
+  padding: 0.4rem 2rem;
+  transition: all 0.3s ease-in-out;
+}
+#button-menu:hover {
+  background-color: #e2e0e0;
+}
+.activeButton {
+  border-bottom: 1px solid #221f1f !important;
 }
 .modal-close-icon {
   display: flex;
@@ -478,6 +504,21 @@ svg:hover {
   border-left: none;
   border-right: none;
   border-bottom: 2px solid #857e90;
+}
+.component-toggle {
+  display: flex;
+  justify-content: center;
+}
+.cancel-message {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30rem;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 64px;
 }
 textarea {
   margin: 10px;
