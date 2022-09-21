@@ -134,8 +134,6 @@ app.get(
 // routes
 app.use("/api/webhook", Webhook);
 app.use("/api/dashboard", ApprovedLists);
-<<<<<<< Updated upstream
-=======
 app.use("/api/userinfo", async (req, res) => {
   const user = await UsersTable.findOne({
     where: {
@@ -174,7 +172,6 @@ app.use("/api/userinfo", async (req, res) => {
       console.error(error);
     });
 });
->>>>>>> Stashed changes
 app.use("/logout", (req, res) => {
   if (req.user) {
     req.session = null;
