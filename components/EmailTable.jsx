@@ -22,11 +22,10 @@ const style = {
 
 const EmailTable = () => {
   const list = useSelector((state) => state.approveEmailReducer.listOfApproved);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const getList = async () => {
-    setIsLoading((prev) => true);
     const result = await fetch("/api/dashboard/list", {
       method: "GET",
     });

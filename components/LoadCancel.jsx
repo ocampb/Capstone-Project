@@ -8,11 +8,10 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { setDisplayCancelMessage } from "../actions/updateCancelMessageFunction";
 
 const LoadCancel = () => {
-  const [isCancelLoading, setIsCancelLoading] = useState(false);
+  const [isCancelLoading, setIsCancelLoading] = useState(true);
   const dispatch = useDispatch();
 
   const getMessage = async () => {
-    setIsCancelLoading((prev) => true);
     const result = await fetch("/api/dashboard/getcancel", {
       method: "GET",
     });
