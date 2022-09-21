@@ -22,6 +22,7 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { StarBorder } from "@mui/icons-material";
+import UserInfoDialog from "./UserInfoDialog";
 
 const drawerWidth = 240;
 
@@ -166,6 +167,9 @@ const Navbar = (props) => {
                 "aria-labelledby": "basic-button",
               }}
             >
+              <MenuItem onClick={handleCloseSettings}>
+                <UserInfoDialog />
+              </MenuItem>
               <MenuItem onClick={handleCloseSettings}>
                 <Dialog />
               </MenuItem>
