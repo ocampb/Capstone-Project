@@ -6,7 +6,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 // Styling for MUI modal window
@@ -21,36 +20,22 @@ const style = {
   p: 4,
 };
 
-const Dialog = () => {
-  const navigate = useNavigate();
-  // Delete account modal
-  const [openSettings, setOpenSettings] = React.useState(false);
-  const handleOpenSettings = () => setOpenSettings(true);
-  const handleCloseSettings = async () => {
-    const result = await fetch("/api/dashboard/userdelete", {
-      method: "DELETE",
-    });
-    if (result.status === 200) {
-      navigate("/");
-    }
-    setOpenSettings(false);
-  };
-<<<<<<< Updated upstream
+const UserInfoDialog = () => {
   const [openUserInfo, setOpenUserInfo] = React.useState(false);
   const [userInfo, setUserInfo] = useState("");
   const handleOpenUserInfo = async () => {
-    const result = await fetch("/api/dashboard/getcancel", {
+    const result = await fetch("/api/userinfo", {
       method: "GET",
     });
     const data = await result.json();
-    if (result.status === 200) {
-      setUserInfo(data.Calendly_ID);
+
+    if (result.status === 401) {
       setOpenUserInfo(true);
+      console.log(data);
+      setUserInfo(data);
     }
   };
   const handleCloseUserInfo = async () => setOpenUserInfo(false);
-=======
->>>>>>> Stashed changes
 
   return (
     <div>
@@ -62,47 +47,29 @@ const Dialog = () => {
           marginRight: "10px",
         }}
         id="basic-button"
-        aria-controls={openSettings ? "basic-menu" : undefined}
+        aria-controls={openUserInfo ? "basic-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={openSettings ? "true" : undefined}
-        onClick={handleOpenSettings}
-      >
-        Delete Account
-      </Button>
-<<<<<<< Updated upstream
-      <Button
-        sx={{
-          color: "#221f1f",
-          textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
-        }}
-        id="basic-button"
-        aria-controls={openSettings ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={openSettings ? "true" : undefined}
+        aria-expanded={openUserInfo ? "true" : undefined}
         onClick={handleOpenUserInfo}
       >
         User Information
       </Button>
-=======
->>>>>>> Stashed changes
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={openSettings}
-        onClose={handleCloseSettings}
+        open={openUserInfo}
+        onClose={handleCloseUserInfo}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={openSettings}>
+        <Fade in={openUserInfo}>
           <Box sx={style}>
             <div className="modal-close-icon">
               <CloseIcon
-                onClick={handleCloseSettings}
+                onClick={handleCloseUserInfo}
                 sx={{ cursor: "pointer" }}
               />
             </div>
@@ -113,19 +80,8 @@ const Dialog = () => {
               component="h2"
               ml="12px"
             >
-              Are you sure that you want to delete this account?
+              {userInfo}
             </Typography>
-
-            <div className="submit-email">
-              <input
-                type="submit"
-                value="Confirm"
-                className="submit-inputs-button"
-                onClick={() => {
-                  handleCloseSettings();
-                }}
-              />
-            </div>
           </Box>
         </Fade>
       </Modal>
@@ -133,4 +89,4 @@ const Dialog = () => {
   );
 };
 
-export default Dialog;
+export default UserInfoDialog;
