@@ -52,40 +52,36 @@ const Dialog = () => {
 
   return (
     <div>
-      <div>
-        <Button
-          sx={{
-            color: "#221f1f",
-            textTransform: "none",
-            marginLeft: "10px",
-            marginRight: "10px",
-          }}
-          id="basic-button"
-          aria-controls={openSettings ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={openSettings ? "true" : undefined}
-          onClick={handleOpenSettings}
-        >
-          Delete Account
-        </Button>
-      </div>
-      <div>
-        <Button
-          sx={{
-            color: "#221f1f",
-            textTransform: "none",
-            marginLeft: "10px",
-            marginRight: "10px",
-          }}
-          id="basic-button"
-          aria-controls={openSettings ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={openSettings ? "true" : undefined}
-          onClick={handleOpenUserInfo}
-        >
-          User Information
-        </Button>
-      </div>
+      <Button
+        sx={{
+          color: "#221f1f",
+          textTransform: "none",
+          marginLeft: "10px",
+          marginRight: "10px",
+        }}
+        id="basic-button"
+        aria-controls={openSettings ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={openSettings ? "true" : undefined}
+        onClick={handleOpenSettings}
+      >
+        Delete Account
+      </Button>
+      {/* <Button
+        sx={{
+          color: "#221f1f",
+          textTransform: "none",
+          marginLeft: "10px",
+          marginRight: "10px",
+        }}
+        id="basic-button"
+        aria-controls={openSettings ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={openSettings ? "true" : undefined}
+        onClick={handleOpenUserInfo}
+      >
+        User Information
+      </Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
