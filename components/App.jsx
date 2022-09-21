@@ -14,6 +14,9 @@ import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
 import CancelMessage from "./CancelMessage";
 import calendar from "../assets/calendar.png";
+import zoomgroup from "../assets/zoomgroup.png";
+import ipadwoman from "../assets/ipadwoman.png";
+import Footer from "./Footer";
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -80,7 +83,38 @@ const App = () => {
       {/* Section three */}
       <div className="landing-section-three">
         <h1>Why People Choose Protectly</h1>
+        <div className="why-container">
+          <img src={zoomgroup} alt="Zoom chat illustration" />
+          <div className="why-text-container">
+            <p>
+              <span>Executive Leadership:</span> Many leaders hesitate to use
+              Calendly because they don’t want a public facing link that allows
+              for anyone to book with them. With Protectly, they can set up
+              their list of approved users and schedule easy knowing that
+              unimportant meetings won’t slide into their limited availability.
+            </p>
+            <p>
+              <span>Customer Experience:</span> When support teams work with
+              customers, they can provide a Calendly link to help fix a specific
+              issue. In some cases, customers continue using that link to book
+              meetings for help - even if processes have changed and a meeting
+              is no longer the protocol for problem solving.
+            </p>
+            <p>
+              <span>Education:</span> Teachers and professors can limit their
+              availability to only their current classes or to current parents
+              of their students.
+            </p>
+          </div>
+        </div>
       </div>
+      {/* Section 4 */}
+      <div className="landing-section-four">
+        <h1>Take the Meetings That Matter</h1>
+        <img src={ipadwoman} alt="gif substitution" />
+      </div>
+      <div className="space"></div>
+      <Footer />
     </div>
   );
 };

@@ -74,7 +74,7 @@ body {
   & h1 {
     margin: 20px;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 40px;
   }
 }
 
@@ -85,8 +85,8 @@ body {
 }
 
 .card {
-  width: 17rem;
-  height: 15rem;
+  width: 24.5rem;
+  height: 18rem;
   background-color: $white;
   margin: 20px;
   border-radius: 30px;
@@ -97,4 +97,98 @@ body {
   padding: 20px;
   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: all 0.3s ease-in-out;
+
+  & h3 {
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  & p {
+    font-size: 18px;
+  }
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.landing-section-three {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: $whitesmoke;
+  border-radius: 20px;
+  padding: 20px;
+
+  & h1 {
+    margin: 20px;
+    font-weight: 400;
+    font-size: 40px;
+  }
+
+  & img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+.why-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.why-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & span {
+    font-weight: 700;
+  }
+
+  & p {
+    font-size: 18px;
+    margin: 20px;
+  }
+}
+
+.landing-section-four {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // background-color: $whitesmoke;
+  border-radius: 20px;
+  padding: 20px;
+
+  & img {
+    background-color: $whitesmoke;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    height: 400px;
+  }
+
+  & h1 {
+    margin: 20px;
+    font-weight: 400;
+    font-size: 40px;
+  }
+}
+
+.space {
+  width: 100vw;
+  height: 10px;
 }
