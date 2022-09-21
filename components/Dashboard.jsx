@@ -146,7 +146,6 @@ const Dashboard = () => {
           value="Approved Email List"
           onClick={handleEmailToggle}
         />
-        <p> | </p>
         <input
           className={componentChoice === true ? "activeButton" : undefined}
           type="button"

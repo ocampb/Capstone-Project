@@ -134,6 +134,8 @@ body {
   & img {
     width: 400px;
     height: 400px;
+    margin-right: 60px;
+    margin-left: 60px;
   }
 }
 
@@ -281,9 +283,6 @@ body {
 @media screen and (max-width: 500px) {
   .landing-section-one {
     text-align: center;
-    // & h1 {
-    //   font-size: 25px;
-    // }
 
     & h3 {
       font-size: 12px;
