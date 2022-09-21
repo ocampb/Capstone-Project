@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Dashboard.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
@@ -9,7 +9,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import EmailTable from "./EmailTable";
-import CancelMessage from "./CancelMessage";
+import LoadCancel from "./LoadCancel";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import {
@@ -17,7 +17,6 @@ import {
   setApprovedEmail,
   setApprovedName,
   setApprovedNotes,
-  setApprovedList,
 } from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window
@@ -157,7 +156,7 @@ const Dashboard = () => {
         />
       </div>
       <div className="component-toggle">
-        {componentChoice ? <CancelMessage /> : <EmailTable />}
+        {componentChoice ? <LoadCancel /> : <EmailTable />}
       </div>
       <Footer />
     </div>

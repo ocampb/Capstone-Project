@@ -16,13 +16,10 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { ListItemIcon } from "@mui/material";
 import Dialog from "./Dialog";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { StarBorder } from "@mui/icons-material";
-import UserInfoDialog from "./UserInfoDialog";
 
 const drawerWidth = 240;
 
