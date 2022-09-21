@@ -22,7 +22,7 @@ const style = {
 
 const UserInfoDialog = () => {
   const [openUserInfo, setOpenUserInfo] = React.useState(false);
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const handleOpenUserInfo = async () => {
     const result = await fetch("/api/userinfo", {
       method: "GET",
@@ -47,11 +47,9 @@ const UserInfoDialog = () => {
           marginRight: "10px",
         }}
         id="basic-button"
-
         aria-controls={openUserInfo ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={openUserInfo ? "true" : undefined}
-
         onClick={handleOpenUserInfo}
       >
         User Information
@@ -75,14 +73,37 @@ const UserInfoDialog = () => {
                 sx={{ cursor: "pointer" }}
               />
             </div>
-
             <Typography
               id="transition-modal-title"
-              variant="h6"
+              variant="h5"
               component="h2"
               ml="12px"
             >
-              {userInfo}
+              Calendly Account Info
+            </Typography>
+            <Typography
+              id="transition-modal-title"
+              variant="body1"
+              component="h2"
+              ml="12px"
+            >
+              Name: {userInfo.name}
+            </Typography>
+            <Typography
+              id="transition-modal-title"
+              variant="body1"
+              component="h2"
+              ml="12px"
+            >
+              Email: {userInfo.email}
+            </Typography>
+            <Typography
+              id="transition-modal-title"
+              variant="body1"
+              component="h2"
+              ml="12px"
+            >
+              Scheduling URL: {userInfo.scheduling_url}
             </Typography>
           </Box>
         </Fade>

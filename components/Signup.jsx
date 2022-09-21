@@ -33,12 +33,13 @@ const Signup = () => {
                 </i>
               </li>
             </ul>
-            <input
-              type="submit"
-              className="form-button"
-              onClick={() => navigate("/oauth")}
-              value="Connect with Calendly"
-            />
+            <a href="/oauth">
+              <input
+                type="submit"
+                className="form-button"
+                value="Connect with Calendly"
+              />
+            </a>
             <p>
               Already have an account? <a href="/oauth">Login</a>
             </p>
