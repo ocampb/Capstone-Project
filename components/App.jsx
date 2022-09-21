@@ -12,6 +12,7 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
+import PageNotFound from "./PageNotFound";
 import calendar from "../assets/calendar.png";
 import zoomgroup from "../assets/zoomgroup.png";
 import ipadwoman from "../assets/ipadwoman.png";
@@ -148,6 +149,7 @@ window.onload = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
+            <Route path="*" element={<PageNotFound />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
