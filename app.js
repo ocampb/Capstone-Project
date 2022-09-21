@@ -134,6 +134,25 @@ app.get(
 // routes
 app.use("/api/webhook", Webhook);
 app.use("/api/dashboard", ApprovedLists);
+app.use("/api/userinfo", async (req, res) => {
+  const user = await UsersTable.findOne({
+    where: {
+      id: req.user.id,
+    },
+  });
+
+  try {
+    const response = await axios.get(user.Calendly_ID, {
+      headers: {
+        Authorization: "Bearer " + user.Access_Token,
+      },
+    });
+
+    res.json(response.data.resource);
+  } catch (e) {
+    res.sendStatus(400);
+  }
+});
 app.use("/logout", (req, res) => {
   if (req.user) {
     req.session = null;

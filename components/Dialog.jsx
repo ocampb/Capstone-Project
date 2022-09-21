@@ -38,12 +38,13 @@ const Dialog = () => {
   const [openUserInfo, setOpenUserInfo] = React.useState(false);
   const [userInfo, setUserInfo] = useState("");
   const handleOpenUserInfo = async () => {
-    const result = await fetch("/api/dashboard/getcancel", {
+    const result = await fetch("/api/userinfo", {
       method: "GET",
     });
     const data = await result.json();
+
     if (result.status === 200) {
-      setUserInfo(data.Calendly_ID);
+      setUserInfo(data);
       setOpenUserInfo(true);
     }
   };
@@ -51,36 +52,40 @@ const Dialog = () => {
 
   return (
     <div>
-      <Button
-        sx={{
-          color: "#221f1f",
-          textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
-        }}
-        id="basic-button"
-        aria-controls={openSettings ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={openSettings ? "true" : undefined}
-        onClick={handleOpenSettings}
-      >
-        Delete Account
-      </Button>
-      <Button
-        sx={{
-          color: "#221f1f",
-          textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
-        }}
-        id="basic-button"
-        aria-controls={openSettings ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={openSettings ? "true" : undefined}
-        onClick={handleOpenUserInfo}
-      >
-        User Information
-      </Button>
+      <div>
+        <Button
+          sx={{
+            color: "#221f1f",
+            textTransform: "none",
+            marginLeft: "10px",
+            marginRight: "10px",
+          }}
+          id="basic-button"
+          aria-controls={openSettings ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={openSettings ? "true" : undefined}
+          onClick={handleOpenSettings}
+        >
+          Delete Account
+        </Button>
+      </div>
+      <div>
+        <Button
+          sx={{
+            color: "#221f1f",
+            textTransform: "none",
+            marginLeft: "10px",
+            marginRight: "10px",
+          }}
+          id="basic-button"
+          aria-controls={openSettings ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={openSettings ? "true" : undefined}
+          onClick={handleOpenUserInfo}
+        >
+          User Information
+        </Button>
+      </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
