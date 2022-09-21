@@ -58,13 +58,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
   border-radius: 20px;
   padding: 4rem;
 }
 .landing-section-two h1 {
   margin: 20px;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 40px;
 }
 .landing-cards {
   display: flex;
@@ -72,8 +73,8 @@ body {
   align-items: center;
 }
 .card {
-  width: 17rem;
-  height: 15rem;
+  width: 24.5rem;
+  height: 18rem;
   background-color: #fff;
   margin: 20px;
   border-radius: 30px;
@@ -83,6 +84,185 @@ body {
   flex-direction: column;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: all 0.3s ease-in-out;
+}
+.card h3 {
+  font-size: 25px;
+  font-weight: 600;
+}
+.card p {
+  font-size: 18px;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.landing-section-three {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f5f7;
+  border-radius: 20px;
+  padding: 20px;
+}
+.landing-section-three h1 {
+  margin: 20px;
+  font-weight: 400;
+  font-size: 40px;
+}
+.landing-section-three img {
+  width: 400px;
+  height: 400px;
+}
+.why-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.why-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.why-text-container span {
+  font-weight: 700;
+}
+.why-text-container p {
+  font-size: 18px;
+  margin: 20px;
+  max-width: 50rem;
+}
+.landing-section-four {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  border-radius: 20px;
+  padding: 20px;
+}
+.landing-section-four img {
+  background-color: #f3f5f7;
+  border-radius: 20px;
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+}
+.landing-section-four h1 {
+  margin: 20px;
+  font-weight: 400;
+  font-size: 40px;
+}
+@media screen and (max-width: 1920px) {
+  .landing-section-one {
+    margin-top: 200px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .landing-section-one {
+    margin-top: 100px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .landing-section-two {
+    display: block;
+    height: auto;
+  }
+  .landing-section-two h1 {
+    text-align: center;
+  }
+  .landing-cards {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .landing-section-three img {
+    display: none;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .landing-section-one img {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .landing-section-one {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .landing-section-one h3 {
+    font-size: 15px;
+  }
+  .landing-section-two {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .landing-section-two h1 {
+    margin: 0;
+  }
+  .landing-section-three {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding: 20px;
+  }
+  .landing-section-four {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .landing-section-four h1 {
+    margin: 0;
+    text-align: center;
+  }
+  .landing-section-four img {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .landing-section-one {
+    text-align: center;
+  }
+  .landing-section-one h3 {
+    font-size: 12px;
+  }
+  .heading-container {
+    text-align: center;
+    align-items: center;
+  }
+  .landing-section-two {
+    padding: 0;
+  }
+  .landing-section-two .card {
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+  }
+  .landing-section-three h1 {
+    text-align: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .landing-section-one h1 {
+    font-size: 30px;
+  }
+  .landing-section-three h1 {
+    font-size: 30px;
+  }
 }
 
 /* components/styles/Navbar.scss */
