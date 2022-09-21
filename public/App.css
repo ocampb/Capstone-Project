@@ -10,8 +10,79 @@ body {
   min-height: 100vh;
   height: 100%;
 }
-.content-under-nav {
-  margin-top: 64px;
+.landing-section-one {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f5f7;
+  border-radius: 20px;
+  padding: 20px;
+}
+.heading-container {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 30rem;
+}
+.heading-container h1 {
+  font-weight: 400;
+  font-size: 40px;
+}
+.heading-container h3 {
+  font-weight: 200;
+  margin: 10px;
+  margin-left: 0;
+}
+.get-started-link {
+  background-color: #221f1f;
+  color: #fff;
+  padding: 10px;
+  border-radius: 30px;
+  width: 10rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.get-started-link:hover {
+  background-color: #3b3b3b;
+}
+.landing-section-two {
+  margin-top: 100px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 4rem;
+}
+.landing-section-two h1 {
+  margin: 20px;
+  font-weight: 400;
+  font-size: 30px;
+}
+.landing-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 17rem;
+  height: 15rem;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 /* components/styles/Navbar.scss */
@@ -239,6 +310,14 @@ svg:hover {
   margin: 2rem;
   margin-top: 64px;
 }
+.sub-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 64px;
+}
 #button-modal {
   color: #fff;
   background-color: #221f1f;
@@ -251,6 +330,21 @@ svg:hover {
 }
 #button-modal:hover {
   background-color: #3b3b3b;
+}
+#button-menu {
+  color: #221f1f;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: none;
+  padding: 0.4rem 2rem;
+  transition: all 0.3s ease-in-out;
+}
+#button-menu:hover {
+  background-color: #e2e0e0;
+}
+.activeButton {
+  border-bottom: 1px solid #221f1f !important;
 }
 .modal-close-icon {
   display: flex;
@@ -267,6 +361,21 @@ svg:hover {
   border-left: none;
   border-right: none;
   border-bottom: 2px solid #857e90;
+}
+.component-toggle {
+  display: flex;
+  justify-content: center;
+}
+.cancel-message {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30rem;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 64px;
 }
 textarea {
   margin: 10px;
@@ -335,11 +444,6 @@ table tr:nth-last-child(-n+1) td {
 #basic-button:hover {
   background-color: #f3f5f7;
 }
-@media screen and (max-width: 1000px) {
-  footer #dash-footer {
-    position: absolute;
-  }
-}
 @media screen and (max-width: 768px) {
   td,
   tr {
@@ -374,6 +478,7 @@ table tr:nth-last-child(-n+1) td {
     line-height: 1.5;
     white-space: nowrap;
     margin-right: 40%;
+    color: #857e90;
   }
   table tr:nth-last-child(-n+1) td {
     border-bottom: 1px solid #e2e0e0;
