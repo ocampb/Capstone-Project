@@ -95,7 +95,6 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   transition: all 0.3s ease-in-out;
 
@@ -163,7 +162,7 @@ body {
   & p {
     font-size: 18px;
     margin: 20px;
-    width: 50rem;
+    max-width: 50rem;
   }
 }
 
@@ -221,6 +220,15 @@ body {
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 1220px) {
+  .landing-section-three {
+    & img {
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-width: 1100px) {
   .landing-section-one {
     & img {
@@ -239,9 +247,34 @@ body {
     }
   }
 
+  .landing-section-two {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    & h1 {
+      margin: 0;
+    }
+  }
+
   .landing-section-three {
     margin-left: 3rem;
     margin-right: 3rem;
+    padding: 20px;
+  }
+
+  .landing-section-four {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    & h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    & img {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
   }
 }
 
@@ -261,10 +294,32 @@ body {
     text-align: center;
     align-items: center;
   }
+
+  .landing-section-two {
+    padding: 0;
+    .card {
+      margin-left: 0;
+      margin-right: 0;
+      width: auto;
+    }
+  }
+
+  .landing-section-three {
+    & h1 {
+      text-align: center;
+      align-items: center;
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
   .landing-section-one {
+    & h1 {
+      font-size: 30px;
+    }
+  }
+
+  .landing-section-three {
     & h1 {
       font-size: 30px;
     }
