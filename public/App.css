@@ -436,6 +436,7 @@ footer {
 }
 #copy {
   margin-left: 10px;
+  font-size: 13px;
 }
 .flex-terms {
   display: flex;
@@ -477,9 +478,11 @@ svg:hover {
 }
 .copyright a {
   text-decoration: none;
+  font-size: 13px;
 }
 .glyphs {
   margin-right: 60px;
+  margin-bottom: 10px;
 }
 
 /* components/styles/Dashboard.scss */
