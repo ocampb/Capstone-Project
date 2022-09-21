@@ -17,6 +17,15 @@ const ApprovedLists = require("./server/routes/ApprovedList/app");
 const Webhook = require("./server/routes/Webhooks");
 const { UsersTable } = require("./models");
 
+const requestNewAccessToken = (refreshToken) => {
+  return axios.post(`${process.env.CALENDLY_AUTH_BASE_URL}/oauth/token`, {
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    grant_type: "refresh_token",
+    refresh_token: refreshToken,
+  });
+};
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -140,20 +149,6 @@ app.use("/api/userinfo", async (req, res) => {
       id: req.user.id,
     },
   });
-
-  // try {
-  //   const response = await axios.get(user.Calendly_ID, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer" + user.Access_Token,
-  //     },
-  //   });
-
-  //   res.json(response.data);
-  // } catch (e) {
-  //   res.sendStatus(400);
-  // }
-
   const options = {
     method: "GET",
     url: user.Calendly_ID,
@@ -162,15 +157,32 @@ app.use("/api/userinfo", async (req, res) => {
       Authorization: "Bearer " + user.Access_Token,
     },
   };
+  try {
+    const response = await axios.request(options);
+    return res.json(response.data.resource);
+  } catch (error) {
+    if (error.response.status !== 401) {
+      return res.sendStatus(400);
+    }
+  }
 
-  axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+  try {
+    const result = await requestNewAccessToken(user.Refresh_Token);
+    const { access_token, refresh_token } = result.data;
+
+    await UsersTable.update(
+      { Access_Token: access_token, Refresh_Token: refresh_token },
+      { where: { id: user.id } }
+    );
+
+    options.headers.Authorization = "Bearer " + access_token;
+
+    const response = await axios.request(options);
+    return res.json(response.data.resource);
+  } catch (e) {
+    console.error(e);
+    return res.sendStatus(400);
+  }
 });
 app.use("/logout", (req, res) => {
   if (req.user) {

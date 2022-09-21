@@ -29,10 +29,10 @@ const UserInfoDialog = () => {
     });
     const data = await result.json();
 
-    if (result.status === 401) {
-      setOpenUserInfo(true);
+    if (result.status === 200) {
       console.log(data);
       setUserInfo(data);
+      setOpenUserInfo(true);
     }
   };
   const handleCloseUserInfo = async () => setOpenUserInfo(false);
@@ -47,9 +47,11 @@ const UserInfoDialog = () => {
           marginRight: "10px",
         }}
         id="basic-button"
+
         aria-controls={openUserInfo ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={openUserInfo ? "true" : undefined}
+
         onClick={handleOpenUserInfo}
       >
         User Information

@@ -36,9 +36,7 @@ router.post("/", verifyWebhook, async (req, res) => {
       Authorization: "Bearer " + user.Access_Token,
     },
     data: {
-      canceled_by: "Protectly on behalf of Calendly User.",
       reason: user.cancel_message,
-      canceler_type: "host",
     },
   };
 
