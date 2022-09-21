@@ -165,6 +165,9 @@ const Navbar = (props) => {
               }}
             >
               <MenuItem onClick={handleCloseSettings}>
+                <UserInfoDialog />
+              </MenuItem>
+              <MenuItem onClick={handleCloseSettings}>
                 <Dialog />
               </MenuItem>
             </Menu>
@@ -190,7 +193,6 @@ const Navbar = (props) => {
       </AppBar>
       <Box component="nav">
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}

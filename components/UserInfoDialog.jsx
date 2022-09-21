@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 
-const Dialog = () => {
+const UserInfoDialog = () => {
   const navigate = useNavigate();
   // Delete account modal
   const [openSettings, setOpenSettings] = React.useState(false);
@@ -44,6 +44,7 @@ const Dialog = () => {
     const data = await result.json();
 
     if (result.status === 200) {
+      console.log(data);
       setUserInfo(data);
       setOpenUserInfo(true);
     }
@@ -52,7 +53,7 @@ const Dialog = () => {
 
   return (
     <div>
-      <Button
+      {/* <Button
         sx={{
           color: "#221f1f",
           textTransform: "none",
@@ -65,9 +66,9 @@ const Dialog = () => {
         aria-expanded={openSettings ? "true" : undefined}
         onClick={handleOpenSettings}
       >
-        Delete Account
-      </Button>
-      {/* <Button
+        User Info
+      </Button> */}
+      <Button
         sx={{
           color: "#221f1f",
           textTransform: "none",
@@ -81,7 +82,7 @@ const Dialog = () => {
         onClick={handleOpenUserInfo}
       >
         User Information
-      </Button> */}
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -159,4 +160,4 @@ const Dialog = () => {
   );
 };
 
-export default Dialog;
+export default UserInfoDialog;
