@@ -13,7 +13,6 @@ import {
   setApprovedEmail,
   setApprovedName,
   setApprovedNotes,
-  setApprovedList,
 } from "../actions/addNewEmailFunctions";
 
 // Styling for MUI modal window

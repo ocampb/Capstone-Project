@@ -331,6 +331,9 @@ svg:hover {
 #button-modal:hover {
   background-color: #3b3b3b;
 }
+.loadingLine {
+  color: #221f1f;
+}
 #button-menu {
   color: #221f1f;
   background-color: #fff;
