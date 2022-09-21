@@ -20,6 +20,7 @@ import Dialog from "./Dialog";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import UserInfoDialog from "./UserInfoDialog";
 
 const drawerWidth = 240;
 
@@ -83,6 +84,9 @@ const Navbar = (props) => {
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 10 }}>
               <Dialog />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 10 }}>
+              <UserInfoDialog />
             </ListItemButton>
           </List>
         </Collapse>

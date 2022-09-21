@@ -35,20 +35,6 @@ const Dialog = () => {
     }
     setOpenSettings(false);
   };
-  const [openUserInfo, setOpenUserInfo] = React.useState(false);
-  const [userInfo, setUserInfo] = useState("");
-  const handleOpenUserInfo = async () => {
-    const result = await fetch("/api/userinfo", {
-      method: "GET",
-    });
-    const data = await result.json();
-
-    if (result.status === 200) {
-      setUserInfo(data);
-      setOpenUserInfo(true);
-    }
-  };
-  const handleCloseUserInfo = async () => setOpenUserInfo(false);
 
   return (
     <div>
@@ -67,21 +53,6 @@ const Dialog = () => {
       >
         Delete Account
       </Button>
-      {/* <Button
-        sx={{
-          color: "#221f1f",
-          textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
-        }}
-        id="basic-button"
-        aria-controls={openSettings ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={openSettings ? "true" : undefined}
-        onClick={handleOpenUserInfo}
-      >
-        User Information
-      </Button> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -121,37 +92,6 @@ const Dialog = () => {
                 }}
               />
             </div>
-          </Box>
-        </Fade>
-      </Modal>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={openSettings}
-        onClose={handleCloseUserInfo}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={openSettings}>
-          <Box sx={style}>
-            <div className="modal-close-icon">
-              <CloseIcon
-                onClick={handleCloseUserInfo}
-                sx={{ cursor: "pointer" }}
-              />
-            </div>
-
-            <Typography
-              id="transition-modal-title"
-              variant="h6"
-              component="h2"
-              ml="12px"
-            >
-              {userInfo}
-            </Typography>
           </Box>
         </Fade>
       </Modal>

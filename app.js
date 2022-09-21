@@ -149,7 +149,6 @@ app.use("/api/userinfo", async (req, res) => {
       id: req.user.id,
     },
   });
-
   const options = {
     method: "GET",
     url: user.Calendly_ID,
@@ -158,7 +157,6 @@ app.use("/api/userinfo", async (req, res) => {
       Authorization: "Bearer " + user.Access_Token,
     },
   };
-
   try {
     const response = await axios.request(options);
     return res.json(response.data.resource);
