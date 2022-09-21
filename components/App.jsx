@@ -12,7 +12,6 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
-import CancelMessage from "./CancelMessage";
 import calendar from "../assets/calendar.png";
 
 const App = () => {
