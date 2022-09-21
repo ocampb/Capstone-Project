@@ -67,7 +67,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // background-color: $whitesmoke;
+  height: 100vh;
   border-radius: 20px;
   padding: 4rem;
 
@@ -144,10 +144,16 @@ body {
   align-items: center;
 }
 
-.why-text-container {
+.why-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.why-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
 
   & span {
@@ -157,6 +163,7 @@ body {
   & p {
     font-size: 18px;
     margin: 20px;
+    width: 50rem;
   }
 }
 
@@ -169,7 +176,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  // background-color: $whitesmoke;
+  height: 100vh;
   border-radius: 20px;
   padding: 20px;
 
@@ -188,7 +195,78 @@ body {
   }
 }
 
-.space {
-  width: 100vw;
-  height: 10px;
+// Media Queries
+@media screen and (max-width: 1920px) {
+  .landing-section-one {
+    margin-top: 200px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .landing-section-one {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .landing-section-two {
+    display: block;
+    height: auto;
+
+    & h1 {
+      text-align: center;
+    }
+  }
+  .landing-cards {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .landing-section-one {
+    & img {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-section-one {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    & h3 {
+      font-size: 15px;
+    }
+  }
+
+  .landing-section-three {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .landing-section-one {
+    text-align: center;
+    // & h1 {
+    //   font-size: 25px;
+    // }
+
+    & h3 {
+      font-size: 12px;
+    }
+  }
+
+  .heading-container {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .landing-section-one {
+    & h1 {
+      font-size: 30px;
+    }
+  }
 }

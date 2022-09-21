@@ -80,11 +80,14 @@ const App = () => {
           </div>
         </div>
       </div>
+
       {/* Section three */}
       <div className="landing-section-three">
         <h1>Why People Choose Protectly</h1>
         <div className="why-container">
-          <img src={zoomgroup} alt="Zoom chat illustration" />
+          <div className="why-image-container">
+            <img src={zoomgroup} alt="Zoom chat illustration" />
+          </div>
           <div className="why-text-container">
             <p>
               <span>Executive Leadership:</span> Many leaders hesitate to use
@@ -108,12 +111,12 @@ const App = () => {
           </div>
         </div>
       </div>
+
       {/* Section 4 */}
       <div className="landing-section-four">
         <h1>Take the Meetings That Matter</h1>
         <img src={ipadwoman} alt="gif substitution" />
       </div>
-      <div className="space"></div>
       <Footer />
     </div>
   );
