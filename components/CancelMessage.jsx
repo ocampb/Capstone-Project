@@ -42,9 +42,9 @@ const CancelMessage = () => {
       <textarea
         onChange={(e) => setCancelMessage(dispatch, e.target.value)}
         name="cancel-message-textarea"
-        id=""
-        placeholder="Update your custom message here!"
-        cols="50"
+        id="cancel-box"
+        placeholder="Update your custom message here"
+        cols="71"
         rows="7"
       ></textarea>
       <input

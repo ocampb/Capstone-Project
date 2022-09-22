@@ -4,6 +4,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 html,
 body {
@@ -497,11 +498,10 @@ svg:hover {
 }
 .sub-nav {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: left;
   align-items: center;
-  margin: 1rem;
-  margin-top: 64px;
+  margin: 1rem 5rem 1rem 5rem;
+  border-bottom: 1px solid #e2e0e0;
 }
 #button-modal {
   color: #fff;
@@ -519,20 +519,24 @@ svg:hover {
 .loadingLine {
   color: #221f1f;
 }
-#button-menu {
-  color: #221f1f;
+.button-menu {
+  color: #857e90;
   background-color: #fff;
   border: none;
   cursor: pointer;
   text-transform: none;
   padding: 0.4rem 2rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.05s ease-in-out;
+  font-size: 16px;
 }
-#button-menu:hover {
-  background-color: #e2e0e0;
+.button-menu:hover {
+  background-color: #f3f5f7;
 }
-.activeButton {
-  border-bottom: 1px solid #221f1f !important;
+#activeButton {
+  color: #221f1f;
+  font-weight: 500;
+  transition: all 0.1s ease-in-out;
+  border-bottom: 1px solid #221f1f;
 }
 .modal-close-icon {
   display: flex;
@@ -557,8 +561,8 @@ svg:hover {
 .cancel-message {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  width: 30rem;
+  text-align: left;
+  max-width: 30rem;
   justify-content: center;
   gap: 30px;
   align-items: center;
@@ -572,6 +576,9 @@ textarea {
   border-right: none;
   border-bottom: 2px solid #857e90;
   padding: 5px;
+}
+#cancel-box {
+  background-color: #f3f5f7;
 }
 .submit-email {
   display: flex;
@@ -632,7 +639,15 @@ table tr:nth-last-child(-n+1) td {
 #basic-button:hover {
   background-color: #f3f5f7;
 }
+@media screen and (max-width: 1000px) {
+  .table-flex {
+    max-width: 700px;
+  }
+}
 @media screen and (max-width: 768px) {
+  .table-flex {
+    max-width: 400px;
+  }
   td,
   tr {
     display: block;
@@ -686,11 +701,56 @@ table tr:nth-last-child(-n+1) td {
   table td:before {
     display: block;
     margin-right: 0;
-    width: 50%;
+    width: 40%;
   }
   table td div {
     display: block;
     width: 50%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .sub-nav {
+    flex-direction: column;
+    align-items: inherit;
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .sub-nav input:nth-child(1) {
+    border: 1px solid #e2e0e0;
+    border-bottom: 1px solid #e2e0e0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .sub-nav input:nth-child(2) {
+    border-left: 1px solid #e2e0e0;
+    border-right: 1px solid #e2e0e0;
+    border-bottom: 1px solid #e2e0e0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .sub-nav .button-menu:nth-child(2):hover {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .sub-nav #activeButton {
+    border-bottom: 1px solid #e2e0e0;
+    background-color: #f3f5f7;
+  }
+}
+@media screen and (max-width: 550px) {
+  .cancel-message {
+    max-width: 20rem;
+    margin-bottom: 175px;
+  }
+  #cancel-box {
+    max-width: 20rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .button-menu {
+    font-size: 12px;
+    padding: 0.4rem 1rem;
   }
 }
 @media screen and (max-width: 450px) {
