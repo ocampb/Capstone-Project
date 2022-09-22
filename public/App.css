@@ -170,7 +170,7 @@ body {
   font-weight: 400;
   font-size: 40px;
 }
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2000px) {
   .landing-section-one {
     margin-top: 200px;
   }

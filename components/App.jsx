@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { useState, useEffect } from "react";
 import { applyMiddleware, createStore } from "redux";
+import { useRef } from "react";
 import rootReducer from "../reducers/rootReducer";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
@@ -18,6 +19,11 @@ import ipadwoman from "../assets/ipadwoman.png";
 import Footer from "./Footer";
 
 const App = () => {
+  const myRef = useRef();
+  useEffect(() => {
+    console.log("myRef", myRef.current);
+  }, []);
+
   const [login, setLogin] = useState(false);
   const isUserLoggedIn = async () => {
     const result = await fetch("/api/dashboard/login", {
@@ -54,7 +60,7 @@ const App = () => {
 
       {/* Section 2 */}
       <div className="landing-section-two">
-        <h1>How Protectly Works</h1>
+        <h1 ref={myRef}>How Protectly Works</h1>
         <div className="landing-cards">
           <div className="card">
             <h3>Connect</h3>
