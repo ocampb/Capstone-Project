@@ -39,6 +39,7 @@ const App = () => {
   return (
     <div>
       {login ? <Navbar /> : <LandingNavbar />}
+
       {/* Section 1 */}
       <div className="landing-section-one">
         <div className="heading-container">
