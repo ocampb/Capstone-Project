@@ -21,6 +21,7 @@ import { Button } from "@mui/material";
 import Footer from "./Footer";
 
 const App = () => {
+  //const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   const isUserLoggedIn = async () => {

@@ -40,11 +40,10 @@ const UserInfoDialog = () => {
   return (
     <div>
       <Button
+        className="user-info-button"
         sx={{
           color: "#221f1f",
           textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
         }}
         id="basic-button"
         aria-controls={openUserInfo ? "basic-menu" : undefined}
