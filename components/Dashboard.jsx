@@ -153,17 +153,16 @@ const Dashboard = () => {
       </div>
       <div className="sub-nav">
         <input
-          className={componentChoice === false ? "activeButton" : undefined}
+          className="button-menu"
           type="button"
-          id="button-menu"
+          id={componentChoice === false ? "activeButton" : undefined}
           value="Approved Email List"
           onClick={handleEmailToggle}
         />
-        <p> | </p>
         <input
-          className={componentChoice === true ? "activeButton" : undefined}
+          className="button-menu"
           type="button"
-          id="button-menu"
+          id={componentChoice === true ? "activeButton" : undefined}
           value="Customize Cancellation Message"
           onClick={handleCancelToggle}
         />
