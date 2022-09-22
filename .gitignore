@@ -1,3 +1,5 @@
 .env
 node_modules
+public/App.css
+public/App.js
 .DS_Store
