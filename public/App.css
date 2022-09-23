@@ -339,13 +339,13 @@ body {
   .landing-section-four img {
     margin-left: 3rem;
     margin-right: 3rem;
-    width: 600px;
+    width: 650px;
     height: 500px;
   }
 }
 @media screen and (max-width: 650px) {
   .landing-section-four img {
-    width: 500px;
+    width: 550px;
     height: 400px;
   }
 }
@@ -386,7 +386,7 @@ body {
   }
   .landing-section-four img {
     width: 350px;
-    height: 200px;
+    height: 270px;
   }
 }
 @media screen and (max-width: 400px) {
@@ -398,7 +398,7 @@ body {
   }
   .landing-section-four img {
     width: 300px;
-    height: 200px;
+    height: 230px;
     margin-bottom: 0;
   }
 }
