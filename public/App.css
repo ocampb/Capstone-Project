@@ -136,8 +136,8 @@ body {
   margin-bottom: 100px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   background-color: #f3f5f7;
   border-radius: 20px;
   padding: 20px;
@@ -182,14 +182,14 @@ body {
   max-width: 50rem;
 }
 .landing-section-four {
-  margin-top: 100px;
+  margin-top: 200px;
   margin-left: 5rem;
   margin-right: 5rem;
   margin-bottom: 100px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   border-radius: 20px;
   padding: 20px;
@@ -198,9 +198,10 @@ body {
   background-color: #f3f5f7;
   border-radius: 20px;
   padding: 20px;
-  width: 400px;
-  height: 400px;
+  max-width: 700px;
+  max-height: 550px;
   transition: all 0.3s ease-in-out;
+  margin-bottom: 100px;
 }
 .landing-section-four img:hover {
   transform: scale(1.03);
@@ -209,6 +210,11 @@ body {
   margin: 20px;
   font-weight: 400;
   font-size: 40px;
+}
+.gif-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header-roll-in {
   animation-duration: 2s;
@@ -280,6 +286,9 @@ body {
   .scroll {
     animation: none;
   }
+  .landing-section-four {
+    margin-top: 100px;
+  }
 }
 @media screen and (max-width: 1220px) {
   .landing-section-three img {
@@ -289,6 +298,14 @@ body {
 @media screen and (max-width: 1100px) {
   .landing-section-one img {
     display: none;
+  }
+}
+@media screen and (max-width: 845px) {
+  .landing-section-three h1 {
+    text-align: center;
+  }
+  .landing-section-four h1 {
+    text-align: center;
   }
 }
 @media screen and (max-width: 768px) {
@@ -322,6 +339,26 @@ body {
   .landing-section-four img {
     margin-left: 3rem;
     margin-right: 3rem;
+    width: 600px;
+    height: 500px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .landing-section-four img {
+    width: 500px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .landing-section-three {
+    margin-bottom: 30px;
+  }
+  .landing-section-four {
+    margin-top: 0;
+  }
+  .landing-section-four img {
+    width: 400px;
+    height: 300px;
   }
 }
 @media screen and (max-width: 500px) {
@@ -347,6 +384,10 @@ body {
     text-align: center;
     align-items: center;
   }
+  .landing-section-four img {
+    width: 350px;
+    height: 200px;
+  }
 }
 @media screen and (max-width: 400px) {
   .landing-section-one h1 {
@@ -354,6 +395,11 @@ body {
   }
   .landing-section-three h1 {
     font-size: 30px;
+  }
+  .landing-section-four img {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 0;
   }
 }
 
@@ -419,13 +465,14 @@ a {
 }
 .protectly-container h1 {
   font-weight: 400;
-  margin: 10px 0 30px 20px;
+  margin: 10px 0 30px 24px;
+  font-size: 30px;
 }
 .form-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 10rem 12rem 6.25rem 12rem;
 }
 .form-container p {
@@ -460,7 +507,7 @@ li:nth-child(1) {
   padding: 12px;
   transition: all 0.3s ease-in-out;
   font-size: 15px;
-  width: 100%;
+  width: 20rem;
   margin-top: 10px;
 }
 .form-button:hover {
@@ -540,7 +587,7 @@ footer {
   margin-top: 20px;
 }
 #copy {
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 13px;
 }
 .flex-terms {
@@ -663,12 +710,12 @@ svg:hover {
 }
 .cancel-message {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: left;
   max-width: 30rem;
-  justify-content: center;
   gap: 30px;
-  align-items: center;
   margin: 1rem;
   margin-top: 64px;
 }
@@ -713,6 +760,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 table {
   flex-direction: column;
@@ -869,5 +917,10 @@ table tr:nth-last-child(-n+1) td {
   }
   table td div {
     width: 60%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dash-add h1 {
+    font-size: 25px;
   }
 }
