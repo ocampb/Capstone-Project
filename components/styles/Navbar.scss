@@ -58,3 +58,9 @@ a {
   text-align: left;
   margin-left: 65px;
 }
+
+@media screen and (max-width: 600px) {
+  #basic-button:hover {
+    transform: none;
+  }
+}
