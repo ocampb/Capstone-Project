@@ -151,21 +151,17 @@ router.delete("/emaildelete/:id", isUserAuthenticated, async (req, res) => {
 router.delete("/userdelete", isUserAuthenticated, async (req, res) => {
   const id = req.user.id;
   try {
-    const findUser = await UsersTable.findOne({
+    await ApprovedList.destroy({
+      where: {
+        User_ID: id,
+      },
+    });
+    await UsersTable.destroy({
       where: {
         id: id,
       },
     });
-    if (findUser) {
-      const findEmails = await ApprovedList.findAll({
-        where: {
-          User_ID: id,
-        },
-      });
-      findEmails.destroy();
-      findUser.destroy();
-      res.status(200).redirect("/");
-    }
+    res.status(200).redirect("/");
   } catch (error) {
     res.status(400).send(error);
   }
