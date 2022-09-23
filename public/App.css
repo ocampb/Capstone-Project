@@ -52,7 +52,7 @@ body {
   margin: 10px;
   margin-left: 0;
 }
-.get-started-link {
+#get-started-link {
   background-color: #221f1f;
   color: #fff;
   padding: 10px;
@@ -79,7 +79,7 @@ body {
     transform: translatey(0px);
   }
 }
-.get-started-link:hover {
+#get-started-link:hover {
   background-color: #3b3b3b;
 }
 .landing-section-two {

@@ -70,7 +70,7 @@ const App = () => {
               paddingLeft: "20px",
               paddingRight: "20px",
             }}
-            id="logout-button"
+            id="get-started-link"
           >
             Get Started
           </Button>
