@@ -13,9 +13,12 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import logger from "redux-logger";
 import LandingNavbar from "./LandingNavbar";
+import PageNotFound from "./PageNotFound";
 import calendar from "../assets/calendar.png";
 import zoomgroup from "../assets/zoomgroup.png";
 import ipadwoman from "../assets/ipadwoman.png";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import Footer from "./Footer";
 
 const App = () => {
@@ -25,6 +28,8 @@ const App = () => {
   const { ref: whyParTwoRef, inView: visibilityParTwo } = useInView();
   const { ref: whyParThreeRef, inView: visibilityParThree } = useInView();
   const { ref: gifRef, inView: visibilityGif } = useInView();
+
+  const navigate = useNavigate();
 
   const [login, setLogin] = useState(false);
   const isUserLoggedIn = async () => {
@@ -51,9 +56,24 @@ const App = () => {
             Protectly will automatically cancel meetings that are not on your
             approved list.
           </h3>
-          <a href="/oauth" className="get-started-link">
+          <Button
+            onClick={() => {
+              navigate("/signup");
+            }}
+            sx={{
+              color: "#fff",
+              textTransform: "none",
+              backgroundColor: "#221f1f",
+              borderRadius: "30px",
+              marginLeft: "10px",
+              marginRight: "10px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+            }}
+            id="logout-button"
+          >
             Get Started
-          </a>
+          </Button>
         </div>
         <div className="heading-picture-container">
           <img src={calendar} alt="Calendar illustration" />
@@ -153,6 +173,7 @@ window.onload = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
+            <Route path="*" element={<PageNotFound />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />

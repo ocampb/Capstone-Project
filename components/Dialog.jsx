@@ -42,8 +42,8 @@ const Dialog = () => {
         sx={{
           color: "#221f1f",
           textTransform: "none",
-          marginLeft: "10px",
-          marginRight: "10px",
+          marginLeft: "0px",
+          marginRight: "0px",
         }}
         id="basic-button"
         aria-controls={openSettings ? "basic-menu" : undefined}

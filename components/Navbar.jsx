@@ -36,10 +36,10 @@ const Navbar = (props) => {
   };
 
   // Hamburger settings nested list
-  const [openHam, setOpenHam] = React.useState(true);
+  const [openHam, setOpenHam] = React.useState(false);
 
   const handleClickSettings = () => {
-    setOpenHam(!openHam);
+    setOpenHam((prev) => !openHam);
   };
 
   // Delete account modal (Works alongside Dialog.jsx)

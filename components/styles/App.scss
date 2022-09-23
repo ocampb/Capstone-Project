@@ -14,6 +14,15 @@ body {
   height: 100%;
 }
 
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 100px;
+  margin-left: 5rem;
+  gap: 2rem;
+}
+
 .landing-section-one {
   margin-top: 100px;
   margin-left: 5rem;

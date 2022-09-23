@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Dashboard.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
@@ -12,6 +12,7 @@ import EmailTable from "./EmailTable";
 import LoadCancel from "./LoadCancel";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import LandingNavbar from "./LandingNavbar";
 import {
   NewApprovedState,
   setApprovedEmail,
@@ -36,6 +37,18 @@ const Dashboard = () => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const dispatch = useDispatch();
+  const [login, setLogin] = useState(false);
+  const isUserLoggedIn = async () => {
+    const result = await fetch("/api/dashboard/login", {
+      method: "GET",
+    });
+    if (result.status === 200) {
+      setLogin((prev) => true);
+    }
+  };
+  useEffect(() => {
+    isUserLoggedIn();
+  }, []);
   const handleApproved = (dispatch, approved) => {
     NewApprovedState(dispatch, approved);
   };
@@ -68,7 +81,7 @@ const Dashboard = () => {
   const handleCancelToggle = () => setComponentChoice((prev) => true);
   return (
     <div>
-      <Navbar />;
+      {login ? <Navbar /> : <LandingNavbar />}
       <div className="dash-add">
         <h1>My Dashboard</h1>
 
