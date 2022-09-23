@@ -9,5 +9,6 @@ require("esbuild").build({
   loader: {
     ".jpg": "dataurl",
     ".png": "dataurl",
+    ".gif": "dataurl",
   },
 });

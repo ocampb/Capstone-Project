@@ -80,13 +80,11 @@
 }
 
 .cancel-message {
-  display: flex;
+  @include flex;
   flex-direction: column;
   text-align: left;
   max-width: 30rem;
-  justify-content: center;
   gap: 30px;
-  align-items: center;
   margin: 1rem;
   margin-top: 64px;
 }
@@ -129,8 +127,10 @@ textarea {
 #add-email-button:hover {
   transform: translateY(-2px);
 }
+
 .table-flex {
   @include flex;
+  margin-bottom: 100px;
 }
 
 table {
@@ -322,5 +322,13 @@ table {
 
   table td div {
     width: 60%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dash-add {
+    & h1 {
+      font-size: 25px;
+    }
   }
 }

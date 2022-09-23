@@ -16,7 +16,7 @@ import LandingNavbar from "./LandingNavbar";
 import PageNotFound from "./PageNotFound";
 import calendar from "../assets/calendar.png";
 import zoomgroup from "../assets/zoomgroup.png";
-import ipadwoman from "../assets/ipadwoman.png";
+import giffinal from "../assets/giffinal.gif";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Footer from "./Footer";
@@ -153,10 +153,10 @@ const App = () => {
       <div className="landing-section-four">
         <h1>Take the Meetings That Matter</h1>
         <img
-          src={ipadwoman}
+          src={giffinal}
           alt="gif substitution"
           ref={gifRef}
-          className={`${visibilityGif ? "gif-roll-in" : ""}`}
+          className={`gif-flex ${visibilityGif ? "gif-roll-in" : ""}`}
         />
       </div>
       <Footer />

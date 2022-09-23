@@ -27,9 +27,7 @@ body {
   margin-top: 100px;
   margin-left: 5rem;
   margin-right: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   background-color: $whitesmoke;
   border-radius: 20px;
   padding: 20px;
@@ -100,9 +98,7 @@ body {
   margin-left: 5rem;
   margin-right: 5rem;
   margin-bottom: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   flex-direction: column;
   height: 100vh;
   border-radius: 20px;
@@ -116,9 +112,7 @@ body {
 }
 
 .landing-cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
 }
 
 .card {
@@ -154,10 +148,8 @@ body {
   margin-left: 5rem;
   margin-right: 5rem;
   margin-bottom: 100px;
-  display: flex;
-  justify-content: center;
+  @include flex;
   flex-direction: column;
-  align-items: center;
   background-color: $whitesmoke;
   border-radius: 20px;
   padding: 20px;
@@ -182,15 +174,11 @@ body {
 }
 
 .why-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
 }
 
 .why-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
 }
 
 $duration: 0.2s;
@@ -215,14 +203,12 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .landing-section-four {
-  margin-top: 100px;
+  margin-top: 200px;
   margin-left: 5rem;
   margin-right: 5rem;
   margin-bottom: 100px;
-  display: flex;
-  justify-content: center;
+  @include flex;
   flex-direction: column;
-  align-items: center;
   height: 100vh;
   border-radius: 20px;
   padding: 20px;
@@ -231,9 +217,10 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background-color: $whitesmoke;
     border-radius: 20px;
     padding: 20px;
-    width: 400px;
-    height: 400px;
+    max-width: 700px;
+    max-height: 550px;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 100px;
   }
 
   & img:hover {
@@ -245,6 +232,10 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 400;
     font-size: 40px;
   }
+}
+
+.gif-flex {
+  @include flex;
 }
 
 // Scroll Animations
@@ -331,6 +322,10 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   .scroll {
     animation: none;
   }
+
+  .landing-section-four {
+    margin-top: 100px;
+  }
 }
 
 @media screen and (max-width: 1220px) {
@@ -345,6 +340,19 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   .landing-section-one {
     & img {
       display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .landing-section-three {
+    & h1 {
+      text-align: center;
+    }
+  }
+  .landing-section-four {
+    & h1 {
+      text-align: center;
     }
   }
 }
@@ -386,6 +394,30 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     & img {
       margin-left: 3rem;
       margin-right: 3rem;
+      width: 600px;
+      height: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .landing-section-four {
+    & img {
+      width: 500px;
+      height: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .landing-section-three {
+    margin-bottom: 30px;
+  }
+  .landing-section-four {
+    margin-top: 0;
+    & img {
+      width: 400px;
+      height: 300px;
     }
   }
 }
@@ -419,6 +451,13 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       align-items: center;
     }
   }
+
+  .landing-section-four {
+    & img {
+      width: 350px;
+      height: 200px;
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -431,6 +470,14 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   .landing-section-three {
     & h1 {
       font-size: 30px;
+    }
+  }
+
+  .landing-section-four {
+    & img {
+      width: 300px;
+      height: 200px;
+      margin-bottom: 0;
     }
   }
 }
