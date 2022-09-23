@@ -26,6 +26,7 @@ const Dialog = () => {
   // Delete account modal
   const [openSettings, setOpenSettings] = React.useState(false);
   const handleOpenSettings = () => setOpenSettings(true);
+  const handleCloseSymbol = () => setOpenSettings(false);
   const handleCloseSettings = async () => {
     const result = await fetch("/api/dashboard/userdelete", {
       method: "DELETE",
@@ -68,7 +69,7 @@ const Dialog = () => {
           <Box sx={style}>
             <div className="modal-close-icon">
               <CloseIcon
-                onClick={handleCloseSettings}
+                onClick={handleCloseSymbol}
                 sx={{ cursor: "pointer" }}
               />
             </div>

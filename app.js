@@ -93,6 +93,8 @@ passport.use(
             Calendly_ID: data.resource.uri,
             Refresh_Token: refreshToken,
             Access_Token: accessToken,
+            cancel_message:
+              "This meeting has been automatically cancelled by Protectly (protectly.cloud) because the invitee was not on a list of approved users. Please reach out to the meeting host to get your email address added to their list of approved users. powered by Protectly (protectly.cloud)",
           });
 
           // create webhook subscription
