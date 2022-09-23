@@ -29,6 +29,7 @@
 
 #button-modal:hover {
   background-color: $hovercolor;
+  transform: translateY(-2px);
 }
 
 .loadingLine {
@@ -42,7 +43,7 @@
   cursor: pointer;
   text-transform: none;
   padding: 0.4rem 2rem;
-  transition: all 0.05s ease-in-out;
+  transition: all 0.3s ease-in-out;
   font-size: 16px;
 }
 
@@ -50,19 +51,10 @@
   background-color: $whitesmoke;
 }
 
-// .button-menu:nth-child(1):hover {
-//   border-top-right-radius: 10px;
-//   border-top-left-radius: 10px;
-// }
-// .button-menu:nth-child(2):hover {
-//   border-top-right-radius: 10px;
-//   border-top-left-radius: 10px;
-// }
-
 #activeButton {
   color: $black;
   font-weight: 500;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-bottom: 1px solid $black;
 }
 
@@ -127,8 +119,16 @@ textarea {
 
 .submit-inputs-button:hover {
   background-color: $hovercolor;
+  transform: translateY(-2px);
 }
 
+#add-email-button {
+  transition: all 0.3s ease-in-out;
+}
+
+#add-email-button:hover {
+  transform: translateY(-2px);
+}
 .table-flex {
   @include flex;
 }

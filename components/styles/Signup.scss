@@ -70,6 +70,7 @@ li:nth-child(1) {
 
 .form-button:hover {
   background-color: $hovercolor;
+  transform: translateY(-2px);
 }
 
 // Media Queries
@@ -102,6 +103,10 @@ li:nth-child(1) {
   .login-link-container {
     width: 100vw;
     flex-direction: column;
+
+    & img {
+      margin-bottom: 10rem;
+    }
   }
 
   .form-container {

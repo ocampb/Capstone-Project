@@ -30,6 +30,12 @@ body {
   border-radius: 20px;
   padding: 20px;
 }
+.landing-section-one img {
+  transition: all 0.3s ease-in-out;
+}
+.landing-section-one img:hover {
+  transform: scale(1.03);
+}
 .heading-container {
   text-align: left;
   display: flex;
@@ -54,6 +60,24 @@ body {
   width: 10rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-name: get-started;
+}
+@keyframes get-started {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-5px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
 }
 .get-started-link:hover {
   background-color: #3b3b3b;
@@ -128,6 +152,10 @@ body {
   height: 400px;
   margin-right: 60px;
   margin-left: 60px;
+  transition: all 0.3s ease-in-out;
+}
+.landing-section-three img:hover {
+  transform: scale(1.03);
 }
 .why-container {
   display: flex;
@@ -172,13 +200,63 @@ body {
   padding: 20px;
   width: 400px;
   height: 400px;
+  transition: all 0.3s ease-in-out;
+}
+.landing-section-four img:hover {
+  transform: scale(1.03);
 }
 .landing-section-four h1 {
   margin: 20px;
   font-weight: 400;
   font-size: 40px;
 }
-@media screen and (max-width: 1920px) {
+.header-roll-in {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+.scroll {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+.gif-roll-in {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+@keyframes animate-header {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.why-par-one {
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+.why-par-two {
+  animation-delay: 0.1s;
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+.why-par-three {
+  animation-delay: 0.2s;
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+@keyframes animate-paragraphs {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media screen and (max-width: 2000px) {
   .landing-section-one {
     margin-top: 200px;
   }
@@ -198,6 +276,9 @@ body {
   }
   .landing-cards {
     flex-direction: column;
+  }
+  .scroll {
+    animation: none;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -285,6 +366,7 @@ a {
 .logo {
   font-size: 30px;
   font-weight: 400;
+  transition: all 0.3s ease-in-out;
 }
 .settings-icon {
   padding: 2px;
@@ -294,11 +376,30 @@ a {
   background-color: #fff;
   box-shadow: none;
 }
+#basic-button {
+  transition: all 0.3s ease-in-out;
+}
+#basic-button:hover {
+  transform: translateY(-2px);
+}
+#dashboard-button {
+  transition: all 0.3s ease-in-out;
+}
+#dashboard-button:hover {
+  transform: translateY(-2px);
+}
 #logout-button {
   transition: all 0.3s ease-in-out;
 }
 #logout-button:hover {
   background-color: #3b3b3b;
+  transform: translateY(-2px);
+}
+#login-button {
+  transition: all 0.3s ease-in-out;
+}
+#login-button:hover {
+  transform: translateY(-2px);
 }
 .drawer-item {
   text-align: left;
@@ -364,6 +465,7 @@ li:nth-child(1) {
 }
 .form-button:hover {
   background-color: #3b3b3b;
+  transform: translateY(-2px);
 }
 @media screen and (max-width: 1700px) {
   .form-container {
@@ -390,6 +492,9 @@ li:nth-child(1) {
   .login-link-container {
     width: 100vw;
     flex-direction: column;
+  }
+  .login-link-container img {
+    margin-bottom: 10rem;
   }
   .form-container {
     margin-left: 12rem;
@@ -427,23 +532,12 @@ footer {
   bottom: 0px;
   left: 0px;
 }
-#nav-branding a {
-  background-color: #fff;
-  color: #262322;
-}
-.brand {
-  width: 100vw;
-  height: 40px;
-  background-color: #fff;
-  color: #262322;
-  display: flex;
-  justify-content: center;
-}
 .copyright {
   background-color: #fff;
   color: #262322;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 #copy {
   margin-left: 10px;
@@ -523,6 +617,7 @@ svg:hover {
 }
 #button-modal:hover {
   background-color: #3b3b3b;
+  transform: translateY(-2px);
 }
 .loadingLine {
   color: #221f1f;
@@ -534,7 +629,7 @@ svg:hover {
   cursor: pointer;
   text-transform: none;
   padding: 0.4rem 2rem;
-  transition: all 0.05s ease-in-out;
+  transition: all 0.3s ease-in-out;
   font-size: 16px;
 }
 .button-menu:hover {
@@ -543,7 +638,7 @@ svg:hover {
 #activeButton {
   color: #221f1f;
   font-weight: 500;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-bottom: 1px solid #221f1f;
 }
 .modal-close-icon {
@@ -606,6 +701,13 @@ textarea {
 }
 .submit-inputs-button:hover {
   background-color: #3b3b3b;
+  transform: translateY(-2px);
+}
+#add-email-button {
+  transition: all 0.3s ease-in-out;
+}
+#add-email-button:hover {
+  transform: translateY(-2px);
 }
 .table-flex {
   display: flex;

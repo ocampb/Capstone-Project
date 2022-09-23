@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { useState, useEffect } from "react";
 import { applyMiddleware, createStore } from "redux";
+import { useInView } from "react-intersection-observer";
 import rootReducer from "../reducers/rootReducer";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
@@ -21,8 +22,15 @@ import { Button } from "@mui/material";
 import Footer from "./Footer";
 
 const App = () => {
-  //const [message, setMessage] = useState("");
+  // scroll behavior functionality
+  const { ref: cardRef, inView: visibility } = useInView();
+  const { ref: whyParOneRef, inView: visibilityParOne } = useInView();
+  const { ref: whyParTwoRef, inView: visibilityParTwo } = useInView();
+  const { ref: whyParThreeRef, inView: visibilityParThree } = useInView();
+  const { ref: gifRef, inView: visibilityGif } = useInView();
+
   const navigate = useNavigate();
+
   const [login, setLogin] = useState(false);
   const isUserLoggedIn = async () => {
     const result = await fetch("/api/dashboard/login", {
@@ -41,7 +49,7 @@ const App = () => {
       {login ? <Navbar /> : <LandingNavbar />}
 
       {/* Section 1 */}
-      <div className="landing-section-one">
+      <div className="landing-section-one header-roll-in">
         <div className="heading-container">
           <h1>Secure your Calendly links and let us do the heavy lifting</h1>
           <h3>
@@ -74,23 +82,23 @@ const App = () => {
 
       {/* Section 2 */}
       <div className="landing-section-two">
-        <h1>How Protectly Works</h1>
+        <h1 className="">How Protectly Works</h1>
         <div className="landing-cards">
-          <div className="card">
+          <div ref={cardRef} className={`card ${visibility ? "scroll" : ""}`}>
             <h3>Connect</h3>
             <p>
               Connect your Calendly Account to Protectly and automatically
               create your Protectly account.
             </p>
           </div>
-          <div className="card">
+          <div ref={cardRef} className={`card ${visibility ? "scroll" : ""}`}>
             <h3>Authorize</h3>
             <p>
               Tell Protectly who is allowed to schedule meetings with you. List
               out the email addresses and let Protectly do the work.
             </p>
           </div>
-          <div className="card">
+          <div ref={cardRef} className={`card ${visibility ? "scroll" : ""}`}>
             <h3>Rest Easy</h3>
             <p>
               Rest easy knowing that Protectly protects your calendar and your
@@ -109,21 +117,30 @@ const App = () => {
             <img src={zoomgroup} alt="Zoom chat illustration" />
           </div>
           <div className="why-text-container">
-            <p>
+            <p
+              ref={whyParOneRef}
+              className={`${visibilityParOne ? "why-par-one" : ""}`}
+            >
               <span>Executive Leadership:</span> Many leaders hesitate to use
               Calendly because they don’t want a public facing link that allows
               for anyone to book with them. With Protectly, they can set up
               their list of approved users and schedule easy knowing that
               unimportant meetings won’t slide into their limited availability.
             </p>
-            <p>
+            <p
+              ref={whyParTwoRef}
+              className={`${visibilityParTwo ? "why-par-two" : ""}`}
+            >
               <span>Customer Experience:</span> When support teams work with
               customers, they can provide a Calendly link to help fix a specific
               issue. In some cases, customers continue using that link to book
               meetings for help - even if processes have changed and a meeting
               is no longer the protocol for problem solving.
             </p>
-            <p>
+            <p
+              ref={whyParThreeRef}
+              className={`${visibilityParThree ? "why-par-three" : ""}`}
+            >
               <span>Education:</span> Teachers and professors can limit their
               availability to only their current classes or to current parents
               of their students.
@@ -135,7 +152,12 @@ const App = () => {
       {/* Section 4 */}
       <div className="landing-section-four">
         <h1>Take the Meetings That Matter</h1>
-        <img src={ipadwoman} alt="gif substitution" />
+        <img
+          src={ipadwoman}
+          alt="gif substitution"
+          ref={gifRef}
+          className={`${visibilityGif ? "gif-roll-in" : ""}`}
+        />
       </div>
       <Footer />
     </div>
