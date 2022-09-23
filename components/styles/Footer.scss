@@ -9,25 +9,12 @@ footer {
   left: 0px;
 }
 
-#nav-branding a {
-  background-color: $white;
-  color: #262322;
-}
-
-.brand {
-  width: 100vw;
-  height: 40px;
-  background-color: $white;
-  color: #262322;
-  display: flex;
-  justify-content: center;
-}
-
 .copyright {
   background-color: $white;
   color: #262322;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 #copy {

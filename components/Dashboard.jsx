@@ -132,6 +132,7 @@ const Dashboard = () => {
                   onClick={() => {
                     handleSubmit(dispatch, approved);
                   }}
+                  id="add-email-button"
                 />
               </div>
             </Box>

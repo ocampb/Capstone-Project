@@ -56,9 +56,11 @@ const Navbar = (props) => {
 
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Protectly
-      </Typography>
+      <Link to="/">
+        <Typography variant="h6" sx={{ my: 2 }}>
+          Protectly
+        </Typography>
+      </Link>
       <Divider />
       <List>
         <ListItem disablePadding>
@@ -93,9 +95,6 @@ const Navbar = (props) => {
       </List>
     </Box>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -140,6 +139,7 @@ const Navbar = (props) => {
                   marginLeft: "10px",
                   marginRight: "10px",
                 }}
+                id="dashboard-button"
               >
                 Dashboard
               </Button>

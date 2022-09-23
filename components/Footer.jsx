@@ -8,12 +8,6 @@ const Footer = () => {
   return (
     <div>
       <footer>
-        <div className="brand">
-          <div id="nav-branding">
-            <a href="#"></a>
-          </div>
-        </div>
-
         <div className="copyright">
           <div id="copy">©2022 Protectly, Inc. All Rights Reserved.</div>
           <div className="glyphs">

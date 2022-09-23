@@ -27,9 +27,11 @@ const LandingNavbar = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Protectly
-      </Typography>
+      <Link to="/">
+        <Typography variant="h6" sx={{ my: 2 }}>
+          Protectly
+        </Typography>
+      </Link>
       <Divider />
       <List>
         <ListItem disablePadding>
@@ -95,6 +97,7 @@ const LandingNavbar = (props) => {
                   marginLeft: "10px",
                   marginRight: "10px",
                 }}
+                id="login-button"
               >
                 Login
               </Button>

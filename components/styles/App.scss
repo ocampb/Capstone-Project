@@ -24,6 +24,14 @@ body {
   background-color: $whitesmoke;
   border-radius: 20px;
   padding: 20px;
+
+  & img {
+    transition: all 0.3s ease-in-out;
+  }
+
+  & img:hover {
+    transform: scale(1.03);
+  }
 }
 
 .heading-container {
@@ -53,6 +61,25 @@ body {
   width: 10rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-name: get-started;
+}
+
+@keyframes get-started {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-5px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
 }
 
 .get-started-link:hover {
@@ -137,6 +164,11 @@ body {
     height: 400px;
     margin-right: 60px;
     margin-left: 60px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  & img:hover {
+    transform: scale(1.03);
   }
 }
 
@@ -151,6 +183,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+$duration: 0.2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 .why-text-container {
   display: flex;
@@ -188,12 +224,72 @@ body {
     padding: 20px;
     width: 400px;
     height: 400px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  & img:hover {
+    transform: scale(1.03);
   }
 
   & h1 {
     margin: 20px;
     font-weight: 400;
     font-size: 40px;
+  }
+}
+
+// Scroll Animations
+.header-roll-in {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+
+.scroll {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+
+.gif-roll-in {
+  animation-duration: 2s;
+  animation-name: animate-header;
+}
+
+@keyframes animate-header {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.why-par-one {
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+
+.why-par-two {
+  animation-delay: 0.1s;
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+
+.why-par-three {
+  animation-delay: 0.2s;
+  animation-duration: 2s;
+  animation-name: animate-paragraphs;
+}
+
+@keyframes animate-paragraphs {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -221,6 +317,10 @@ body {
   }
   .landing-cards {
     flex-direction: column;
+  }
+
+  .scroll {
+    animation: none;
   }
 }
 
