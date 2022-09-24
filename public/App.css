@@ -792,6 +792,7 @@ table td {
   padding: 1rem;
   font-size: 15px;
   max-width: 15rem;
+  word-wrap: break-word;
 }
 table tr:nth-last-child(-n+1) td {
   border-bottom: none;
@@ -834,7 +835,8 @@ table tr:nth-last-child(-n+1) td {
     margin-bottom: 150px;
   }
   table td {
-    max-width: 100%;
+    display: flex;
+    max-width: 400px;
     border-left: 1px solid #e2e0e0;
     border-right: 1px solid #e2e0e0;
   }
@@ -857,9 +859,6 @@ table tr:nth-last-child(-n+1) td {
     border-top: 1px solid #e2e0e0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-  }
-  table td {
-    display: flex;
   }
   table td:before {
     display: block;
@@ -923,9 +922,21 @@ table tr:nth-last-child(-n+1) td {
   table td div {
     width: 60%;
   }
+  table td {
+    max-width: 370px;
+  }
+  .table-flex {
+    max-width: 370px;
+  }
 }
 @media screen and (max-width: 400px) {
   .dash-add h1 {
     font-size: 25px;
+  }
+  table td {
+    max-width: 370px;
+  }
+  .table-flex {
+    max-width: 370px;
   }
 }
