@@ -160,6 +160,7 @@ table {
     padding: 1rem;
     font-size: 15px;
     max-width: 15rem;
+    word-wrap: break-word;
   }
 
   tr:nth-last-child(-n + 1) {
@@ -214,12 +215,13 @@ table {
   table {
     border: none;
     margin-bottom: 150px;
-  }
 
-  table td {
-    max-width: 100%;
-    border-left: 1px solid $gray;
-    border-right: 1px solid $gray;
+    & td {
+      display: flex;
+      max-width: 400px;
+      border-left: 1px solid $gray;
+      border-right: 1px solid $gray;
+    }
   }
 
   td:before {
@@ -244,10 +246,6 @@ table {
     border-top: 1px solid $gray;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-  }
-
-  table td {
-    display: flex;
   }
 
   table td:before {
@@ -323,6 +321,14 @@ table {
   table td div {
     width: 60%;
   }
+
+  table td {
+    max-width: 370px;
+  }
+
+  .table-flex {
+    max-width: 370px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -330,5 +336,13 @@ table {
     & h1 {
       font-size: 25px;
     }
+  }
+
+  table td {
+    max-width: 370px;
+  }
+
+  .table-flex {
+    max-width: 370px;
   }
 }
