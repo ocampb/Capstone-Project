@@ -72,7 +72,9 @@ const Navbar = (props) => {
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemText primary="Logout" className="drawer-item" />
+            <a href="/logout">
+              <ListItemText primary="Logout" className="drawer-item" />
+            </a>
           </ListItemButton>
         </ListItem>
         <ListItemButton

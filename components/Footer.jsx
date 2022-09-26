@@ -11,13 +11,19 @@ const Footer = () => {
         <div className="copyright">
           <div id="copy">©2022 Protectly, Inc. All Rights Reserved.</div>
           <div className="glyphs">
-            <a href="https://calendly.com/">
+            <a href="https://calendly.com/" target="_blank">
               <GrCalendar> </GrCalendar>
             </a>
-            <a href="https://dev.to/ocampb/capstone-project-275a">
+            <a
+              href="https://dev.to/ocampb/capstone-project-275a"
+              target="_blank"
+            >
               <AiFillMediumSquare> </AiFillMediumSquare>
             </a>
-            <a href="https://github.com/ocampb/Capstone-Project">
+            <a
+              href="https://github.com/ocampb/Capstone-Project"
+              target="_blank"
+            >
               <GoMarkGithub> </GoMarkGithub>
             </a>
           </div>

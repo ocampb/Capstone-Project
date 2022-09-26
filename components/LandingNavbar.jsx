@@ -36,9 +36,9 @@ const LandingNavbar = (props) => {
       <List>
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
-            <Link to="/login">
+            <a href="/oauth">
               <ListItemText primary="Login" className="drawer-item" />
-            </Link>
+            </a>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
