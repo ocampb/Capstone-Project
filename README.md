@@ -8,6 +8,8 @@ _Published September 2022_
 
 **Presentation:** https://youtu.be/w5yQl5bMSeU
 
+**Blog Post:** https://dev.to/ocampb/capstone-project-275a
+
 ## **Created By**
 
 ---
