@@ -108,3 +108,4 @@ Our future plans for **_Protectly_**:
 <img src="./assets/AddEmailScreenshot.png" alt="Add Email Modal on Dashboard" width="300">
 
 <img src="./assets/CustomCancelMessageScreenshot.png" alt="Add Email Modal on Dashboard" width="300">
+
